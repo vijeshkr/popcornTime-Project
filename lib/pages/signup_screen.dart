@@ -1,19 +1,16 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:popcorn_time/constants/apptheme.dart';
-import 'package:popcorn_time/pages/signup_screen.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:popcorn_time/pages/login_screen.dart';
+import '../constants/apptheme.dart';
 
-import 'home_screen.dart';
-
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -37,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'Sign In',
+                    'Sign Up',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
@@ -54,7 +51,23 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           fillColor: AppTheme.greyColor,
                           filled: true,
-                          hintText: 'Username',
+                          hintText: 'Name',
+                          hintStyle: TextStyle(
+                            color: Colors.black38,
+                          )),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5),
+                            borderSide: BorderSide.none,
+                          ),
+                          fillColor: AppTheme.greyColor,
+                          filled: true,
+                          hintText: 'Email or Phone',
                           hintStyle: TextStyle(
                             color: Colors.black38,
                           )),
@@ -78,42 +91,26 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppTheme.splash,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
                       onPressed: () {},
-                      child: const Text(
-                        'Forgot Password ?',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black38,
-                        ),
-                      ),
-                    ),
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppTheme.splash,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (_) => HomeScreen(),
-                        ),
-                      );
-                    },
-                    child: const Center(
-                      child: Padding(
-                        padding: EdgeInsets.all(15),
-                        child: Text(
-                          'Sign In',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                      child: const Center(
+                        child: Padding(
+                          padding: EdgeInsets.all(15),
+                          child: Text(
+                            'Sign Up',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
@@ -172,7 +169,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       const Text(
-                        'Don’t have account ?',
+                        'Already have an account ?',
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           color: Colors.black38,
@@ -182,12 +179,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         onPressed: () {
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
-                              builder: (_) => SignupScreen(),
+                              builder: (_) => LoginScreen(),
                             ),
                           );
                         },
                         child: const Text(
-                          'Sign Up',
+                          'Sign In',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: AppTheme.splash,
