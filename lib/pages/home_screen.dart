@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
-
 import '../constants/app_icons.dart';
 import '../constants/apptheme.dart';
+import '../widgets/movie_model.dart';
+import '../widgets/svg_with_title.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -88,44 +88,52 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Row(
+                  children: [
+                    SvgWithTitle(
+                        imagePath: menus[0].asset,
+                        title: menus[0].name,
+                        onPressed: 'All'),
+                    SvgWithTitle(
+                        imagePath: menus[1].asset,
+                        title: menus[1].name,
+                        onPressed: 'Movies'),
+                    SvgWithTitle(
+                        imagePath: menus[2].asset,
+                        title: menus[2].name,
+                        onPressed: 'Events'),
+                    SvgWithTitle(
+                        imagePath: menus[3].asset,
+                        title: menus[3].name,
+                        onPressed: 'Sports'),
+                    SvgWithTitle(
+                        imagePath: menus[4].asset,
+                        title: menus[4].name,
+                        onPressed: 'Shows'),
+                  ],
+                ),
+                Divider(
+                  thickness: 5,
+                  color: AppTheme.greyColor,
+                ),
                 Container(
-                  height: size.height * 0.15,
+                  height: 225,
                   width: size.width,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: menus.length,
+                    itemCount: 6,
                     itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.only(
-                            top: 10, left: 15.0, right: 10),
-                        child: GestureDetector(
-                          onTap: () {
-                            print(menus[index].asset);
-                          },
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: SvgPicture.asset(
-                                  menus[index].asset,
-                                  height: 35,
-                                  width: 35,
-                                  color: AppTheme.splash,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                menus[index].name,
-                                style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                              ),
-                            ],
-                          ),
-                        ),
+                      return MovieModel(
+                        title: movies[index].title,
+                        like: movies[index].like,
+                        bannerUrl: movies[index].bannerUrl,
                       );
                     },
                   ),
+                ),
+                Divider(
+                  thickness: 5,
+                  color: AppTheme.greyColor,
                 ),
               ],
             ),
