@@ -4,6 +4,7 @@ import 'package:popcorn_time/pages/login_screen.dart';
 import '../constants/apptheme.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/assets.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -11,7 +12,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Timer(
-      const Duration(milliseconds: 2500),
+      const Duration(milliseconds: 3000),
       () => Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (_) => LoginScreen(),
@@ -39,10 +40,9 @@ class SplashScreen extends StatelessWidget {
           const SizedBox(
             height: 50,
           ),
-          const CircularProgressIndicator(
-            color: Colors.grey,
-            strokeWidth: 3,
-            strokeAlign: 3,
+          LoadingAnimationWidget.staggeredDotsWave(
+            color: Colors.white,
+            size: 50,
           ),
         ]),
       ),

@@ -16,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int indexNum = 0;
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -173,14 +174,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(10),
-                          child: Image.asset(
-                        'assets/events/edsheeran.jpg',
-                      ),),
-                      SizedBox(height: 5,),
-                      Text('Ed Sheeran: +–=÷× Tour',style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w500
-                      ),)
+                        child: Image.asset(
+                          'assets/events/edsheeran.jpg',
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        'Ed Sheeran: +–=÷× Tour',
+                        style: TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.w500),
+                      )
                     ],
                   ),
                 ),
@@ -227,12 +232,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         borderRadius: BorderRadius.circular(10),
                         child: Image.asset(
                           'assets/sports/kbfc.jpeg',
-                        ),),
-                      SizedBox(height: 5,),
-                      Text('Kerala Blasters vs Punjab Football Club',style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.w500
-                      ),)
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        'Kerala Blasters vs Punjab Football Club',
+                        style: TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.w500),
+                      )
                     ],
                   ),
                 ),
@@ -241,9 +250,41 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: AppTheme.greyColor,
                 ),
               ],
-
             ),
           ),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: indexNum,
+          onTap: (int index) {
+            setState(() {
+              indexNum = index;
+            });
+          },
+          iconSize: 30,
+          showUnselectedLabels: true,
+          selectedItemColor: Colors.redAccent,
+          items: [
+            BottomNavigationBarItem(
+              backgroundColor: AppTheme.statusBar,
+              icon: Icon(Icons.cottage_outlined),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: AppTheme.statusBar,
+              icon: Icon(Icons.movie_creation_outlined),
+              label: 'Movies',
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: AppTheme.statusBar,
+              icon: Icon(Icons.event),
+              label: 'Events',
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: AppTheme.statusBar,
+              icon: Icon(Icons.person_2_outlined),
+              label: 'Profile',
+            ),
+          ],
         ),
       ),
     );
