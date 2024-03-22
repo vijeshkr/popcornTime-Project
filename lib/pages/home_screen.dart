@@ -7,6 +7,7 @@ import '../constants/app_icons.dart';
 import '../constants/apptheme.dart';
 import '../widgets/home_banner.dart';
 import '../widgets/home_banner_head.dart';
+import '../widgets/home_show_model.dart';
 import '../widgets/movie_model.dart';
 import '../widgets/svg_with_title.dart';
 
@@ -139,17 +140,42 @@ class _HomeScreenState extends State<HomeScreen> {
                   thickness: 5,
                   color: AppTheme.greyColor,
                 ),
-                HomeBannerHead(asset: eventsIcon,title: 'Events',),
-                HomeBanner(image: edSheeran,bannerTitle: edSheeranTitle,),
+                HomeBannerHead(
+                  asset: eventsIcon,
+                  title: 'Events',
+                ),
+                HomeBanner(
+                  image: edSheeran,
+                  bannerTitle: edSheeranTitle,
+                ),
                 const Divider(
                   thickness: 5,
                   color: AppTheme.greyColor,
                 ),
-
-
-                HomeBannerHead(asset: sportsIcon,title: 'Sports',),
-                HomeBanner(image: kbfc,bannerTitle: kbfcTitle,),
-
+                Row(
+                  children: [
+                    HomeShows(
+                      show: show1,
+                      showTitle: showTitle1,
+                    ),
+                    HomeShows(
+                      show: show2,
+                      showTitle: showTitle2,
+                    ),
+                  ],
+                ),
+                Divider(
+                  thickness: 5,
+                  color: AppTheme.greyColor,
+                ),
+                HomeBannerHead(
+                  asset: sportsIcon,
+                  title: 'Sports',
+                ),
+                HomeBanner(
+                  image: kbfc,
+                  bannerTitle: kbfcTitle,
+                ),
                 const Divider(
                   thickness: 5,
                   color: AppTheme.greyColor,
@@ -195,6 +221,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
-
-

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:popcorn_time/pages/movie_screen.dart';
 import '../constants/apptheme.dart';
 
 class SvgWithTitle extends StatelessWidget {
@@ -17,6 +18,13 @@ class SvgWithTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        if(onPressed == 'Movies'){
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => MovieScreen(),
+            ),
+          );
+        }
         print(onPressed);
       },
       child: Padding(

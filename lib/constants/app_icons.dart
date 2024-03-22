@@ -16,6 +16,13 @@ final String sportsIcon = "assets/icons/sports.svg";
 final String kbfc = 'assets/sports/kbfc.jpeg';
 final String kbfcTitle = 'Kerala Blasters vs Punjab Football Club';
 
+// home page shows
+
+final String show1 = 'assets/events/show1.jpeg';
+final String show2 = "assets/events/show2.jpeg";
+final String showTitle1 = "Sreya Ghoshal LIVE";
+final String showTitle2 = "The Weekend SHOW";
+
 
 
 
