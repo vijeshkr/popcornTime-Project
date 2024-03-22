@@ -5,6 +5,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import '../constants/app_icons.dart';
 import '../constants/apptheme.dart';
+import '../widgets/home_banner.dart';
+import '../widgets/home_banner_head.dart';
 import '../widgets/movie_model.dart';
 import '../widgets/svg_with_title.dart';
 
@@ -137,114 +139,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   thickness: 5,
                   color: AppTheme.greyColor,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20),
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(
-                        "assets/icons/events.svg",
-                        color: Colors.black.withOpacity(0.8),
-                        height: 18,
-                        width: 18,
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "Events".toUpperCase(),
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black.withOpacity(0.8)),
-                      ),
-                      const Spacer(),
-                      TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          "View All",
-                          style: TextStyle(color: AppTheme.splash),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.asset(
-                          'assets/events/edsheeran.jpg',
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'Ed Sheeran: +–=÷× Tour',
-                        style: TextStyle(
-                            fontSize: 17, fontWeight: FontWeight.w500),
-                      )
-                    ],
-                  ),
-                ),
+                HomeBannerHead(asset: eventsIcon,title: 'Events',),
+                HomeBanner(image: edSheeran,bannerTitle: edSheeranTitle,),
                 const Divider(
                   thickness: 5,
                   color: AppTheme.greyColor,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20),
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(
-                        "assets/icons/sports.svg",
-                        color: Colors.black.withOpacity(0.8),
-                        height: 18,
-                        width: 18,
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "Sports".toUpperCase(),
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black.withOpacity(0.8)),
-                      ),
-                      const Spacer(),
-                      TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          "View All",
-                          style: TextStyle(color: AppTheme.splash),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.asset(
-                          'assets/sports/kbfc.jpeg',
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'Kerala Blasters vs Punjab Football Club',
-                        style: TextStyle(
-                            fontSize: 17, fontWeight: FontWeight.w500),
-                      )
-                    ],
-                  ),
-                ),
+
+
+                HomeBannerHead(asset: sportsIcon,title: 'Sports',),
+                HomeBanner(image: kbfc,bannerTitle: kbfcTitle,),
+
                 const Divider(
                   thickness: 5,
                   color: AppTheme.greyColor,
@@ -263,7 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
           iconSize: 30,
           showUnselectedLabels: true,
           selectedItemColor: Colors.redAccent,
-          items: [
+          items: const [
             BottomNavigationBarItem(
               backgroundColor: AppTheme.statusBar,
               icon: Icon(Icons.cottage_outlined),
@@ -290,3 +195,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+
+

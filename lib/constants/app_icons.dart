@@ -9,6 +9,16 @@ class MenuModel {
     required this.asset,
   });
 }
+final String eventsIcon = "assets/icons/events.svg";
+final String edSheeran = 'assets/events/edsheeran.jpg';
+final String edSheeranTitle = 'Ed Sheeran: +–=÷× Tour';
+final String sportsIcon = "assets/icons/sports.svg";
+final String kbfc = 'assets/sports/kbfc.jpeg';
+final String kbfcTitle = 'Kerala Blasters vs Punjab Football Club';
+
+
+
+
 
 List<MenuModel> menus = [
   MenuModel(name: 'All', asset: 'assets/icons/all.svg'),
