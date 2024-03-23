@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:popcorn_time/constants/apptheme.dart';
 import 'package:popcorn_time/constants/filters.dart';
-import 'package:popcorn_time/pages/upcoming_movies.dart';
+import 'package:popcorn_time/pages/movie_screen.dart';
 import 'package:popcorn_time/widgets/movies_screen_model.dart';
 
 import '../constants/app_icons.dart';
 
-class MovieScreen extends StatefulWidget {
-  const MovieScreen({super.key});
+class UpcomingMovies extends StatefulWidget {
+  const UpcomingMovies({super.key});
 
   @override
-  State<MovieScreen> createState() => _MovieScreenState();
+  State<UpcomingMovies> createState() => _UpcomingMoviesState();
 }
 
-class _MovieScreenState extends State<MovieScreen> {
+class _UpcomingMoviesState extends State<UpcomingMovies> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -26,7 +26,7 @@ class _MovieScreenState extends State<MovieScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Now Showing',
+              'Upcoming Movies',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -106,12 +106,12 @@ class _MovieScreenState extends State<MovieScreen> {
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => UpcomingMovies(),
-                        ),
+                      MaterialPageRoute(
+                        builder: (context) => MovieScreen(),
+                      ),
                     );
                   },
-                  child: Text('Upcoming Movies'),
+                  child: Text('Now Showing'),
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
                     backgroundColor: AppTheme.splash, // Text color
@@ -119,7 +119,7 @@ class _MovieScreenState extends State<MovieScreen> {
                         horizontal: 100, vertical: 15), // Padding
                     shape: RoundedRectangleBorder(
                       borderRadius:
-                          BorderRadius.circular(10), // BorderRadius// Border
+                      BorderRadius.circular(10), // BorderRadius// Border
                     ),
                     elevation: 5, // Elevation
                   ),
@@ -128,24 +128,24 @@ class _MovieScreenState extends State<MovieScreen> {
               Row(
                 children: [
                   MovieShows(
-                    show: movies[0].bannerUrl,
-                    showTitle: movies[0].title,
+                    show: show2,
+                    showTitle: showTitle2,
                   ),
                   MovieShows(
-                    show: movies[1].bannerUrl,
-                    showTitle: movies[1].title,
+                    show: show2,
+                    showTitle: showTitle2,
                   ),
                 ],
               ),
               Row(
                 children: [
                   MovieShows(
-                    show: movies[2].bannerUrl,
-                    showTitle: movies[2].title,
+                    show: show2,
+                    showTitle: showTitle2,
                   ),
                   MovieShows(
-                    show: movies[3].bannerUrl,
-                    showTitle: movies[3].title,
+                    show: show2,
+                    showTitle: showTitle2,
                   ),
                 ],
               ),
@@ -179,44 +179,44 @@ class _MovieScreenState extends State<MovieScreen> {
               Row(
                 children: [
                   MovieShows(
-                    show: movies[0].bannerUrl,
-                    showTitle: movies[0].title,
+                    show: show2,
+                    showTitle: showTitle2,
                   ),
                   MovieShows(
-                    show: movies[1].bannerUrl,
-                    showTitle: movies[1].title,
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  MovieShows(
-                    show: movies[2].bannerUrl,
-                    showTitle: movies[2].title,
-                  ),
-                  MovieShows(
-                    show: movies[3].bannerUrl,
-                    showTitle: movies[3].title,
+                    show: show2,
+                    showTitle: showTitle2,
                   ),
                 ],
               ),
               Row(
                 children: [
                   MovieShows(
-                    show: movies[4].bannerUrl,
-                    showTitle: movies[4].title,
+                    show: show2,
+                    showTitle: showTitle2,
                   ),
                   MovieShows(
-                    show: movies[5].bannerUrl,
-                    showTitle: movies[5].title,
+                    show: show2,
+                    showTitle: showTitle2,
                   ),
                 ],
               ),
               Row(
                 children: [
                   MovieShows(
-                    show: movies[0].bannerUrl,
-                    showTitle: movies[0].title,
+                    show: show2,
+                    showTitle: showTitle2,
+                  ),
+                  MovieShows(
+                    show: show2,
+                    showTitle: showTitle2,
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  MovieShows(
+                    show: show2,
+                    showTitle: showTitle2,
                   ),
                   MovieShows(
                     show: show2,

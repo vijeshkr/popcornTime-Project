@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:popcorn_time/pages/events_screen.dart';
 import 'package:popcorn_time/pages/movie_screen.dart';
+import 'package:popcorn_time/pages/sports_screen.dart';
 import '../constants/apptheme.dart';
 
 class SvgWithTitle extends StatelessWidget {
@@ -22,6 +24,18 @@ class SvgWithTitle extends StatelessWidget {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => MovieScreen(),
+            ),
+          );
+        }else if(onPressed == 'Events'){
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => EventsScreen(),
+            ),
+          );
+        }else if(onPressed == 'Sports'){
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => SportsScreen(),
             ),
           );
         }
