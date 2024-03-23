@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:popcorn_time/pages/notifications.dart';
 import '../constants/app_icons.dart';
 import '../constants/apptheme.dart';
 import '../widgets/home_banner.dart';
@@ -67,7 +68,13 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => Notifications(),
+                  ),
+                );
+              },
               icon: const Icon(
                 Icons.notifications,
                 color: Colors.black,
