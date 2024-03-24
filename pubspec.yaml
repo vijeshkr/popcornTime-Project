@@ -68,6 +68,7 @@ flutter:
      - assets/icons/
      - assets/events/
      - assets/sports/
+     - assets/movie_banner/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
