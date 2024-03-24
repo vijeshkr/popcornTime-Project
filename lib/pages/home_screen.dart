@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:popcorn_time/pages/notifications.dart';
 import '../constants/app_icons.dart';
 import '../constants/apptheme.dart';
+import '../constants/search_movies.dart';
 import '../widgets/home_banner.dart';
 import '../widgets/home_banner_head.dart';
 import '../widgets/home_show_model.dart';
@@ -61,7 +62,10 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                showSearch(context: context,
+                    delegate:CustomSearch(), );
+              },
               icon: const Icon(
                 Icons.search,
                 color: Colors.black,
