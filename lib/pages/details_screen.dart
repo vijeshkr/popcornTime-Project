@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:popcorn_time/constants/apptheme.dart';
+import 'package:popcorn_time/pages/theatre_selection_screen.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key});
@@ -225,7 +226,9 @@ class DetailsScreen extends StatelessWidget {
                 EdgeInsets.symmetric(vertical: 12),
                 ),
               ),
-            onPressed: () {},
+            onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => TheatreSelectionScreen(),),);
+            },
             child: Text('Book tickets',
             style: TextStyle(
               color: Colors.white,
