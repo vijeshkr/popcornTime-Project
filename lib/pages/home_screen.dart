@@ -200,7 +200,8 @@ class _HomeScreenState extends State<HomeScreen> {
           onTap: (int index) {
             setState(() {
               indexNum = index;
-            });
+            },);
+
           },
           iconSize: 30,
           showUnselectedLabels: true,
