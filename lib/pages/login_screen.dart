@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:popcorn_time/constants/apptheme.dart';
 import 'package:popcorn_time/pages/signup_screen.dart';
+import 'package:popcorn_time/widgets/home_bottom_navigation.dart';
 
 import 'home_screen.dart';
 
@@ -101,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () {
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
-                          builder: (_) => HomeScreen(),
+                          builder: (_) => BottomNavigation(),
                         ),
                       );
                     },

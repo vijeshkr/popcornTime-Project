@@ -1,5 +1,6 @@
 import 'package:book_my_seat/book_my_seat.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
 
 class DetailedSelectionSeat extends StatefulWidget {
@@ -21,7 +22,7 @@ class _DetailedSelectionSeatState extends State<DetailedSelectionSeat> {
           children: [
             const SizedBox(height: 16),
             const Text("Theatre Screen this side"),
-            const SizedBox(height: 16),
+            const SizedBox(height: 30),
             Flexible(
               child: SizedBox(
                 width: double.maxFinite,
@@ -266,7 +267,10 @@ class _DetailedSelectionSeatState extends State<DetailedSelectionSeat> {
                   },
                 );
               },
-              child: const Text('Show my selected seat numbers'),
+              child: const Text('Show my selected seat numbers',
+              style: TextStyle(
+                color: Colors.white,
+              ),),
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.resolveWith((states) => const Color(0xFFfc4c4e)),
               ),
