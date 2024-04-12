@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:popcorn_time/widgets/select_seat_bottom.dart';
 
 class TheatreTime extends StatelessWidget {
   final String theatreName;
@@ -35,20 +36,29 @@ class TheatreTime extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(
-                        width: 1,
-                        // color: Color(0xffe5e5e5),
-                        color: Colors.yellow,
+                  InkWell(
+                    onTap: (){
+                      showModalBottomSheet(
+                          context: context,
+                          builder: (_) => SelectSeatBottom(),
+                          constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.35)
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        border: Border.all(
+                          width: 1,
+                          // color: Color(0xffe5e5e5),
+                          color: Colors.yellow,
+                        ),
                       ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Text(
-                        '11:30 AM',
-                        style: TextStyle(color: Colors.yellow[600]),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Text(
+                          '11:30 AM',
+                          style: TextStyle(color: Colors.yellow[600]),
+                        ),
                       ),
                     ),
                   ),
