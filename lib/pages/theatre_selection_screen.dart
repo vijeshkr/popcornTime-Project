@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:popcorn_time/widgets/calendar.dart';
+import 'package:popcorn_time/widgets/language_selection.dart';
 
 import '../constants/apptheme.dart';
 import '../widgets/theatre_time.dart';
@@ -12,7 +14,7 @@ class TheatreSelectionScreen extends StatelessWidget {
   final now = DateTime.now();
   String selectedDate = DateFormat('dd MMM').format(DateTime.now(),);
   String selectedLanguage = 'MALAYALAM';
-  String selectedScreen = '2D';
+  String selectedScreen = screen;
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +22,11 @@ class TheatreSelectionScreen extends StatelessWidget {
     final tomorrowDate = format.format(
       DateTime(now.year, now.month, now.day + 1),
     );
-    String text ="";
+    String text = "";
 
-    if(selectedDate == todayDate){
+    if (selectedDate == todayDate) {
       text = 'Today, ';
-    }else if(selectedDate == tomorrowDate){
+    } else if (selectedDate == tomorrowDate) {
       text = 'Tomorrow, ';
     }
 
@@ -42,10 +44,18 @@ class TheatreSelectionScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: ListTile(
-                  onTap: (){},
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (_) => CustomCalendar(),
+                      constraints: BoxConstraints(maxHeight: MediaQuery
+                          .of(context)
+                          .size
+                          .height * 0.35),);
+                  },
                   horizontalTitleGap: 5,
                   leading: Icon(Icons.calendar_month,
-                  color: Colors.white,),
+                    color: Colors.white,),
                   title: Text(
                     '$text$selectedDate',
                     style: TextStyle(
@@ -54,12 +64,20 @@ class TheatreSelectionScreen extends StatelessWidget {
                     ),
                   ),
                   trailing: Icon(Icons.keyboard_arrow_down,
-                  color: Colors.white,),
+                    color: Colors.white,),
                 ),
               ),
               Expanded(
                 child: ListTile(
-                  onTap: (){},
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (_) => LanguageSelectionBlock(),
+                      constraints: BoxConstraints(maxHeight: MediaQuery
+                          .of(context)
+                          .size
+                          .height * 0.35),);
+                  },
                   horizontalTitleGap: 5,
                   title: Text(
                     '$selectedLanguage $selectedScreen',
