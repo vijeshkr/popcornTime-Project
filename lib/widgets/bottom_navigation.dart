@@ -37,40 +37,35 @@ class _BottomNavigationState extends State<BottomNavigation> {
       ProfileScreen(),
 
     ];
-    SystemChrome.setSystemUIOverlayStyle(
-        const SystemUiOverlayStyle(statusBarColor: AppTheme.statusBar));
-    return SafeArea(
-      child: Scaffold(
-        body: bottomNavigationScreens.elementAt(indexNum),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: indexNum,
-          onTap: (int index) {
+    return Scaffold(
+      body: bottomNavigationScreens.elementAt(indexNum),
+      bottomNavigationBar: NavigationBarTheme(
+        data: NavigationBarThemeData(
+          indicatorColor: Colors.blue.shade100,
+        ),
+        child: NavigationBar(
+          selectedIndex: indexNum,
+          onDestinationSelected: (int index) {
             setState(() {
               indexNum = index;
             },);
 
           },
-          iconSize: 30,
-          showUnselectedLabels: true,
-          selectedItemColor: Colors.redAccent,
-          items: const [
-            BottomNavigationBarItem(
-              backgroundColor: AppTheme.statusBar,
+
+          destinations: const [
+            NavigationDestination(
               icon: Icon(Icons.cottage_outlined),
               label: 'Home',
             ),
-            BottomNavigationBarItem(
-              backgroundColor: AppTheme.statusBar,
+            NavigationDestination(
               icon: Icon(Icons.movie_creation_outlined),
               label: 'Movies',
             ),
-            BottomNavigationBarItem(
-              backgroundColor: AppTheme.statusBar,
+            NavigationDestination(
               icon: Icon(Icons.event),
               label: 'Events',
             ),
-            BottomNavigationBarItem(
-              backgroundColor: AppTheme.statusBar,
+            NavigationDestination(
               icon: Icon(Icons.person_2_outlined),
               label: 'Profile',
             ),

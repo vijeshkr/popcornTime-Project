@@ -202,29 +202,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                     Divider(thickness: 1,color: Colors.grey,),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 30),
-                      child: Text('DOCUMENTATION'),
+                    ListTile(
+                      leading: Icon(Icons.shopping_bag_outlined,
+                        size: 20,),
+                      title: Text('Your Orders'),
                     ),
                     ListTile(
                       leading: Icon(Icons.settings_outlined,
-                      size: 16,),
+                        size: 20,),
                       title: Text('Settings'),
                     ),
                     ListTile(
+                      leading: Icon(Icons.help_outline,
+                      size: 20,),
+                      title: Text('Help Center'),
+                    ),
+                    ListTile(
                       leading: Icon(Icons.privacy_tip_outlined,
-                        size: 16,),
+                        size: 20,),
                       title: Text('Privacy Policy'),
                     ),
                     ListTile(
                       leading: Icon(Icons.share_outlined,
-                        size: 16,),
+                        size: 20,),
                       title: Text('Share'),
                     ),
                     ListTile(
                       leading: Icon(Icons.exit_to_app_outlined,
                         color: Colors.red,
-                        size: 16,),
+                        size: 20,),
                       title: Text('Logout',
                       style: TextStyle(
                         color: Colors.red,

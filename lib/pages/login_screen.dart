@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:popcorn_time/constants/apptheme.dart';
 import 'package:popcorn_time/pages/signup_screen.dart';
-import 'package:popcorn_time/widgets/home_bottom_navigation.dart';
+import 'package:popcorn_time/widgets/bottom_navigation.dart';
 
 import 'home_screen.dart';
 
