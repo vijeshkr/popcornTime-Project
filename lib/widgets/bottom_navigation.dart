@@ -25,16 +25,15 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
-  @override
   int indexNum = 0;
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     List<Widget> bottomNavigationScreens = <Widget> [
-      HomeScreen(),
-      MovieScreen(),
-      EventsScreen(),
-      ProfileScreen(),
+      const HomeScreen(),
+      const MovieScreen(),
+      const EventsScreen(),
+      const ProfileScreen(),
 
     ];
     return Scaffold(

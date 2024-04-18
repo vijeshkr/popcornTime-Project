@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:popcorn_time/controllers/profile_controller.dart';
 
 import '../constants/apptheme.dart';
 
@@ -66,41 +70,43 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       padding: const EdgeInsets.only(left: 70,),
                       child: Text('Name'),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20,),
-                      child: TextFormField(
-                        readOnly: true,
-                        style: TextStyle(
-                          color: Colors.black
-                        ),
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
+                    Obx(() =>
+                       Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20,),
+                        child: TextFormField(
+                          readOnly: ProfileController.instance.isEdit.value,
+                          style: TextStyle(
+                            color: Colors.black
                           ),
-                          prefixIcon: Padding(
-                            padding: const EdgeInsets.all(4),
-                            child: Container(
-                              height: 25,
-                              width: 25,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: Color(0xffe4edff),
-                              ),
-                              child: Icon(
-                                Icons.person_outline,
-                                color: Color(0xff4c7eff),
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                            ),
+                            prefixIcon: Padding(
+                              padding: const EdgeInsets.all(4),
+                              child: Container(
+                                height: 25,
+                                width: 25,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: Color(0xffe4edff),
+                                ),
+                                child: Icon(
+                                  Icons.person_outline,
+                                  color: Color(0xff4c7eff),
+                                ),
                               ),
                             ),
-                          ),
-                          suffixIcon: GestureDetector(
-                            onTap: (){
-                
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(4),
-                              child: Icon(
-                                Icons.edit_outlined,
-                                color: Color(0xff4c7eff),
+                            suffixIcon: GestureDetector(
+                              onTap: (){
+                                ProfileController.instance.toggleEdit();
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(4),
+                                child: Icon(
+                                  Icons.edit_outlined,
+                                  color: Color(0xff4c7eff),
+                                ),
                               ),
                             ),
                           ),
@@ -113,41 +119,43 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       padding: const EdgeInsets.only(left: 70,),
                       child: Text('Email'),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20,),
-                      child: TextFormField(
-                        readOnly: true,
-                        style: TextStyle(
-                            color: Colors.black
-                        ),
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
+                    Obx( () =>
+                       Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20,),
+                        child: TextFormField(
+                          readOnly: ProfileController.instance.isEdit.value,
+                          style: TextStyle(
+                              color: Colors.black
                           ),
-                          prefixIcon: Padding(
-                            padding: const EdgeInsets.all(4),
-                            child: Container(
-                              height: 25,
-                              width: 25,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: Color(0xffe8dbff),
-                              ),
-                              child: Icon(
-                                Icons.email_outlined,
-                                color: Color(0xffcc80ea),
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                            ),
+                            prefixIcon: Padding(
+                              padding: const EdgeInsets.all(4),
+                              child: Container(
+                                height: 25,
+                                width: 25,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: Color(0xffe8dbff),
+                                ),
+                                child: Icon(
+                                  Icons.email_outlined,
+                                  color: Color(0xffcc80ea),
+                                ),
                               ),
                             ),
-                          ),
-                          suffixIcon: GestureDetector(
-                            onTap: (){
-                
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(4),
-                              child: Icon(
-                                Icons.edit_outlined,
-                                color: Color(0xff4c7eff),
+                            suffixIcon: GestureDetector(
+                              onTap: (){
+                                      ProfileController.instance.toggleEdit();
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(4),
+                                child: Icon(
+                                  Icons.edit_outlined,
+                                  color: Color(0xff4c7eff),
+                                ),
                               ),
                             ),
                           ),
@@ -160,41 +168,43 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       padding: const EdgeInsets.only(left: 70,),
                       child: Text('Mobile'),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20,),
-                      child: TextFormField(
-                        readOnly: true,
-                        style: TextStyle(
-                            color: Colors.black
-                        ),
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
+                    Obx( () =>
+                       Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20,),
+                        child: TextFormField(
+                          readOnly: ProfileController.instance.isEdit.value,
+                          style: TextStyle(
+                              color: Colors.black
                           ),
-                          prefixIcon: Padding(
-                            padding: const EdgeInsets.all(4),
-                            child: Container(
-                              height: 25,
-                              width: 25,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: Color(0xffcceff0),
-                              ),
-                              child: Icon(
-                                Icons.phone_android_outlined,
-                                color: Color(0xff48eb9f),
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                            ),
+                            prefixIcon: Padding(
+                              padding: const EdgeInsets.all(4),
+                              child: Container(
+                                height: 25,
+                                width: 25,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: Color(0xffcceff0),
+                                ),
+                                child: Icon(
+                                  Icons.phone_android_outlined,
+                                  color: Color(0xff48eb9f),
+                                ),
                               ),
                             ),
-                          ),
-                          suffixIcon: GestureDetector(
-                            onTap: (){
-                
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(4),
-                              child: Icon(
-                                Icons.edit_outlined,
-                                color: Color(0xff4c7eff),
+                            suffixIcon: GestureDetector(
+                              onTap: (){
+                                ProfileController.instance.toggleEdit();
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(4),
+                                child: Icon(
+                                  Icons.edit_outlined,
+                                  color: Color(0xff4c7eff),
+                                ),
                               ),
                             ),
                           ),

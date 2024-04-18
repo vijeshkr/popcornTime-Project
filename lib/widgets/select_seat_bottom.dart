@@ -1,6 +1,8 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:popcorn_time/pages/detailed_selection_seat.dart';
+import 'package:popcorn_time/widgets/seat_layout_model.dart';
 
 import '../constants/apptheme.dart';
 
@@ -154,7 +156,19 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => DetailedSelectionSeat(),
+                builder: (context) => DetailedSelectionSeats(model: SeatLayoutModel(
+                    rows: 10,
+                    cols: 12,
+                    seatTypes: [
+                      {"title": "Silver", "price": 120.0, "status": "Filling Fast"},
+                      {"title": "Gold", "price": 150.0, "status": "Available"},
+                      {"title": "Platinum", "price": 250.0, "status": "Available"},
+                    ],
+                    theatreId: 123,
+                    gap: 2,
+                    gapColIndex: 5,
+                    isLastFilled: true,
+                    rowBreaks: [3, 5, 1],),),
               ),
             );
           },
