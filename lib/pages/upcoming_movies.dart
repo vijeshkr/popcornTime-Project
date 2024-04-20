@@ -3,6 +3,7 @@ import 'package:popcorn_time/constants/apptheme.dart';
 import 'package:popcorn_time/constants/filters.dart';
 import 'package:popcorn_time/pages/upcoming_movies.dart';
 import '../constants/app_icons.dart';
+import '../constants/search_movies.dart';
 import '../data/movie_data.dart';
 import '../models/movie_shows_model.dart';
 import 'movie_screen.dart';
@@ -81,7 +82,10 @@ class _UpcomingMoviesState extends State<UpcomingMovies> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              showSearch(context: context,
+                delegate:CustomSearch(),);
+            },
             icon: const Icon(
               Icons.search,
               color: Colors.black,

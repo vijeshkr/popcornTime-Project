@@ -1,16 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:popcorn_time/pages/home_screen.dart';
+import 'package:popcorn_time/pages/details_screen.dart';
+import '../data/movie_data.dart';
 
 class CustomSearch extends SearchDelegate {
-  List<String> allMovies = [
-    'Premam',
-    'Leo',
-    'Neru',
-    'Premalu',
-    'John Whick',
-    'Bramayugam',
-  ];
-
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -35,9 +27,9 @@ class CustomSearch extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    List<String> matchQuery = [];
-    for (var item in allMovies) {
-      if (item.toLowerCase().contains(
+    List matchQuery = [];
+    for (var item in movieDataNow) {
+      if (item['title'].toLowerCase().contains(
             query.toLowerCase(),
           )) {
         matchQuery.add(item);
@@ -48,18 +40,34 @@ class CustomSearch extends SearchDelegate {
         itemBuilder: (context, index) {
           var result = matchQuery[index];
           return ListTile(
-            title: Text(result),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => DetailsScreen(
+                movieTitle: matchQuery[index]['title'],
+                like: matchQuery[index]['likes'],
+                movieCover: matchQuery[index]['coverImage'],
+                language: matchQuery[index]['language'],
+                screen_2D: matchQuery[index]['2D'],
+                genre: matchQuery[index]['genre'],
+                release: matchQuery[index]['release'],
+                description: matchQuery[index]['description'],),
+                ),
+              );
+            },
+            title: Text(result['title']),
           );
         });
   }
 
   @override
   Widget buildResults(BuildContext context) {
-    List<String> matchQuery = [];
-    for (var item in allMovies) {
-      if (item.toLowerCase().contains(
-        query.toLowerCase(),
-      )) {
+    List matchQuery = [];
+    for (var item in movieDataNow) {
+      if (item['title'].toLowerCase().contains(
+            query.toLowerCase(),
+          )) {
         matchQuery.add(item);
       }
     }
@@ -68,7 +76,23 @@ class CustomSearch extends SearchDelegate {
         itemBuilder: (context, index) {
           var result = matchQuery[index];
           return ListTile(
-            title: Text(result),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailsScreen(
+                    movieTitle: matchQuery[index]['title'],
+                    like: matchQuery[index]['likes'],
+                    movieCover: matchQuery[index]['coverImage'],
+                    language: matchQuery[index]['language'],
+                    screen_2D: matchQuery[index]['2D'],
+                    genre: matchQuery[index]['genre'],
+                    release: matchQuery[index]['release'],
+                    description: matchQuery[index]['description'],),
+                ),
+              );
+            },
+            title: Text(result['title']),
           );
         });
   }
