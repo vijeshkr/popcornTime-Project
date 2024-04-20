@@ -122,3 +122,12 @@ List<MovieModel> movies = movieDummyData.map((data) {
 
 
 
+
+
+
+
+
+
+
+
+
