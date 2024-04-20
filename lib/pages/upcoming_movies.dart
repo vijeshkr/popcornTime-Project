@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:popcorn_time/constants/apptheme.dart';
 import 'package:popcorn_time/constants/filters.dart';
-import 'package:popcorn_time/pages/movie_screen.dart';
-import 'package:popcorn_time/widgets/movies_screen_model.dart';
-
+import 'package:popcorn_time/pages/upcoming_movies.dart';
 import '../constants/app_icons.dart';
+import '../data/movie_data.dart';
+import '../models/movie_shows_model.dart';
+import 'movie_screen.dart';
+
+String languageFilter = '';
+String genreFilter = '';
 
 class UpcomingMovies extends StatefulWidget {
-  const UpcomingMovies({super.key});
+  UpcomingMovies({super.key});
 
   @override
   State<UpcomingMovies> createState() => _UpcomingMoviesState();
@@ -17,6 +21,26 @@ class _UpcomingMoviesState extends State<UpcomingMovies> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+
+    List movieDataFilteredUp = [];
+    for (var data in movieDataNow) {
+      if (languageFilter != '' && genreFilter != '') {
+        if (data['language'] == languageFilter &&
+            data['genre'].contains(genreFilter)) {
+          movieDataFilteredUp.add(data);
+        }
+      } else if (genreFilter != '') {
+        if (data['genre'].contains(genreFilter)) {
+          movieDataFilteredUp.add(data);
+        }
+      } else if (languageFilter != '') {
+        if (data['language'] == languageFilter) {
+          movieDataFilteredUp.add(data);
+        }
+      } else {
+        movieDataFilteredUp.add(data);
+      }
+    }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppTheme.greyColor,
@@ -45,7 +69,7 @@ class _UpcomingMoviesState extends State<UpcomingMovies> {
                   width: 8,
                 ),
                 Text(
-                  '20 Movies',
+                  'Movies',
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.grey,
@@ -68,215 +92,165 @@ class _UpcomingMoviesState extends State<UpcomingMovies> {
           )
         ],
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            children: [
-              Container(
-                child: Container(
-                  padding: EdgeInsets.all(10),
-                  height: 55,
-                  width: size.width,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 6,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: OutlinedButton(
-                          onPressed: () {
-                            print(index);
-                          },
-                          child: languages[index],
-                          style: OutlinedButton.styleFrom(
-                            side: BorderSide(
-                              color: AppTheme
-                                  .splash, // Change the color to your desired outline color
-                              width: 1.0, // Adjust the width as needed
-                            ),
-                          ),
-                        ),
-                      );
+      body: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.all(10),
+            height: 55,
+            width: size.width,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 7,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: OutlinedButton(
+                    onPressed: () {
+                      setState(() {
+                        if(index == 0){
+                          languageFilter = '';
+                        }else if(index == 1){
+                          setState(() {
+                            languageFilter = 'Malayalam';
+                          });
+                        }else if (index == 2){
+                          setState(() {
+                            languageFilter = 'Tamil';
+                          });
+                        }else if(index == 3){
+                          setState(() {
+                            languageFilter = 'English';
+                          });
+                        }else if(index == 4){
+                          setState(() {
+                            languageFilter = 'Hindi';
+                          });
+                        }else if(index == 5){
+                          setState(() {
+                            languageFilter = 'Telugu';
+                          });
+                        }else if( index == 6){
+                          setState(() {
+                            languageFilter = 'Kannada';
+                          });
+                        }
+                      });
+                      print(languageFilter);
                     },
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => MovieScreen(),
+                    child: languages[index],
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(
+                        color: AppTheme
+                            .splash, // Change the color to your desired outline color
+                        width: 1.0, // Adjust the width as needed
                       ),
-                    );
-                  },
-                  child: Text('Now Showing'),
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: AppTheme.splash, // Text color
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 100, vertical: 15), // Padding
-                    shape: RoundedRectangleBorder(
-                      borderRadius:
-                      BorderRadius.circular(10), // BorderRadius// Border
                     ),
-                    elevation: 5, // Elevation
                   ),
-                ),
-              ),
-              Row(
-                children: [
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                ],
-              ),
-              Container(
-                padding: EdgeInsets.all(10),
-                height: 55,
-                width: size.width,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 9,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(right: 10),
-                      child: OutlinedButton(
-                        onPressed: () {
-                          print(index);
-                        },
-                        child: genres[index],
-                        style: OutlinedButton.styleFrom(
-                          side: BorderSide(
-                            color: AppTheme
-                                .splash, // Change the color to your desired outline color
-                            width: 1.0, // Adjust the width as needed
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-              Row(
-                children: [
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  MovieShows(
-                    show: show1,
-                    showTitle: showTitle1,
-                  ),
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  MovieShows(
-                    show: show1,
-                    showTitle: showTitle1,
-                  ),
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  MovieShows(
-                    show: show1,
-                    showTitle: showTitle1,
-                  ),
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  MovieShows(
-                    show: show1,
-                    showTitle: showTitle1,
-                  ),
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                ],
-              ),
-
-            ],
+                );
+              },
+            ),
           ),
-        ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => MovieScreen(),
+                  ),
+                );
+              },
+              child: Text('Now Showing'),
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: AppTheme.splash, // Text color
+                padding: EdgeInsets.symmetric(
+                    horizontal: 100, vertical: 15), // Padding
+                shape: RoundedRectangleBorder(
+                  borderRadius:
+                  BorderRadius.circular(10), // BorderRadius// Border
+                ),
+                elevation: 5, // Elevation
+              ),
+            ),
+          ),
+          Expanded(
+            child: MovieShowsList(
+              movies: movieDataFilteredUp.cast<Map<String, dynamic>>(),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(10),
+            height: 55,
+            width: size.width,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 9,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: OutlinedButton(
+                    onPressed: () {
+                      setState(() {
+                        if (index == 0) {
+                          genreFilter = '';
+                        } else if (index == 1) {
+                          setState(() {
+                            genreFilter = 'Action';
+                          });
+                        } else if (index == 2) {
+                          setState(() {
+                            genreFilter = 'Drama';
+                          });
+                        } else if (index == 3) {
+                          setState(() {
+                            genreFilter = 'Thriller';
+                          });
+                        } else if (index == 4) {
+                          setState(() {
+                            genreFilter = 'Comedy';
+                          });
+                        } else if (index == 5) {
+                          setState(() {
+                            genreFilter = 'Crime';
+                          });
+                        } else if (index == 6) {
+                          setState(() {
+                            genreFilter = 'Horror';
+                          });
+                        } else if (index == 7) {
+                          setState(() {
+                            genreFilter = 'Romance';
+                          });
+                        } else if (index == 8) {
+                          setState(() {
+                            genreFilter = 'Biography';
+                          });
+                        } else if (index == 9) {
+                          setState(() {
+                            genreFilter = 'Sci-fi';
+                          });
+                        }
+                      });
+                      print(genreFilter);
+                    },
+                    child: genres[index],
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(
+                        color: AppTheme
+                            .splash, // Change the color to your desired outline color
+                        width: 1.0, // Adjust the width as needed
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+
+        ],
       ),
     );
+
   }
 }

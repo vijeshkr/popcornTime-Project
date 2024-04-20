@@ -105,7 +105,7 @@ class MovieShowsModel extends StatelessWidget {
   }
 }
 
-class MovieShowsList extends StatelessWidget {
+class MovieShowsList extends StatefulWidget {
   final List<Map<String, dynamic>> movies;
 
   const MovieShowsList({
@@ -113,6 +113,11 @@ class MovieShowsList extends StatelessWidget {
     required this.movies,
   }) : super(key: key);
 
+  @override
+  State<MovieShowsList> createState() => _MovieShowsListState();
+}
+
+class _MovieShowsListState extends State<MovieShowsList> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -122,8 +127,8 @@ class MovieShowsList extends StatelessWidget {
         crossAxisSpacing: 10.0,
         mainAxisSpacing: 10.0,
         childAspectRatio: 0.7, // Adjust the aspect ratio as needed
-        children: List.generate(movies.length, (index) {
-          final movie = movies[index];
+        children: List.generate(widget.movies.length, (index) {
+          final movie = widget.movies[index];
           return MovieShowsModel(
             title: movie['title'],
             like: movie['likes'],

@@ -31,7 +31,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     final Size size = MediaQuery.of(context).size;
     List<Widget> bottomNavigationScreens = <Widget> [
       const HomeScreen(),
-      const MovieScreen(),
+            MovieScreen(),
       const EventsScreen(),
       const ProfileScreen(),
 

@@ -316,3 +316,5 @@ List movieDummyData = [
 ];
 
 List movieData = movieDummyData.reversed.toList();
+List movieDataNow = movieData.where((data) => data['now'] == 'now').toList();
+List movieDataUp = movieData.where((data) => data['now'] == 'up').toList();

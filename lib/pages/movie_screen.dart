@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:popcorn_time/constants/apptheme.dart';
 import 'package:popcorn_time/constants/filters.dart';
 import 'package:popcorn_time/pages/upcoming_movies.dart';
+import '../constants/app_icons.dart';
 import '../data/movie_data.dart';
 import '../models/movie_shows_model.dart';
 
 String languageFilter = '';
+String genreFilter = '';
 
 class MovieScreen extends StatefulWidget {
-  const MovieScreen({super.key});
+  MovieScreen({super.key});
 
   @override
   State<MovieScreen> createState() => _MovieScreenState();
@@ -18,6 +20,25 @@ class _MovieScreenState extends State<MovieScreen> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    List movieDataFiltered = [];
+    for (var data in movieDataNow) {
+      if (languageFilter != '' && genreFilter != '') {
+        if (data['language'] == languageFilter &&
+            data['genre'].contains(genreFilter)) {
+          movieDataFiltered.add(data);
+        }
+      } else if (genreFilter != '') {
+        if (data['genre'].contains(genreFilter)) {
+          movieDataFiltered.add(data);
+        }
+      } else if (languageFilter != '') {
+        if (data['language'] == languageFilter) {
+          movieDataFiltered.add(data);
+        }
+      } else {
+        movieDataFiltered.add(data);
+      }
+    }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppTheme.greyColor,
@@ -77,37 +98,41 @@ class _MovieScreenState extends State<MovieScreen> {
             width: size.width,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 6,
+              itemCount: 7,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: OutlinedButton(
                     onPressed: () {
-                      if(index == 0){
-                        setState(() {
-                          languageFilter = 'Malayalam';
-                        });
-                      }else if (index == 1){
-                        setState(() {
-                          languageFilter = 'Tamil';
-                        });
-                      }else if(index == 2){
-                        setState(() {
-                          languageFilter = 'English';
-                        });
-                      }else if(index == 3){
-                        setState(() {
-                          languageFilter = 'Hindi';
-                        });
-                      }else if(index == 4){
-                        setState(() {
-                          languageFilter = 'Telugu';
-                        });
-                      }else if( index == 5){
-                        setState(() {
-                          languageFilter = 'Kannada';
-                        });
-                      }
+                      setState(() {
+                        if (index == 0) {
+                          languageFilter = '';
+                        } else if (index == 1) {
+                          setState(() {
+                            languageFilter = 'Malayalam';
+                          });
+                        } else if (index == 2) {
+                          setState(() {
+                            languageFilter = 'Tamil';
+                          });
+                        } else if (index == 3) {
+                          setState(() {
+                            languageFilter = 'English';
+                          });
+                        } else if (index == 4) {
+                          setState(() {
+                            languageFilter = 'Hindi';
+                          });
+                        } else if (index == 5) {
+                          setState(() {
+                            languageFilter = 'Telugu';
+                          });
+                        } else if (index == 6) {
+                          setState(() {
+                            languageFilter = 'Kannada';
+                          });
+                        }
+                      });
                       print(languageFilter);
                     },
                     child: languages[index],
@@ -128,9 +153,9 @@ class _MovieScreenState extends State<MovieScreen> {
             child: ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => UpcomingMovies(),
-                    ),
+                  MaterialPageRoute(
+                    builder: (context) => UpcomingMovies(),
+                  ),
                 );
               },
               child: Text('Upcoming Movies'),
@@ -149,7 +174,7 @@ class _MovieScreenState extends State<MovieScreen> {
           ),
           Expanded(
             child: MovieShowsList(
-              movies: movieData.cast<Map<String, dynamic>>(),
+              movies: movieDataFiltered.cast<Map<String, dynamic>>(),
             ),
           ),
           Container(
@@ -158,13 +183,54 @@ class _MovieScreenState extends State<MovieScreen> {
             width: size.width,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 9,
+              itemCount: 10,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: OutlinedButton(
                     onPressed: () {
-                      print(index);
+                      setState(() {
+                        if (index == 0) {
+                          genreFilter = '';
+                        } else if (index == 1) {
+                          setState(() {
+                            genreFilter = 'Action';
+                          });
+                        } else if (index == 2) {
+                          setState(() {
+                            genreFilter = 'Drama';
+                          });
+                        } else if (index == 3) {
+                          setState(() {
+                            genreFilter = 'Thriller';
+                          });
+                        } else if (index == 4) {
+                          setState(() {
+                            genreFilter = 'Comedy';
+                          });
+                        } else if (index == 5) {
+                          setState(() {
+                            genreFilter = 'Crime';
+                          });
+                        } else if (index == 6) {
+                          setState(() {
+                            genreFilter = 'Horror';
+                          });
+                        } else if (index == 7) {
+                          setState(() {
+                            genreFilter = 'Romance';
+                          });
+                        } else if (index == 8) {
+                          setState(() {
+                            genreFilter = 'Biography';
+                          });
+                        } else if (index == 9) {
+                          setState(() {
+                            genreFilter = 'Sci-fi';
+                          });
+                        }
+                      });
+                      print(genreFilter);
                     },
                     child: genres[index],
                     style: OutlinedButton.styleFrom(
@@ -179,10 +245,8 @@ class _MovieScreenState extends State<MovieScreen> {
               },
             ),
           ),
-
         ],
       ),
     );
-
   }
 }

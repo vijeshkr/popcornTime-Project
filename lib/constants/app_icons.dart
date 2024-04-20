@@ -1,4 +1,6 @@
 
+import 'package:popcorn_time/pages/movie_screen.dart';
+
 import '../data/movie_data.dart';
 import '../widgets/movie_model.dart';
 
@@ -118,6 +120,8 @@ List<MovieModel> movies = movieDummyData.map((data) {
     description: data['description'],
   );
 }).toList();
+
+
 
 
 
