@@ -5,13 +5,30 @@ import 'package:popcorn_time/constants/apptheme.dart';
 import 'package:popcorn_time/pages/theatre_selection_screen.dart';
 
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({super.key});
+  String movieTitle;
+  String movieCover;
+  String language;
+  String screen_2D;
+  int like;
+  List genre;
+  String release;
+  String description;
+  DetailsScreen(
+      {super.key,
+      required this.movieTitle,
+      required this.movieCover,
+      required this.like,
+      required this.language,
+      required this.screen_2D,
+      required this.genre,
+      required this.release,
+      required this.description,
+      });
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-          body: CustomScrollView(
+    return Scaffold(
+      body: CustomScrollView(
         slivers: [
           SliverAppBar(
             backgroundColor: AppTheme.statusBar,
@@ -24,11 +41,11 @@ class DetailsScreen extends StatelessWidget {
             expandedHeight: 220,
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   image: DecorationImage(
                     fit: BoxFit.cover,
                     image: AssetImage(
-                      'assets/movie_banner/premam_banner.jpg',
+                      movieCover,
                     ),
                   ),
                 ),
@@ -54,7 +71,7 @@ class DetailsScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Premam',
+                              movieTitle,
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 18,
@@ -70,7 +87,7 @@ class DetailsScreen extends StatelessWidget {
                                   width: 5,
                                 ),
                                 Text(
-                                  '85 %',
+                                  '$like %',
                                   style: TextStyle(fontSize: 15),
                                 ),
                               ],
@@ -84,7 +101,7 @@ class DetailsScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'UA | Mar 15, 2024',
+                              'UA | $release',
                               style: TextStyle(color: Colors.black45),
                             ),
                             Text(
@@ -116,7 +133,7 @@ class DetailsScreen extends StatelessWidget {
                                       height: 5,
                                     ),
                                     Text(
-                                      '2h 36m . Comedy, Romantic',
+                                      '2h 36m . ${genre[0]}, ${genre[1]}',
                                       style: TextStyle(color: Colors.black45),
                                     ),
                                     SizedBox(
@@ -125,7 +142,7 @@ class DetailsScreen extends StatelessWidget {
                                     Row(
                                       children: [
                                         Text(
-                                          'Malayalam',
+                                          '$language',
                                           style: TextStyle(color: Colors.red),
                                         ),
                                         SizedBox(
@@ -140,7 +157,7 @@ class DetailsScreen extends StatelessWidget {
                                           padding: EdgeInsets.symmetric(
                                               horizontal: 2, vertical: 1),
                                           child: Text(
-                                            '2D',
+                                            '$screen_2D',
                                             style: TextStyle(color: Colors.red),
                                           ),
                                         ),
@@ -152,7 +169,7 @@ class DetailsScreen extends StatelessWidget {
                                     Container(
                                       color: Colors.white,
                                       child: Text(
-                                        'George, a teenager, loves the idea of being in love. This dream seems to be within reach during his school days, then, for a second time during his college days and yet it fails to materialize. This slow metamorphosis of his love, his attempt to woo his lovers, the abrupt failures hardens him but he finally is able to settle down for life with someone much younger, whom he have met during childhood. The film transcends its viewers on perspectives and boundaries of love.',
+                                        '$description',
                                         overflow: TextOverflow.ellipsis,
                                         maxLines: 25,
                                         style: TextStyle(color: Colors.black45),
@@ -176,16 +193,20 @@ class DetailsScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('1024 reviews',
+                        Text(
+                          '1024 reviews',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: Colors.black,
-                          ),),
-                        Text('Write yours >',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.red,
-                        ),),
+                          ),
+                        ),
+                        Text(
+                          'Write yours >',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: Colors.red,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -198,16 +219,20 @@ class DetailsScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Cast & Crew',
+                        Text(
+                          'Cast & Crew',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: Colors.black,
-                          ),),
-                        Text('View All',
+                          ),
+                        ),
+                        Text(
+                          'View All',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: Colors.red,
-                          ),),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -217,24 +242,30 @@ class DetailsScreen extends StatelessWidget {
           ),
         ],
       ),
-        bottomNavigationBar: Padding(
-          padding: EdgeInsets.all(10),
-          child: ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
-                padding:MaterialStateProperty.all<EdgeInsetsGeometry>(
-                EdgeInsets.symmetric(vertical: 12),
-                ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.all(10),
+        child: ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
+            padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+              EdgeInsets.symmetric(vertical: 12),
+            ),
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => TheatreSelectionScreen(),
               ),
-            onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => TheatreSelectionScreen(),),);
-            },
-            child: Text('Book tickets',
+            );
+          },
+          child: Text(
+            'Book tickets',
             style: TextStyle(
               color: Colors.white,
               fontSize: 16,
               fontWeight: FontWeight.w500,
-            ),),
+            ),
           ),
         ),
       ),

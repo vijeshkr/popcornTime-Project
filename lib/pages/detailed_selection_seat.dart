@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:popcorn_time/widgets/seat_layout_model.dart';
+
+import '../controllers/seat_selection_controller.dart';
 
 class DetailedSelectionSeats extends StatelessWidget {
   final SeatLayoutModel model;
@@ -39,6 +42,8 @@ class DetailedSelectionSeats extends StatelessWidget {
                     ),
                     ...List.generate(model.rowBreaks[index], (row) {
                       alphabets++;
+                      seatCounter = 0;
+                      String rowNo = String.fromCharCode(64 + alphabets);
                         return Wrap(
                           children: List.generate(model.cols, (col){
                             if(col == 0){
@@ -66,17 +71,47 @@ class DetailedSelectionSeats extends StatelessWidget {
                             }
 
                             seatCounter++;
+                            String seatNo = "$seatCounter";
+                            // Color seatColor = SeatSelectionController.instance.selectedSeats.value.contains('$rowNo$seatNo')?Colors.green: Color(0xfffffff);
                                 return Padding(
                                   padding: const EdgeInsets.all(5.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(2),
-                                      color: Color(0xfffffff),
-                                      border: Border.all(width: 0.5,color: Color(0xff707070))
+                                  child: GestureDetector(
+                                    onTap: (){
+                                      RxList seats = SeatSelectionController.instance.selectedSeats;
+                                      int noOfSeats = 2;
+                                      var price = 0.0;
+                                      if(rowNo == 'A' || rowNo == 'B' || rowNo == 'C' ){
+                                        price = 120.0;
+                                      }else if (rowNo == 'I' ){
+                                        price = 250.0;
+                                      }else{
+                                        price = 150.0;
+                                      }
+                                      print(price);
+
+                                      if(seats.contains('$rowNo$seatNo')){
+                                        seats.remove('$rowNo$seatNo');
+                                      }else{
+                                        if(seats.length >= noOfSeats){
+                                          seats.removeAt(0);
+                                          seats.add('$rowNo$seatNo');
+                                        }
+                                        seats.add('$rowNo$seatNo');
+                                      }
+                                    },
+                                    child: Obx(() =>
+                                        AnimatedContainer(
+                                          duration: Duration(microseconds: 300),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(2),
+                                          color: SeatSelectionController.instance.selectedSeats.value.contains('$rowNo$seatNo')?Colors.green: Color(0xfffffff),
+                                          border: Border.all(width: 0.5,color: Color(0xff707070))
+                                        ),
+                                        child: Center(child: Text('$seatNo'),),
+                                        height: 20,
+                                        width: 20,
+                                      ),
                                     ),
-                                    child: Center(child: Text('$col'),),
-                                    height: 20,
-                                    width: 20,
                                   ),
                                 );
                               },),

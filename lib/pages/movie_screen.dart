@@ -45,7 +45,7 @@ class _MovieScreenState extends State<MovieScreen> {
                   width: 8,
                 ),
                 Text(
-                  '20 Movies',
+                  'Movies',
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.grey,

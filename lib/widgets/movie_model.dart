@@ -5,9 +5,24 @@ class MovieModel extends StatelessWidget {
   final String title;
   final int like;
   final String bannerUrl;
-  const MovieModel({
-    super.key, required this.title, required this.like, required this.bannerUrl,
-  });
+  final String coverImage;
+  final String language;
+  final String screen_2D;
+  final List genre;
+  final String release;
+  final String description;
+  const MovieModel(
+      {super.key,
+      required this.title,
+      required this.like,
+      required this.bannerUrl,
+      required this.coverImage,
+      required this.language,
+      required this.screen_2D,
+        required this.genre,
+        required this.release,
+        required this.description,
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +31,20 @@ class MovieModel extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: Container(
           child: GestureDetector(
-            onTap: (){
-                Navigator.push(
+            onTap: () {
+              Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => DetailsScreen()),
+                MaterialPageRoute(
+                    builder: (context) => DetailsScreen(
+                          movieTitle: title,
+                          movieCover: coverImage,
+                          like: like,
+                          language: language,
+                          screen_2D: screen_2D,
+                          genre: genre,
+                      release: release,
+                      description: description,
+                        )),
               );
             },
             child: Column(
@@ -30,6 +55,7 @@ class MovieModel extends StatelessWidget {
                   child: Image.asset(
                     bannerUrl,
                     height: 150,
+                    width: 110,
                     fit: BoxFit.cover,
                   ),
                 ),

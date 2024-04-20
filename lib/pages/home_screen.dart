@@ -7,6 +7,7 @@ import 'package:popcorn_time/pages/select_location_screen.dart';
 import '../constants/app_icons.dart';
 import '../constants/apptheme.dart';
 import '../constants/search_movies.dart';
+import '../data/movie_data.dart';
 import '../widgets/home_banner.dart';
 import '../widgets/home_banner_head.dart';
 import '../widgets/home_show_model.dart';
@@ -144,12 +145,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 width: size.width,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 6,
+                  itemCount: 10,
                   itemBuilder: (context, index) {
                     return MovieModel(
-                      title: movies[index].title,
-                      like: movies[index].like,
-                      bannerUrl: movies[index].bannerUrl,
+                      title: movieData[index]['title'],
+                      like: movieData[index]['likes'],
+                      bannerUrl: movieData[index]['image'],
+                      coverImage: movieData[index]['coverImage'],
+                      language: movieData[index]['language'],
+                      screen_2D: movieData[index]['2D'],
+                      genre: movieData[index]['genre'],
+                      release: movieData[index]['release'],
+                      description: movieData[index]['description'],
                     );
                   },
                 ),

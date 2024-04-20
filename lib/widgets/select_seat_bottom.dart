@@ -157,7 +157,7 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
               context,
               MaterialPageRoute(
                 builder: (context) => DetailedSelectionSeats(model: SeatLayoutModel(
-                    rows: 10,
+                    rows: 9,
                     cols: 12,
                     seatTypes: [
                       {"title": "Silver", "price": 120.0, "status": "Filling Fast"},
