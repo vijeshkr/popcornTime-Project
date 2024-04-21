@@ -5,6 +5,8 @@ import 'package:popcorn_time/pages/upcoming_movies.dart';
 import 'package:popcorn_time/widgets/movies_screen_model.dart';
 
 import '../constants/app_icons.dart';
+import '../data/events_data.dart';
+import '../models/events_shows_model.dart';
 
 class SportsScreen extends StatefulWidget {
   const SportsScreen({super.key});
@@ -22,38 +24,12 @@ class _SportsScreenState extends State<SportsScreen> {
         backgroundColor: AppTheme.greyColor,
         toolbarHeight: 70,
         automaticallyImplyLeading: false,
-        title: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Sports',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Row(
-              children: [
-                Text(
-                  'Ernakulam',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey,
-                  ),
-                ),
-                SizedBox(
-                  width: 8,
-                ),
-                Text(
-                  '10 Events',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey,
-                  ),
-                ),
-              ],
-            ),
-          ],
+        title: Text(
+          'Sports',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         actions: [
           IconButton(
@@ -68,76 +44,8 @@ class _SportsScreenState extends State<SportsScreen> {
           )
         ],
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            children: [
-
-
-              Row(
-                children: [
-                  MovieShows(
-                    show: movies[0].bannerUrl,
-                    showTitle: movies[0].title,
-                  ),
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  MovieShows(
-                    show: show1,
-                    showTitle: showTitle1,
-                  ),
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  MovieShows(
-                    show: show1,
-                    showTitle: showTitle1,
-                  ),
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  MovieShows(
-                    show: show1,
-                    showTitle: showTitle1,
-                  ),
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  MovieShows(
-                    show: show1,
-                    showTitle: showTitle1,
-                  ),
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                ],
-              ),
-
-            ],
-          ),
-        ),
+      body: EventsShowsList(
+        events: eventsDummyDataSports.cast<Map<String, dynamic>>(),
       ),
     );
   }

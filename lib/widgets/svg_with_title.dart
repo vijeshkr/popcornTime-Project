@@ -4,6 +4,7 @@ import 'package:popcorn_time/pages/events_screen.dart';
 import 'package:popcorn_time/pages/movie_screen.dart';
 import 'package:popcorn_time/pages/sports_screen.dart';
 import '../constants/apptheme.dart';
+import '../pages/shows_screen.dart';
 
 class SvgWithTitle extends StatelessWidget {
   final String imagePath;
@@ -36,6 +37,12 @@ class SvgWithTitle extends StatelessWidget {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => SportsScreen(),
+            ),
+          );
+        }else if(onPressed == 'Shows'){
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => ShowsScreen(),
             ),
           );
         }

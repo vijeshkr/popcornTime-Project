@@ -3,6 +3,8 @@ import 'package:popcorn_time/constants/apptheme.dart';
 import 'package:popcorn_time/widgets/movies_screen_model.dart';
 
 import '../constants/app_icons.dart';
+import '../data/events_data.dart';
+import '../models/events_shows_model.dart';
 
 class ShowsScreen extends StatefulWidget {
   const ShowsScreen({super.key});
@@ -20,38 +22,12 @@ class _ShowsScreenState extends State<ShowsScreen> {
         backgroundColor: AppTheme.greyColor,
         toolbarHeight: 70,
         automaticallyImplyLeading: false,
-        title: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Shows',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Row(
-              children: [
-                Text(
-                  'Ernakulam',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey,
-                  ),
-                ),
-                SizedBox(
-                  width: 8,
-                ),
-                Text(
-                  '10 Events',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey,
-                  ),
-                ),
-              ],
-            ),
-          ],
+        title: Text(
+          'Shows',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         actions: [
           IconButton(
@@ -66,76 +42,8 @@ class _ShowsScreenState extends State<ShowsScreen> {
           )
         ],
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            children: [
-
-
-              Row(
-                children: [
-                  MovieShows(
-                    show: movies[0].bannerUrl,
-                    showTitle: movies[0].title,
-                  ),
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  MovieShows(
-                    show: show1,
-                    showTitle: showTitle1,
-                  ),
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  MovieShows(
-                    show: show1,
-                    showTitle: showTitle1,
-                  ),
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  MovieShows(
-                    show: show1,
-                    showTitle: showTitle1,
-                  ),
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  MovieShows(
-                    show: show1,
-                    showTitle: showTitle1,
-                  ),
-                  MovieShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
-                ],
-              ),
-
-            ],
-          ),
-        ),
+      body:  EventsShowsList(
+        events: eventsDummyDataShow.cast<Map<String, dynamic>>(),
       ),
     );
   }

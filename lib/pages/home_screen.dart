@@ -14,6 +14,7 @@ import '../widgets/home_show_model.dart';
 import '../widgets/movie_model.dart';
 import '../widgets/svg_with_title.dart';
 
+String myLocation = 'Ernakulam';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -53,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Row(
                 children: [
                   Text(
-                    'Ernakulam',
+                    '$myLocation',
                     style: TextStyle(
                       fontSize: 16,
                       color: AppTheme.splash,
@@ -89,13 +90,6 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             icon: const Icon(
               Icons.notifications,
-              color: Colors.black,
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.qr_code_scanner,
               color: Colors.black,
             ),
           ),

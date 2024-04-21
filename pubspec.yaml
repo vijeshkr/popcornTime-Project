@@ -75,6 +75,8 @@ flutter:
      - assets/seat/
      - assets/images/movies_data/cover/
      - assets/images/movies_data/image/
+     - assets/images/events_data/cover/
+     - assets/images/events_data/image/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
