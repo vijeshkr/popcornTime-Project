@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:popcorn_time/pages/events_screen.dart';
+import 'package:popcorn_time/pages/sports_screen.dart';
 
 import '../constants/apptheme.dart';
 
 class HomeBannerHead extends StatelessWidget {
   final String asset;
   final String title;
+  final String viewAll;
 
   const HomeBannerHead({
     super.key,
     required this.asset,
     required this.title,
+    required this.viewAll,
   });
 
   @override
@@ -36,7 +40,19 @@ class HomeBannerHead extends StatelessWidget {
           ),
           const Spacer(),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              if(viewAll == 'Events'){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => EventsScreen()),
+                );
+              }else if(viewAll == 'Sports'){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SportsScreen()),
+                );
+              }
+            },
             child: const Text(
               "View All",
               style: TextStyle(color: AppTheme.splash),

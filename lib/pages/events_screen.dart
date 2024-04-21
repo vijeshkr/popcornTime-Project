@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:popcorn_time/constants/apptheme.dart';
 import 'package:popcorn_time/constants/filters.dart';
+import 'package:popcorn_time/constants/search_events.dart';
+import 'package:popcorn_time/pages/home_screen.dart';
 import 'package:popcorn_time/pages/movie_screen.dart';
 import 'package:popcorn_time/pages/shows_screen.dart';
 import 'package:popcorn_time/pages/sports_screen.dart';
@@ -28,8 +30,8 @@ class _EventsScreenState extends State<EventsScreen> {
       appBar: AppBar(
         backgroundColor: AppTheme.greyColor,
         toolbarHeight: 70,
-        automaticallyImplyLeading: false,
-        title: const Column(
+        // automaticallyImplyLeading: false,
+        title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
@@ -42,7 +44,7 @@ class _EventsScreenState extends State<EventsScreen> {
             Row(
               children: [
                 Text(
-                  'Ernakulam',
+                  myLocation,
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.grey,
@@ -54,7 +56,10 @@ class _EventsScreenState extends State<EventsScreen> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              showSearch(context: context,
+                delegate:EventsCustomSearch(eventsData: eventsDummyData),);
+            },
             icon: const Icon(
               Icons.search,
               color: Colors.black,

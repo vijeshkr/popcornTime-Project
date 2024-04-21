@@ -3,6 +3,7 @@ import 'package:popcorn_time/constants/apptheme.dart';
 import 'package:popcorn_time/widgets/movies_screen_model.dart';
 
 import '../constants/app_icons.dart';
+import '../constants/search_events.dart';
 import '../data/events_data.dart';
 import '../models/events_shows_model.dart';
 
@@ -21,7 +22,7 @@ class _ShowsScreenState extends State<ShowsScreen> {
       appBar: AppBar(
         backgroundColor: AppTheme.greyColor,
         toolbarHeight: 70,
-        automaticallyImplyLeading: false,
+        // automaticallyImplyLeading: false,
         title: Text(
           'Shows',
           style: TextStyle(
@@ -31,7 +32,10 @@ class _ShowsScreenState extends State<ShowsScreen> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              showSearch(context: context,
+                delegate:EventsCustomSearch(eventsData: eventsDummyDataShow),);
+            },
             icon: const Icon(
               Icons.search,
               color: Colors.black,

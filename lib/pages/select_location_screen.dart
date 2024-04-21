@@ -106,7 +106,9 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                     return ListTile(
                       title: Text(suggestion),
                       onTap: () {
-                        myLocation = suggestion;
+                        setState(() {
+                          myLocation = suggestion;
+                        });
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => BottomNavigation()),

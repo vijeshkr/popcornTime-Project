@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:popcorn_time/pages/details_screen.dart';
 
+import '../pages/events_detailed_screen.dart';
+
 class EventsShowsModel extends StatelessWidget {
   final String title;
   final String bannerUrl;
@@ -31,21 +33,21 @@ class EventsShowsModel extends StatelessWidget {
         child: Container(
           child: GestureDetector(
             onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => DetailsScreen(
-              //       movieTitle: title,
-              //       movieCover: coverImage,
-              //       like: like,
-              //       language: language,
-              //       screen_2D: screen_2D,
-              //       genre: genre,
-              //       release: release,
-              //       description: description,
-              //     ),
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => EventsDetailedScreen(
+                    eventTitle: title,
+                    eventCover: coverImage,
+                    location: location,
+                    item: item,
+                    dateTime: dateTime,
+                    category: category,
+                    artist: artist,
+
+                  ),
+                ),
+              );
             },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

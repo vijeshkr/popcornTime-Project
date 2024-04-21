@@ -5,6 +5,7 @@ import 'package:popcorn_time/pages/upcoming_movies.dart';
 import 'package:popcorn_time/widgets/movies_screen_model.dart';
 
 import '../constants/app_icons.dart';
+import '../constants/search_events.dart';
 import '../data/events_data.dart';
 import '../models/events_shows_model.dart';
 
@@ -23,7 +24,7 @@ class _SportsScreenState extends State<SportsScreen> {
       appBar: AppBar(
         backgroundColor: AppTheme.greyColor,
         toolbarHeight: 70,
-        automaticallyImplyLeading: false,
+        // automaticallyImplyLeading: false,
         title: Text(
           'Sports',
           style: TextStyle(
@@ -33,7 +34,10 @@ class _SportsScreenState extends State<SportsScreen> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              showSearch(context: context,
+                delegate:EventsCustomSearch(eventsData: eventsDummyDataSports),);
+            },
             icon: const Icon(
               Icons.search,
               color: Colors.black,

@@ -28,6 +28,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
   int indexNum = 0;
   @override
   Widget build(BuildContext context) {
+    // SystemChrome.setSystemUIOverlayStyle(
+    //     const SystemUiOverlayStyle(statusBarColor: AppTheme.statusBar));
     final Size size = MediaQuery.of(context).size;
     List<Widget> bottomNavigationScreens = <Widget> [
       const HomeScreen(),

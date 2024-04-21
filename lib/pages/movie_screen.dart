@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:popcorn_time/constants/apptheme.dart';
 import 'package:popcorn_time/constants/filters.dart';
+import 'package:popcorn_time/pages/home_screen.dart';
 import 'package:popcorn_time/pages/upcoming_movies.dart';
 import '../constants/app_icons.dart';
 import '../constants/search_movies.dart';
@@ -44,8 +45,8 @@ class _MovieScreenState extends State<MovieScreen> {
       appBar: AppBar(
         backgroundColor: AppTheme.greyColor,
         toolbarHeight: 70,
-        automaticallyImplyLeading: false,
-        title: const Column(
+        // automaticallyImplyLeading: false,
+        title:  Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
@@ -58,7 +59,7 @@ class _MovieScreenState extends State<MovieScreen> {
             Row(
               children: [
                 Text(
-                  'Ernakulam',
+                  myLocation,
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.grey,

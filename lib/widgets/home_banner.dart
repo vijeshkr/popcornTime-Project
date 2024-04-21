@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../pages/notifications.dart';
+
 class HomeBanner extends StatelessWidget {
   final String image;
   final String bannerTitle;
@@ -11,26 +13,28 @@ class HomeBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: Image.asset(
-              image,
+    return GestureDetector(
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(
+                image,
+              ),
             ),
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Text(
-            bannerTitle,
-            style: TextStyle(
-                fontSize: 17, fontWeight: FontWeight.w500),
-          )
-        ],
+            SizedBox(
+              height: 5,
+            ),
+            Text(
+              bannerTitle,
+              style: TextStyle(
+                  fontSize: 17, fontWeight: FontWeight.w500),
+            )
+          ],
+        ),
       ),
     );
   }

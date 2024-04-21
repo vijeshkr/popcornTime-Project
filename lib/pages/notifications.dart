@@ -13,20 +13,16 @@ class _NotificationsState extends State<Notifications> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    SystemChrome.setSystemUIOverlayStyle(
-        const SystemUiOverlayStyle(statusBarColor: AppTheme.statusBar));
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppTheme.greyColor,
-          toolbarHeight: 70,
-          leadingWidth: 25,
-          title: Text(
-            'Notifications',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppTheme.greyColor,
+        toolbarHeight: 70,
+        leadingWidth: 25,
+        title: Text(
+          'Notifications',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),

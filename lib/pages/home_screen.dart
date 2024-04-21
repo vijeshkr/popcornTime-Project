@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:popcorn_time/data/events_data.dart';
 import 'package:popcorn_time/pages/notifications.dart';
 import 'package:popcorn_time/pages/select_location_screen.dart';
 import '../constants/app_icons.dart';
@@ -31,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
     //     const SystemUiOverlayStyle(statusBarColor: AppTheme.statusBar));
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         // backgroundColor: AppTheme.appBarColor,
         backgroundColor: AppTheme.greyColor,
         toolbarHeight: 70,
@@ -54,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Row(
                 children: [
                   Text(
-                    '$myLocation',
+                    myLocation,
                     style: TextStyle(
                       fontSize: 16,
                       color: AppTheme.splash,
@@ -162,10 +164,11 @@ class _HomeScreenState extends State<HomeScreen> {
               HomeBannerHead(
                 asset: eventsIcon,
                 title: 'Events',
+                viewAll: 'Events',
               ),
               HomeBanner(
-                image: edSheeran,
-                bannerTitle: edSheeranTitle,
+                image: eventsDummyData[4]['coverImage'],
+                bannerTitle: eventsDummyData[4]['title'],
               ),
               const Divider(
                 thickness: 5,
@@ -190,10 +193,11 @@ class _HomeScreenState extends State<HomeScreen> {
               HomeBannerHead(
                 asset: sportsIcon,
                 title: 'Sports',
+                viewAll: 'Sports',
               ),
               HomeBanner(
-                image: kbfc,
-                bannerTitle: kbfcTitle,
+                image: eventsDummyData[5]['coverImage'],
+                bannerTitle: eventsDummyData[5]['title'],
               ),
               const Divider(
                 thickness: 5,
