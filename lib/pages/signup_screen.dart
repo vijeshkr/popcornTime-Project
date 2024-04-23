@@ -24,7 +24,7 @@ class _SignupScreenState extends State<SignupScreen> {
           child: Center(
             child: Container(
               padding: EdgeInsets.all(20),
-              height: size.height * 0.7,
+              height: size.height * 0.78,
               width: size.width * 0.95,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -85,6 +85,24 @@ class _SignupScreenState extends State<SignupScreen> {
                         fillColor: AppTheme.greyColor,
                         filled: true,
                         hintText: 'Password',
+                        hintStyle: TextStyle(
+                          color: Colors.black38,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5),
+                          borderSide: BorderSide.none,
+                        ),
+                        fillColor: AppTheme.greyColor,
+                        filled: true,
+                        hintText: 'Confirm Password',
                         hintStyle: TextStyle(
                           color: Colors.black38,
                         ),

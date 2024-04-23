@@ -41,6 +41,7 @@ dependencies:
   date_picker_timeline: ^1.2.6
   book_my_seat: ^1.0.1
   get: ^4.6.6
+  accordion: ^2.6.0
 
 dev_dependencies:
   flutter_test:

@@ -13,7 +13,6 @@ import '../constants/search_movies.dart';
 import '../pages/home_screen.dart';
 import '../widgets/home_banner.dart';
 import '../widgets/home_banner_head.dart';
-import '../widgets/home_show_model.dart';
 import '../widgets/movie_model.dart';
 import '../widgets/svg_with_title.dart';
 

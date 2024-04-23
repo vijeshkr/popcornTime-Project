@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:popcorn_time/data/events_data.dart';
+import 'package:popcorn_time/models/events_shows_model.dart';
 import 'package:popcorn_time/pages/notifications.dart';
 import 'package:popcorn_time/pages/select_location_screen.dart';
 import '../constants/app_icons.dart';
@@ -11,11 +12,11 @@ import '../constants/search_movies.dart';
 import '../data/movie_data.dart';
 import '../widgets/home_banner.dart';
 import '../widgets/home_banner_head.dart';
-import '../widgets/home_show_model.dart';
 import '../widgets/movie_model.dart';
 import '../widgets/svg_with_title.dart';
 
 String myLocation = 'Ernakulam';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -24,7 +25,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
         // backgroundColor: AppTheme.appBarColor,
         backgroundColor: AppTheme.greyColor,
         toolbarHeight: 70,
-        title:  Column(
+        title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
@@ -47,10 +47,11 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SelectLocationScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => SelectLocationScreen()),
                 );
               },
               child: Row(
@@ -74,8 +75,10 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              showSearch(context: context,
-                  delegate:CustomSearch(), );
+              showSearch(
+                context: context,
+                delegate: CustomSearch(),
+              );
             },
             icon: const Icon(
               Icons.search,
@@ -169,6 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
               HomeBanner(
                 image: eventsDummyData[4]['coverImage'],
                 bannerTitle: eventsDummyData[4]['title'],
+                index: 4,
               ),
               const Divider(
                 thickness: 5,
@@ -176,14 +180,27 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Row(
                 children: [
-                  HomeShows(
-                    show: show1,
-                    showTitle: showTitle1,
-                  ),
-                  HomeShows(
-                    show: show2,
-                    showTitle: showTitle2,
-                  ),
+                  SizedBox(width: 30,),
+                  EventsShowsModel(
+                      title: eventsDummyData[10]['title'],
+                      bannerUrl: eventsDummyData[10]['image'],
+                      coverImage: eventsDummyData[10]['coverImage'],
+                      item: eventsDummyData[10]['item'],
+                      dateTime: eventsDummyData[10]['dateTime'],
+                      artist: eventsDummyData[10]['artist'],
+                      location: eventsDummyData[10]['location'],
+                      category: eventsDummyData[10]['category']),
+                  SizedBox(width: 30,),
+                  EventsShowsModel(
+                      title: eventsDummyData[8]['title'],
+                      bannerUrl: eventsDummyData[8]['image'],
+                      coverImage: eventsDummyData[8]['coverImage'],
+                      item: eventsDummyData[8]['item'],
+                      dateTime: eventsDummyData[8]['dateTime'],
+                      artist: eventsDummyData[8]['artist'],
+                      location: eventsDummyData[8]['location'],
+                      category: eventsDummyData[8]['category']),
+
                 ],
               ),
               Divider(
@@ -198,10 +215,36 @@ class _HomeScreenState extends State<HomeScreen> {
               HomeBanner(
                 image: eventsDummyData[5]['coverImage'],
                 bannerTitle: eventsDummyData[5]['title'],
+                index: 5,
               ),
               const Divider(
                 thickness: 5,
                 color: AppTheme.greyColor,
+              ),
+              Row(
+                children: [
+                  SizedBox(width: 30,),
+                  EventsShowsModel(
+                      title: eventsDummyData[1]['title'],
+                      bannerUrl: eventsDummyData[1]['image'],
+                      coverImage: eventsDummyData[1]['coverImage'],
+                      item: eventsDummyData[1]['item'],
+                      dateTime: eventsDummyData[1]['dateTime'],
+                      artist: eventsDummyData[1]['artist'],
+                      location: eventsDummyData[1]['location'],
+                      category: eventsDummyData[1]['category']),
+                  SizedBox(width: 30,),
+                  EventsShowsModel(
+                      title: eventsDummyData[3]['title'],
+                      bannerUrl: eventsDummyData[3]['image'],
+                      coverImage: eventsDummyData[3]['coverImage'],
+                      item: eventsDummyData[3]['item'],
+                      dateTime: eventsDummyData[3]['dateTime'],
+                      artist: eventsDummyData[3]['artist'],
+                      location: eventsDummyData[3]['location'],
+                      category: eventsDummyData[3]['category']),
+
+                ],
               ),
             ],
           ),
@@ -210,4 +253,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-

@@ -4,7 +4,12 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:popcorn_time/constants/privacy_policy.dart';
 import 'package:popcorn_time/controllers/profile_controller.dart';
+import 'package:popcorn_time/pages/help_center.dart';
+import 'package:popcorn_time/pages/login_screen.dart';
+import 'package:popcorn_time/pages/settings.dart';
+import 'package:popcorn_time/pages/your_orders.dart';
 
 import '../constants/apptheme.dart';
 
@@ -211,41 +216,148 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
                     ),
-                    Divider(thickness: 1,color: Colors.grey,),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: Divider(thickness: 1,color: Colors.grey,),
+                    ),
                     ListTile(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => YourOrders()),
+                        );
+                      },
+                      trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15,),
                       leading: Icon(Icons.shopping_bag_outlined,
                         size: 20,),
                       title: Text('Your Orders'),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: Divider(thickness: 1,color: Colors.grey,),
+                    ),
                     ListTile(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SettingsScreen()),
+                        );
+                      },
+                      trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15,),
                       leading: Icon(Icons.settings_outlined,
                         size: 20,),
                       title: Text('Settings'),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: Divider(thickness: 1,color: Colors.grey,),
+                    ),
                     ListTile(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HelpCenterScreen()),
+                        );
+                      },
+                      trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15,),
                       leading: Icon(Icons.help_outline,
                       size: 20,),
                       title: Text('Help Center'),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: Divider(thickness: 1,color: Colors.grey,),
+                    ),
                     ListTile(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PrivacyPolicy()),
+                        );
+                      },
+                      trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15,),
                       leading: Icon(Icons.privacy_tip_outlined,
                         size: 20,),
                       title: Text('Privacy Policy'),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: Divider(thickness: 1,color: Colors.grey,),
+                    ),
                     ListTile(
+                      trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15,),
                       leading: Icon(Icons.share_outlined,
                         size: 20,),
                       title: Text('Share'),
                     ),
-                    ListTile(
-                      leading: Icon(Icons.exit_to_app_outlined,
-                        color: Colors.red,
-                        size: 20,),
-                      title: Text('Logout',
-                      style: TextStyle(
-                        color: Colors.red,
-                      ),),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: Divider(thickness: 1,color: Colors.grey,),
                     ),
+                    ListTile(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text('Comeback Soon!',style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                              ),),
+                              content: Text('Are you sure you want to logout?',style: TextStyle(
+                                color: Colors.black38
+                              ),),
+                              backgroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              actions: <Widget>[
+                                TextButton(
+                                  child: Text('Cancel',style: TextStyle(
+                                    color: Colors.red,
+                                  ),),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                                TextButton(
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                                    child: Text('Yes, Logout',
+                                    style: TextStyle(color: Colors.white),),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LoginScreen()),
+                                    );
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      leading: Icon(
+                        Icons.exit_to_app_outlined,
+                        color: Colors.red,
+                        size: 20,
+                      ),
+                      title: Text(
+                        'Logout',
+                        style: TextStyle(
+                          color: Colors.red,
+                        ),
+                      ),
+                    ),
+
                   ],
                 ),
               ),
