@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:popcorn_time/constants/apptheme.dart';
-import 'package:popcorn_time/widgets/movies_screen_model.dart';
 
 import '../constants/app_icons.dart';
 import '../constants/search_events.dart';

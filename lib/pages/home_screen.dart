@@ -156,6 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       genre: movieDataNow[index]['genre'],
                       release: movieDataNow[index]['release'],
                       description: movieDataNow[index]['description'],
+                      duration: movieDataNow[index]['duration'],
                     );
                   },
                 ),
@@ -180,7 +181,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Row(
                 children: [
-                  SizedBox(width: 30,),
+                  SizedBox(
+                    width: 30,
+                  ),
                   EventsShowsModel(
                       title: eventsDummyData[10]['title'],
                       bannerUrl: eventsDummyData[10]['image'],
@@ -190,7 +193,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       artist: eventsDummyData[10]['artist'],
                       location: eventsDummyData[10]['location'],
                       category: eventsDummyData[10]['category']),
-                  SizedBox(width: 30,),
+                  SizedBox(
+                    width: 30,
+                  ),
                   EventsShowsModel(
                       title: eventsDummyData[8]['title'],
                       bannerUrl: eventsDummyData[8]['image'],
@@ -200,7 +205,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       artist: eventsDummyData[8]['artist'],
                       location: eventsDummyData[8]['location'],
                       category: eventsDummyData[8]['category']),
-
                 ],
               ),
               Divider(
@@ -223,7 +227,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Row(
                 children: [
-                  SizedBox(width: 30,),
+                  SizedBox(
+                    width: 30,
+                  ),
                   EventsShowsModel(
                       title: eventsDummyData[1]['title'],
                       bannerUrl: eventsDummyData[1]['image'],
@@ -233,7 +239,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       artist: eventsDummyData[1]['artist'],
                       location: eventsDummyData[1]['location'],
                       category: eventsDummyData[1]['category']),
-                  SizedBox(width: 30,),
+                  SizedBox(
+                    width: 30,
+                  ),
                   EventsShowsModel(
                       title: eventsDummyData[3]['title'],
                       bannerUrl: eventsDummyData[3]['image'],
@@ -243,7 +251,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       artist: eventsDummyData[3]['artist'],
                       location: eventsDummyData[3]['location'],
                       category: eventsDummyData[3]['category']),
-
                 ],
               ),
             ],

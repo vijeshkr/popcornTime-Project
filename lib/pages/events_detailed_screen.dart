@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:popcorn_time/constants/apptheme.dart';
+import 'package:popcorn_time/pages/sports_seats_screen.dart';
 import 'package:popcorn_time/pages/theatre_selection_screen.dart';
 
 class EventsDetailedScreen extends StatelessWidget {
@@ -121,22 +122,30 @@ class EventsDetailedScreen extends StatelessWidget {
                           'Important Note',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(height: 10,),
+                        SizedBox(
+                          height: 10,
+                        ),
                         Text(
                           '1. The event is free seating. First come first serve basis.',
                           style: TextStyle(fontWeight: FontWeight.w400),
                         ),
-                        SizedBox(height: 5,),
+                        SizedBox(
+                          height: 5,
+                        ),
                         Text(
                           '2. Ticket required for 2+ years',
                           style: TextStyle(fontWeight: FontWeight.w400),
                         ),
-                        SizedBox(height: 5,),
+                        SizedBox(
+                          height: 5,
+                        ),
                         Text(
                           '3. Parking is not available at the venue.',
                           style: TextStyle(fontWeight: FontWeight.w400),
                         ),
-                        SizedBox(height: 5,),
+                        SizedBox(
+                          height: 5,
+                        ),
                         Text(
                           '4. No re-entry is allowed.',
                           style: TextStyle(fontWeight: FontWeight.w400),
@@ -163,12 +172,19 @@ class EventsDetailedScreen extends StatelessWidget {
             ),
           ),
           onPressed: () {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) => TheatreSelectionScreen(),
-            //   ),
-            // );
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SportsBookingScreen(
+                    eventTitle: eventTitle,
+                    eventCover: eventCover,
+                    item: item,
+                    dateTime: dateTime,
+                    artist: artist,
+                    location: location,
+                    category: category),
+              ),
+            );
           },
           child: Text(
             'Book tickets',

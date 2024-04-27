@@ -11,6 +11,7 @@ class MovieShowsModel extends StatelessWidget {
   final List genre;
   final String release;
   final String description;
+  final String duration;
 
   const MovieShowsModel({
     Key? key,
@@ -23,6 +24,7 @@ class MovieShowsModel extends StatelessWidget {
     required this.genre,
     required this.release,
     required this.description,
+    required this.duration,
   }) : super(key: key);
 
   @override
@@ -45,6 +47,7 @@ class MovieShowsModel extends StatelessWidget {
                     genre: genre,
                     release: release,
                     description: description,
+                    duration: duration,
                   ),
                 ),
               );
@@ -139,6 +142,7 @@ class _MovieShowsListState extends State<MovieShowsList> {
             genre: List<String>.from(movie['genre']),
             release: movie['release'],
             description: movie['description'],
+            duration: movie['duration'],
           );
         }),
       ),

@@ -13,6 +13,7 @@ class DetailsScreen extends StatelessWidget {
   List genre;
   String release;
   String description;
+  String duration;
   DetailsScreen(
       {super.key,
       required this.movieTitle,
@@ -23,6 +24,7 @@ class DetailsScreen extends StatelessWidget {
       required this.genre,
       required this.release,
       required this.description,
+      required this.duration,
       });
 
   @override
@@ -133,7 +135,7 @@ class DetailsScreen extends StatelessWidget {
                                       height: 5,
                                     ),
                                     Text(
-                                      '2h 36m . ${genre[0]}, ${genre[1]}',
+                                      '$duration . ${genre[0]}, ${genre[1]}',
                                       style: TextStyle(color: Colors.black45),
                                     ),
                                     SizedBox(

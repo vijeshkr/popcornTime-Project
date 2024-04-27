@@ -6,7 +6,6 @@ import 'package:popcorn_time/pages/home_screen.dart';
 import 'package:popcorn_time/pages/movie_screen.dart';
 import 'package:popcorn_time/pages/shows_screen.dart';
 import 'package:popcorn_time/pages/sports_screen.dart';
-import 'package:popcorn_time/widgets/movies_screen_model.dart';
 
 import '../constants/app_icons.dart';
 import '../data/events_data.dart';

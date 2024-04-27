@@ -25,7 +25,7 @@ class _UpcomingMoviesState extends State<UpcomingMovies> {
     final Size size = MediaQuery.of(context).size;
 
     List movieDataFilteredUp = [];
-    for (var data in movieDataNow) {
+    for (var data in movieDataUp) {
       if (languageFilter != '' && genreFilter != '') {
         if (data['language'] == languageFilter &&
             data['genre'].contains(genreFilter)) {

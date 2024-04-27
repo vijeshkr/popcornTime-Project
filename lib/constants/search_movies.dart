@@ -44,15 +44,17 @@ class CustomSearch extends SearchDelegate {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => DetailsScreen(
-                movieTitle: matchQuery[index]['title'],
-                like: matchQuery[index]['likes'],
-                movieCover: matchQuery[index]['coverImage'],
-                language: matchQuery[index]['language'],
-                screen_2D: matchQuery[index]['2D'],
-                genre: matchQuery[index]['genre'],
-                release: matchQuery[index]['release'],
-                description: matchQuery[index]['description'],),
+                  builder: (context) => DetailsScreen(
+                    movieTitle: matchQuery[index]['title'],
+                    like: matchQuery[index]['likes'],
+                    movieCover: matchQuery[index]['coverImage'],
+                    language: matchQuery[index]['language'],
+                    screen_2D: matchQuery[index]['2D'],
+                    genre: matchQuery[index]['genre'],
+                    release: matchQuery[index]['release'],
+                    description: matchQuery[index]['description'],
+                    duration: matchQuery[index]['duration'],
+                  ),
                 ),
               );
             },
@@ -88,7 +90,9 @@ class CustomSearch extends SearchDelegate {
                     screen_2D: matchQuery[index]['2D'],
                     genre: matchQuery[index]['genre'],
                     release: matchQuery[index]['release'],
-                    description: matchQuery[index]['description'],),
+                    description: matchQuery[index]['description'],
+                    duration: matchQuery[index]['duration'],
+                  ),
                 ),
               );
             },

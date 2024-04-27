@@ -107,6 +107,30 @@ List<MenuModel> menus = [
 //   ),
 // ];
 
+String footballStaduim = 'assets/sports/footballStadium.jpg';
+String cricketStaduim = 'assets/sports/cricketStadium.jpg';
+
+// football seat prices
+
+double eastUpper = 499.0 ;
+double eastLower = 399.0 ;
+double northUpper = 399.0 ;
+double northLower = 299.0 ;
+double southUpper = 499.0 ;
+double southLower = 299.0 ;
+double westUpper = 899.0 ;
+
+// football seat prices
+
+double eastStand = 899;
+double westStand = 899;
+double northStand = 899;
+double membersEnclosure = 999;
+double corporateBox = 1299;
+double diamondBox = 1399;
+double grandStand = 999;
+
+
 List<MovieModel> movies = movieDummyData.map((data) {
   return MovieModel(
     title: data['title'],
@@ -118,6 +142,7 @@ List<MovieModel> movies = movieDummyData.map((data) {
     release: data['release'],
     screen_2D: data['2D'],
     description: data['description'],
+    duration: data['duration'],
   );
 }).toList();
 

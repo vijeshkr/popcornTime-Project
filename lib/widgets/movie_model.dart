@@ -11,18 +11,20 @@ class MovieModel extends StatelessWidget {
   final List genre;
   final String release;
   final String description;
-  const MovieModel(
-      {super.key,
-      required this.title,
-      required this.like,
-      required this.bannerUrl,
-      required this.coverImage,
-      required this.language,
-      required this.screen_2D,
-        required this.genre,
-        required this.release,
-        required this.description,
-      });
+  final String duration;
+  const MovieModel({
+    super.key,
+    required this.title,
+    required this.like,
+    required this.bannerUrl,
+    required this.coverImage,
+    required this.language,
+    required this.screen_2D,
+    required this.genre,
+    required this.release,
+    required this.description,
+    required this.duration,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +44,9 @@ class MovieModel extends StatelessWidget {
                           language: language,
                           screen_2D: screen_2D,
                           genre: genre,
-                      release: release,
-                      description: description,
+                          release: release,
+                          description: description,
+                          duration: duration,
                         )),
               );
             },
