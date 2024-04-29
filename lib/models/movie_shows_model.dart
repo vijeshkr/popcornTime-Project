@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/pages/details_screen.dart';
 
 class MovieShowsModel extends StatelessWidget {
@@ -31,7 +32,7 @@ class MovieShowsModel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10).r,
         child: Container(
           child: GestureDetector(
             onTap: () {
@@ -56,26 +57,26 @@ class MovieShowsModel extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(10).r,
                   child: Image.asset(
                     bannerUrl,
-                    height: 180,
-                    width: 130,
+                    height: 180.h,
+                    width: 130.w,
                     fit: BoxFit.cover,
                   ),
                 ),
                 SizedBox(
-                  height: 8,
+                  height: 8.h,
                 ),
                 Container(
-                  width: 120,
+                  width: 120.w,
                   child: Text(
                     title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     // softWrap: true,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
                       color: Colors.black.withOpacity(0.6),
                     ),
@@ -89,12 +90,12 @@ class MovieShowsModel extends StatelessWidget {
                         Icons.favorite,
                         color: Colors.red,
                       ),
-                      const SizedBox(
-                        width: 15,
+                       SizedBox(
+                        width: 15.w,
                       ),
                       Text(
                         "$like %",
-                        style: const TextStyle(fontSize: 13),
+                        style: TextStyle(fontSize: 13.sp),
                       )
                     ],
                   ),
@@ -124,7 +125,7 @@ class _MovieShowsListState extends State<MovieShowsList> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 22),
+      padding: const EdgeInsets.only(left: 22).r,
       child: GridView.count(
         crossAxisCount: 2,
         crossAxisSpacing: 10.0,

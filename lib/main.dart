@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/pages/splash_screen.dart';
 
 void main() {
@@ -12,9 +13,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-       home: SplashScreen(),
-      debugShowCheckedModeBanner: false,
+    return ScreenUtilInit(
+        builder: (BuildContext context , Widget? widget) {
+          return MaterialApp(
+             home: SplashScreen(),
+            debugShowCheckedModeBanner: false,
+          );
+        },
+      designSize: const Size(393, 808),
     );
   }
 }

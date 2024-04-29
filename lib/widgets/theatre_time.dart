@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/widgets/select_seat_bottom.dart';
 
 class TheatreTime extends StatelessWidget {
@@ -11,7 +12,7 @@ class TheatreTime extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10).r,
       color: Colors.white,
       child: Column(
         children: [
@@ -20,17 +21,17 @@ class TheatreTime extends StatelessWidget {
             children: [
               Text(
                 theatreName,
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.black, fontWeight: FontWeight.bold),
               ),
-              Icon(
+              const Icon(
                 Icons.info_outline,
                 color: Colors.black38,
               ),
             ],
           ),
           SizedBox(
-            height: 10,
+            height: 10.h,
           ),
           Column(
             children: [
@@ -46,15 +47,15 @@ class TheatreTime extends StatelessWidget {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(5.r),
                         border: Border.all(
-                          width: 1,
+                          width: 1.w,
                           // color: Color(0xffe5e5e5),
                           color: Colors.yellow,
                         ),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10).r,
                         child: Text(
                           '11:30 AM',
                           style: TextStyle(color: Colors.yellow[600]),
@@ -63,20 +64,20 @@ class TheatreTime extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: 10,
+                    width: 10.w,
                   ),
                   Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
+                      borderRadius: BorderRadius.circular(5.r),
                       border: Border.all(
-                        width: 1,
+                        width: 1.w,
                         // color: Color(0xffe5e5e5),
 
                         color: Colors.green,
                       ),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10).r,
                       child: Text(
                         '03:00 PM',
                         style: TextStyle(color: Colors.green),
@@ -84,18 +85,18 @@ class TheatreTime extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: 10,
+                    width: 10.h,
                   ),
                   Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
+                      borderRadius: BorderRadius.circular(5.r),
                       border: Border.all(
-                          width: 1,
+                          width: 1.w,
                           // color: Color(0xffe5e5e5),
                           color: Colors.red),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10).r,
                       child: Text(
                         '06:00 PM',
                         style: TextStyle(color: Colors.red),
@@ -105,20 +106,20 @@ class TheatreTime extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: 5,
+                height: 5.h,
               ),
               Row(
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
+                      borderRadius: BorderRadius.circular(5.r),
                       border: Border.all(
                           width: 1,
                           // color: Color(0xffe5e5e5),
                           color: Colors.green),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10).r,
                       child: Text(
                         '09:30 PM',
                         style: TextStyle(color: Colors.green),

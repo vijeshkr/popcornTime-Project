@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/pages/login_screen.dart';
 import '../constants/apptheme.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,24 +26,24 @@ class SplashScreen extends StatelessWidget {
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Image.asset(
             Assets.logo,
-            width: 250,
+            width: 250.w,
           ),
           Text(
             'popcorn TIME',
             style: GoogleFonts.nunito(
-              textStyle: const TextStyle(
-                fontSize: 40,
+              textStyle:  TextStyle(
+                fontSize: 40.sp,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
             ),
           ),
-          const SizedBox(
-            height: 50,
+           SizedBox(
+            height: 50.h,
           ),
           LoadingAnimationWidget.staggeredDotsWave(
             color: Colors.white,
-            size: 50,
+            size: 50.r,
           ),
         ]),
       ),

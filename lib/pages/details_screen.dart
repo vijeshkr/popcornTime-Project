@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/constants/apptheme.dart';
 import 'package:popcorn_time/pages/theatre_selection_screen.dart';
 
@@ -40,7 +41,7 @@ class DetailsScreen extends StatelessWidget {
               },
               icon: Icon(Icons.arrow_back),
             ),
-            expandedHeight: 220,
+            expandedHeight: 220.h,
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
                 decoration: BoxDecoration(
@@ -58,14 +59,14 @@ class DetailsScreen extends StatelessWidget {
             hasScrollBody: false,
             child: Container(
               color: Color(0xfff5f5fa),
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20).r,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                     color: Colors.white,
                     width: double.maxFinite,
-                    padding: EdgeInsets.all(20),
+                    padding: EdgeInsets.all(20).r,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -76,7 +77,7 @@ class DetailsScreen extends StatelessWidget {
                               movieTitle,
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 18,
+                                fontSize: 18.sp,
                               ),
                             ),
                             Row(
@@ -86,18 +87,18 @@ class DetailsScreen extends StatelessWidget {
                                   color: Colors.red,
                                 ),
                                 SizedBox(
-                                  width: 5,
+                                  width: 5.w,
                                 ),
                                 Text(
                                   '$like %',
-                                  style: TextStyle(fontSize: 15),
+                                  style: TextStyle(fontSize: 15.sp),
                                 ),
                               ],
                             ),
                           ],
                         ),
                         SizedBox(
-                          height: 5,
+                          height: 5.h,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -116,11 +117,11 @@ class DetailsScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 10.h,
                   ),
                   Container(
                     color: Colors.white,
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20).r,
                     child: Column(
                       children: [
                         Row(
@@ -132,14 +133,14 @@ class DetailsScreen extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(
-                                      height: 5,
+                                      height: 5.h,
                                     ),
                                     Text(
                                       '$duration . ${genre[0]}, ${genre[1]}',
                                       style: TextStyle(color: Colors.black45),
                                     ),
                                     SizedBox(
-                                      height: 5,
+                                      height: 5.h,
                                     ),
                                     Row(
                                       children: [
@@ -148,16 +149,16 @@ class DetailsScreen extends StatelessWidget {
                                           style: TextStyle(color: Colors.red),
                                         ),
                                         SizedBox(
-                                          width: 10,
+                                          width: 10.w,
                                         ),
                                         Container(
                                           decoration: BoxDecoration(
                                             color: Colors.red.withOpacity(0.2),
                                             borderRadius:
-                                                BorderRadius.circular(3),
+                                                BorderRadius.circular(3).r,
                                           ),
                                           padding: EdgeInsets.symmetric(
-                                              horizontal: 2, vertical: 1),
+                                              horizontal: 2, vertical: 1).r,
                                           child: Text(
                                             '$screen_2D',
                                             style: TextStyle(color: Colors.red),
@@ -166,7 +167,7 @@ class DetailsScreen extends StatelessWidget {
                                       ],
                                     ),
                                     SizedBox(
-                                      height: 10,
+                                      height: 10.h,
                                     ),
                                     Container(
                                       color: Colors.white,
@@ -187,11 +188,11 @@ class DetailsScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 10.h,
                   ),
                   Container(
                     color: Colors.white,
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20).r,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -213,11 +214,11 @@ class DetailsScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 10.h,
                   ),
                   Container(
                     color: Colors.white,
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20).r,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -245,12 +246,12 @@ class DetailsScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(10).r,
         child: ElevatedButton(
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
             padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-              EdgeInsets.symmetric(vertical: 12),
+              EdgeInsets.symmetric(vertical: 12).h,
             ),
           ),
           onPressed: () {
@@ -265,7 +266,7 @@ class DetailsScreen extends StatelessWidget {
             'Book tickets',
             style: TextStyle(
               color: Colors.white,
-              fontSize: 16,
+              fontSize: 16.sp,
               fontWeight: FontWeight.w500,
             ),
           ),

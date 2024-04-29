@@ -1,6 +1,4 @@
 
-import 'package:popcorn_time/pages/movie_screen.dart';
-
 import '../data/movie_data.dart';
 import '../widgets/movie_model.dart';
 
@@ -38,74 +36,6 @@ List<MenuModel> menus = [
   MenuModel(name: 'Shows', asset: 'assets/icons/shows.svg'),
 ];
 
-// List<MovieModel> movies = [
-//   MovieModel(
-//     title: "Premam",
-//     like: 84,
-//     bannerUrl: "assets/images/movies/movie1.jpg",
-//     coverImage: '',
-//     language: '',
-//     screen_2D: '',
-//     genre: [],
-//     release: '',
-//     description: '',
-//   ),
-//   MovieModel(
-//     title: "Leo",
-//     like: 84,
-//     bannerUrl: "assets/images/movies/movie2.jpeg",
-//     coverImage: '',
-//     language: '',
-//     screen_2D: '',
-//     genre: [],
-//     release: '',
-//     description: '',
-//   ),
-//   MovieModel(
-//     title: "Neru",
-//     like: 84,
-//     bannerUrl: "assets/images/movies/movie3.jpeg",
-//     coverImage: '',
-//     language: '',
-//     screen_2D: '',
-//     genre: [],
-//     release: '',
-//     description: '',
-//   ),
-//   MovieModel(
-//     title: "Premalu",
-//     like: 84,
-//     bannerUrl: "assets/images/movies/movie4.jpg",
-//     coverImage: '',
-//     language: '',
-//     screen_2D: '',
-//     genre: [],
-//     release: '',
-//     description: '',
-//   ),
-//   MovieModel(
-//     title: "John Wick",
-//     like: 84,
-//     bannerUrl: "assets/images/movies/movie5.jpg",
-//     coverImage: '',
-//     language: '',
-//     screen_2D: '',
-//     genre: [],
-//     release: '',
-//     description: '',
-//   ),
-//   MovieModel(
-//     title: "Bramayugam",
-//     like: 84,
-//     bannerUrl: "assets/images/movies/movie6.jpg",
-//     coverImage: '',
-//     language: '',
-//     screen_2D: '',
-//     genre: [],
-//     release: '',
-//     description: '',
-//   ),
-// ];
 
 String footballStaduim = 'assets/sports/footballStadium.jpg';
 String cricketStaduim = 'assets/sports/cricketStadium.jpg';

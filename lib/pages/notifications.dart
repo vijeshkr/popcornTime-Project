@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/constants/apptheme.dart';
 
 class Notifications extends StatefulWidget {
@@ -16,12 +17,12 @@ class _NotificationsState extends State<Notifications> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppTheme.greyColor,
-        toolbarHeight: 70,
-        leadingWidth: 25,
+        toolbarHeight: 70.h,
+        leadingWidth: 25.w,
         title: Text(
           'Notifications',
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 20.sp,
             fontWeight: FontWeight.bold,
           ),
         ),

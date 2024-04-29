@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/constants/apptheme.dart';
-import 'package:popcorn_time/constants/filters.dart';
 import 'package:popcorn_time/constants/search_events.dart';
 import 'package:popcorn_time/pages/home_screen.dart';
-import 'package:popcorn_time/pages/movie_screen.dart';
 import 'package:popcorn_time/pages/shows_screen.dart';
 import 'package:popcorn_time/pages/sports_screen.dart';
-
-import '../constants/app_icons.dart';
 import '../data/events_data.dart';
-import '../data/movie_data.dart';
 import '../models/events_shows_model.dart';
-import '../models/movie_shows_model.dart';
-import '../widgets/home_banner.dart';
+
 
 class EventsScreen extends StatefulWidget {
   const EventsScreen({super.key});
@@ -24,11 +19,10 @@ class EventsScreen extends StatefulWidget {
 class _EventsScreenState extends State<EventsScreen> {
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppTheme.greyColor,
-        toolbarHeight: 70,
+        toolbarHeight: 70.h,
         // automaticallyImplyLeading: false,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,7 +30,7 @@ class _EventsScreenState extends State<EventsScreen> {
             Text(
               'Experience begins here',
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -45,7 +39,7 @@ class _EventsScreenState extends State<EventsScreen> {
                 Text(
                   myLocation,
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     color: Colors.grey,
                   ),
                 ),
@@ -64,15 +58,15 @@ class _EventsScreenState extends State<EventsScreen> {
               color: Colors.black,
             ),
           ),
-          const SizedBox(
-            width: 10,
+           SizedBox(
+            width: 10.w,
           )
         ],
       ),
       body: Container(
         child: Column(
           children: [
-            SizedBox(height: 15,),
+            SizedBox(height: 15.h,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -89,16 +83,16 @@ class _EventsScreenState extends State<EventsScreen> {
                     foregroundColor: Colors.white,
                     backgroundColor: AppTheme.splash, // Text color
                     padding: EdgeInsets.symmetric(
-                        horizontal: 50, vertical: 15), // Padding
+                        horizontal: 50, vertical: 15).r, // Padding
                     shape: RoundedRectangleBorder(
                       borderRadius:
-                      BorderRadius.circular(10), // BorderRadius// Border
+                      BorderRadius.circular(10).r, // BorderRadius// Border
                     ),
                     elevation: 5, // Elevation
                   ),
                 ),
                 SizedBox(
-                  width: 20,
+                  width: 20.w,
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -113,10 +107,10 @@ class _EventsScreenState extends State<EventsScreen> {
                     foregroundColor: Colors.white,
                     backgroundColor: AppTheme.splash, // Text color
                     padding: EdgeInsets.symmetric(
-                        horizontal: 50, vertical: 15), // Padding
+                        horizontal: 50, vertical: 15).r, // Padding
                     shape: RoundedRectangleBorder(
                       borderRadius:
-                      BorderRadius.circular(10), // BorderRadius// Border
+                      BorderRadius.circular(10).r, // BorderRadius// Border
                     ),
                     elevation: 5, // Elevation
                   ),
@@ -125,7 +119,7 @@ class _EventsScreenState extends State<EventsScreen> {
               ],
             ),
             SizedBox(
-              height: 15,
+              height: 15.h,
             ),
             Expanded(
               child: EventsShowsList(

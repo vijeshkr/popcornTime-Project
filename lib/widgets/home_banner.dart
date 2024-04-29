@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/data/events_data.dart';
 import 'package:popcorn_time/pages/events_detailed_screen.dart';
-
-import '../pages/notifications.dart';
 
 class HomeBanner extends StatelessWidget {
   final String image;
@@ -34,22 +32,22 @@ class HomeBanner extends StatelessWidget {
         );
       },
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10).r,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10).r,
               child: Image.asset(
                 image,
               ),
             ),
             SizedBox(
-              height: 5,
+              height: 5.h,
             ),
             Text(
               bannerTitle,
-              style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+              style: TextStyle(fontSize: 17.sp, fontWeight: FontWeight.w500),
             )
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:popcorn_time/pages/events_screen.dart';
 import 'package:popcorn_time/pages/movie_screen.dart';
@@ -49,19 +50,19 @@ class SvgWithTitle extends StatelessWidget {
         print(onPressed);
       },
       child: Padding(
-        padding: const EdgeInsets.only(top: 10, left: 15.0, right: 10),
+        padding: const EdgeInsets.only(top: 10, left: 15.0, right: 10).r,
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0).r,
               child: SvgPicture.asset(
                 imagePath,
-                width: 35, // Adjust width as needed
-                height: 35,
+                width: 35.w, // Adjust width as needed
+                height: 35.h,
                 // color: AppTheme.splash,// Adjust height as needed
               ),
             ),
-            SizedBox(height: 5), // Add spacing between image and title
+            SizedBox(height: 5.h), // Add spacing between image and title
             Text(
               title,
               style: TextStyle(

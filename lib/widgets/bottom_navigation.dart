@@ -2,19 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:popcorn_time/pages/events_screen.dart';
 import 'package:popcorn_time/pages/movie_screen.dart';
-import 'package:popcorn_time/pages/notifications.dart';
 import 'package:popcorn_time/pages/profile_screen.dart';
-import '../constants/app_icons.dart';
-import '../constants/apptheme.dart';
-import '../constants/search_movies.dart';
 import '../pages/home_screen.dart';
-import '../widgets/home_banner.dart';
-import '../widgets/home_banner_head.dart';
-import '../widgets/movie_model.dart';
-import '../widgets/svg_with_title.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});

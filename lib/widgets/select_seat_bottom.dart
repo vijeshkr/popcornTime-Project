@@ -1,10 +1,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/pages/detailed_selection_seat.dart';
 import 'package:popcorn_time/widgets/seat_layout_model.dart';
 
-import '../constants/apptheme.dart';
 
 class SelectSeatBottom extends StatefulWidget {
   const SelectSeatBottom({Key? key}) : super(key: key);
@@ -26,13 +26,13 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
       Color textColor = (j == selected_inx) ? Colors.white : Colors.black;
       listOfContainers.add(
         Padding(
-          padding: const EdgeInsets.all(2),
+          padding: const EdgeInsets.all(2).r,
           child: Container(
-            width: 30,
-            height: 30,
+            width: 30.w,
+            height: 30.h,
             decoration: BoxDecoration(
               color: myColor,
-              borderRadius: const BorderRadius.all(Radius.circular(5)),
+              borderRadius: BorderRadius.all(Radius.circular(5).r,),
             ),
             child: InkWell(
               onTap: () {
@@ -46,7 +46,7 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
                   '$j', // Display the seat number
                   style: TextStyle(
                     color: textColor,
-                    fontSize: 18,
+                    fontSize: 18.sp,
                   ),
                 ),
               ),
@@ -63,11 +63,11 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15),
+              padding: const EdgeInsets.symmetric(vertical: 15).r,
               child: Text(
                 'How many seats ?',
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 16.sp,
                 ),
               ),
             ),
@@ -79,26 +79,26 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(5.0),
+                  padding: const EdgeInsets.all(5.0).r,
                   child: Container(
-                    height: 100,
-                    width: 100,
+                    height: 100.h,
+                    width: 100.w,
                     decoration: BoxDecoration(
-                      border: Border.all(width: 1,color: Colors.grey),
-                      borderRadius: BorderRadius.circular(5)
+                      border: Border.all(width: 1.w,color: Colors.grey),
+                      borderRadius: BorderRadius.circular(5).r,
                     ),
                     child: Center(
                       child: Column(
                         children: [
-                          SizedBox(height: 20),
+                          SizedBox(height: 20.h),
 
-                          Text('PLATINUM',
+                          const Text('PLATINUM',
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Colors.black87,
                           ),),
-                          SizedBox(height: 8),
-                          Text('Rs. 150',
+                          SizedBox(height: 8.h),
+                          const Text('Rs. 150',
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Colors.black87,
@@ -109,26 +109,26 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(5.0),
+                  padding: const EdgeInsets.all(5.0).r,
                   child: Container(
-                    height: 100,
-                    width: 100,
+                    height: 100.h,
+                    width: 100.w,
                     decoration: BoxDecoration(
-                        border: Border.all(width: 1,color: Colors.grey),
-                        borderRadius: BorderRadius.circular(5)
+                        border: Border.all(width: 1.w,color: Colors.grey),
+                        borderRadius: BorderRadius.circular(5.r)
                     ),
                     child: Center(
                       child: Column(
                         children: [
-                          SizedBox(height: 20),
+                          SizedBox(height: 20.h),
 
-                          Text('GOLD',
+                          const Text('GOLD',
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: Colors.black87,
                             ),),
-                          SizedBox(height: 8),
-                          Text('Rs. 120',
+                          SizedBox(height: 8.h),
+                          const Text('Rs. 120',
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: Colors.black87,
@@ -144,12 +144,12 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(10).r,
         child: ElevatedButton(
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
             padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-              EdgeInsets.symmetric(vertical: 12),
+              EdgeInsets.symmetric(vertical: 12.h),
             ),
           ),
           onPressed: () {
@@ -176,7 +176,7 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
             'Select Seats',
             style: TextStyle(
               color: Colors.white,
-              fontSize: 16,
+              fontSize: 16.sp,
               fontWeight: FontWeight.w500,
             ),
           ),

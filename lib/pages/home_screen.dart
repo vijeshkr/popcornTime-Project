@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/data/events_data.dart';
 import 'package:popcorn_time/models/events_shows_model.dart';
 import 'package:popcorn_time/pages/notifications.dart';
@@ -35,14 +36,14 @@ class _HomeScreenState extends State<HomeScreen> {
         automaticallyImplyLeading: false,
         // backgroundColor: AppTheme.appBarColor,
         backgroundColor: AppTheme.greyColor,
-        toolbarHeight: 70,
+        toolbarHeight: 70.h,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               'It All Starts Here',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 18.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -59,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Text(
                     myLocation,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       color: AppTheme.splash,
                     ),
                   ),
@@ -98,8 +99,8 @@ class _HomeScreenState extends State<HomeScreen> {
               color: Colors.black,
             ),
           ),
-          const SizedBox(
-            width: 10,
+           SizedBox(
+            width: 10.w,
           )
         ],
       ),
@@ -112,6 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   SvgWithTitle(
                       imagePath: menus[0].asset,
@@ -136,11 +138,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               Divider(
-                thickness: 5,
+                thickness: 5.w,
                 color: AppTheme.greyColor,
               ),
               Container(
-                height: 225,
+                height: size.height * 0.3,
                 width: size.width,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
@@ -162,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Divider(
-                thickness: 5,
+                thickness: 5.w,
                 color: AppTheme.greyColor,
               ),
               HomeBannerHead(
@@ -175,14 +177,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 bannerTitle: eventsDummyData[4]['title'],
                 index: 4,
               ),
-              const Divider(
-                thickness: 5,
+               Divider(
+                thickness: 5.w,
                 color: AppTheme.greyColor,
               ),
               Row(
                 children: [
                   SizedBox(
-                    width: 30,
+                    width: 30.w,
                   ),
                   EventsShowsModel(
                       title: eventsDummyData[10]['title'],
@@ -194,7 +196,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       location: eventsDummyData[10]['location'],
                       category: eventsDummyData[10]['category']),
                   SizedBox(
-                    width: 30,
+                    width: 30.w,
                   ),
                   EventsShowsModel(
                       title: eventsDummyData[8]['title'],
@@ -208,7 +210,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               Divider(
-                thickness: 5,
+                thickness: 5.w,
                 color: AppTheme.greyColor,
               ),
               HomeBannerHead(
@@ -221,14 +223,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 bannerTitle: eventsDummyData[5]['title'],
                 index: 5,
               ),
-              const Divider(
-                thickness: 5,
+               Divider(
+                thickness: 5.w,
                 color: AppTheme.greyColor,
               ),
               Row(
                 children: [
                   SizedBox(
-                    width: 30,
+                    width: 30.w,
                   ),
                   EventsShowsModel(
                       title: eventsDummyData[1]['title'],
@@ -240,7 +242,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       location: eventsDummyData[1]['location'],
                       category: eventsDummyData[1]['category']),
                   SizedBox(
-                    width: 30,
+                    width: 30.w,
                   ),
                   EventsShowsModel(
                       title: eventsDummyData[3]['title'],

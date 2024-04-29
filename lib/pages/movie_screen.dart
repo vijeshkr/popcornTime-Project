@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/constants/apptheme.dart';
 import 'package:popcorn_time/constants/filters.dart';
 import 'package:popcorn_time/pages/home_screen.dart';
 import 'package:popcorn_time/pages/upcoming_movies.dart';
-import '../constants/app_icons.dart';
 import '../constants/search_movies.dart';
 import '../data/movie_data.dart';
 import '../models/movie_shows_model.dart';
@@ -44,7 +44,7 @@ class _MovieScreenState extends State<MovieScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppTheme.greyColor,
-        toolbarHeight: 70,
+        toolbarHeight: 70.h,
         // automaticallyImplyLeading: false,
         title:  Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,7 +52,7 @@ class _MovieScreenState extends State<MovieScreen> {
             Text(
               'Now Showing',
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -61,17 +61,17 @@ class _MovieScreenState extends State<MovieScreen> {
                 Text(
                   myLocation,
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     color: Colors.grey,
                   ),
                 ),
                 SizedBox(
-                  width: 8,
+                  width: 8.w,
                 ),
                 Text(
                   'Movies',
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     color: Colors.grey,
                   ),
                 ),
@@ -90,23 +90,23 @@ class _MovieScreenState extends State<MovieScreen> {
               color: Colors.black,
             ),
           ),
-          const SizedBox(
-            width: 10,
+           SizedBox(
+            width: 10.w,
           )
         ],
       ),
       body: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(10),
-            height: 55,
+            padding: EdgeInsets.all(10).r,
+            height: 55.h,
             width: size.width,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 7,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: const EdgeInsets.only(right: 10),
+                  padding: const EdgeInsets.only(right: 10).r,
                   child: OutlinedButton(
                     onPressed: () {
                       setState(() {
@@ -145,7 +145,7 @@ class _MovieScreenState extends State<MovieScreen> {
                       side: BorderSide(
                         color: AppTheme
                             .splash, // Change the color to your desired outline color
-                        width: 1.0, // Adjust the width as needed
+                        width: 1.0.w, // Adjust the width as needed
                       ),
                     ),
                   ),
@@ -154,7 +154,7 @@ class _MovieScreenState extends State<MovieScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10).r,
             child: ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(
@@ -168,10 +168,10 @@ class _MovieScreenState extends State<MovieScreen> {
                 foregroundColor: Colors.white,
                 backgroundColor: AppTheme.splash, // Text color
                 padding: EdgeInsets.symmetric(
-                    horizontal: 100, vertical: 15), // Padding
+                    horizontal: 100, vertical: 15).r, // Padding
                 shape: RoundedRectangleBorder(
                   borderRadius:
-                      BorderRadius.circular(10), // BorderRadius// Border
+                      BorderRadius.circular(10.r), // BorderRadius// Border
                 ),
                 elevation: 5, // Elevation
               ),
@@ -183,15 +183,15 @@ class _MovieScreenState extends State<MovieScreen> {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(10),
-            height: 55,
+            padding: EdgeInsets.all(10).r,
+            height: 55.h,
             width: size.width,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 10,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: const EdgeInsets.only(right: 10),
+                  padding: const EdgeInsets.only(right: 10).r,
                   child: OutlinedButton(
                     onPressed: () {
                       setState(() {
@@ -242,7 +242,7 @@ class _MovieScreenState extends State<MovieScreen> {
                       side: BorderSide(
                         color: AppTheme
                             .splash, // Change the color to your desired outline color
-                        width: 1.0, // Adjust the width as needed
+                        width: 1.0.w, // Adjust the width as needed
                       ),
                     ),
                   ),

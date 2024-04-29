@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
@@ -39,17 +40,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Stack(
             children: [
               Container(
-                height: 150,
+                height: 150.h,
                 width: double.maxFinite,
                 decoration: BoxDecoration(
                     color: AppTheme.statusBar,
                     borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(20),
-                      bottomRight: Radius.circular(20),
+                      bottomLeft: Radius.circular(20.r),
+                      bottomRight: Radius.circular(20.r),
                     )),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 90),
+                padding: EdgeInsets.only(top: 90).r,
                 // top: 90,
                 // left: MediaQuery.of(context).size.width * 0.5 - 60,
                 child: Column(
@@ -70,14 +71,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           )),
                     ),
-                    SizedBox(height: 10,),
+                    SizedBox(height: 10.h,),
                     Padding(
-                      padding: const EdgeInsets.only(left: 70,),
+                      padding: const EdgeInsets.only(left: 70,).r,
                       child: Text('Name'),
                     ),
                     Obx(() =>
                        Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20,),
+                        padding: const EdgeInsets.symmetric(horizontal: 20,).w,
                         child: TextFormField(
                           readOnly: ProfileController.instance.isEdit.value,
                           style: TextStyle(
@@ -88,12 +89,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               borderSide: BorderSide.none,
                             ),
                             prefixIcon: Padding(
-                              padding: const EdgeInsets.all(4),
+                              padding: const EdgeInsets.all(4).r,
                               child: Container(
-                                height: 25,
-                                width: 25,
+                                height: 25.h,
+                                width: 25.w,
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(20).r,
                                   color: Color(0xffe4edff),
                                 ),
                                 child: Icon(
@@ -107,7 +108,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ProfileController.instance.toggleEdit();
                               },
                               child: Padding(
-                                padding: const EdgeInsets.all(4),
+                                padding: const EdgeInsets.all(4).r,
                                 child: Icon(
                                   Icons.edit_outlined,
                                   color: Color(0xff4c7eff),
@@ -119,14 +120,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                 
-                    SizedBox(height: 10,),
+                    SizedBox(height: 10.h,),
                     Padding(
-                      padding: const EdgeInsets.only(left: 70,),
+                      padding: const EdgeInsets.only(left: 70,).r,
                       child: Text('Email'),
                     ),
                     Obx( () =>
                        Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20,),
+                        padding: const EdgeInsets.symmetric(horizontal: 20,).w,
                         child: TextFormField(
                           readOnly: ProfileController.instance.isEdit.value,
                           style: TextStyle(
@@ -137,12 +138,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               borderSide: BorderSide.none,
                             ),
                             prefixIcon: Padding(
-                              padding: const EdgeInsets.all(4),
+                              padding: const EdgeInsets.all(4).r,
                               child: Container(
-                                height: 25,
-                                width: 25,
+                                height: 25.h,
+                                width: 25.w,
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(20.r),
                                   color: Color(0xffe8dbff),
                                 ),
                                 child: Icon(
@@ -156,7 +157,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       ProfileController.instance.toggleEdit();
                               },
                               child: Padding(
-                                padding: const EdgeInsets.all(4),
+                                padding: const EdgeInsets.all(4).r,
                                 child: Icon(
                                   Icons.edit_outlined,
                                   color: Color(0xff4c7eff),
@@ -168,14 +169,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                 
-                    SizedBox(height: 10,),
+                    SizedBox(height: 10.h,),
                     Padding(
-                      padding: const EdgeInsets.only(left: 70,),
+                      padding: const EdgeInsets.only(left: 70,).r,
                       child: Text('Mobile'),
                     ),
                     Obx( () =>
                        Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20,),
+                        padding: const EdgeInsets.symmetric(horizontal: 20,).w,
                         child: TextFormField(
                           readOnly: ProfileController.instance.isEdit.value,
                           style: TextStyle(
@@ -186,12 +187,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               borderSide: BorderSide.none,
                             ),
                             prefixIcon: Padding(
-                              padding: const EdgeInsets.all(4),
+                              padding: const EdgeInsets.all(4).r,
                               child: Container(
-                                height: 25,
-                                width: 25,
+                                height: 25.h,
+                                width: 25.w,
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(20).r,
                                   color: Color(0xffcceff0),
                                 ),
                                 child: Icon(
@@ -205,7 +206,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ProfileController.instance.toggleEdit();
                               },
                               child: Padding(
-                                padding: const EdgeInsets.all(4),
+                                padding: const EdgeInsets.all(4).r,
                                 child: Icon(
                                   Icons.edit_outlined,
                                   color: Color(0xff4c7eff),
@@ -217,7 +218,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 15).w,
                       child: Divider(thickness: 1,color: Colors.grey,),
                     ),
                     ListTile(
@@ -228,13 +229,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               builder: (context) => YourOrders()),
                         );
                       },
-                      trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15,),
+                      trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15.r,),
                       leading: Icon(Icons.shopping_bag_outlined,
-                        size: 20,),
+                        size: 20.r,),
                       title: Text('Your Orders'),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 15).w,
                       child: Divider(thickness: 1,color: Colors.grey,),
                     ),
                     ListTile(
@@ -245,13 +246,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               builder: (context) => SettingsScreen()),
                         );
                       },
-                      trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15,),
+                      trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15.r,),
                       leading: Icon(Icons.settings_outlined,
-                        size: 20,),
+                        size: 20.r,),
                       title: Text('Settings'),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 15).w,
                       child: Divider(thickness: 1,color: Colors.grey,),
                     ),
                     ListTile(
@@ -262,13 +263,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               builder: (context) => HelpCenterScreen()),
                         );
                       },
-                      trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15,),
+                      trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15.r,),
                       leading: Icon(Icons.help_outline,
-                      size: 20,),
+                      size: 20.r,),
                       title: Text('Help Center'),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 15).w,
                       child: Divider(thickness: 1,color: Colors.grey,),
                     ),
                     ListTile(
@@ -279,23 +280,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               builder: (context) => PrivacyPolicy()),
                         );
                       },
-                      trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15,),
+                      trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15.r,),
                       leading: Icon(Icons.privacy_tip_outlined,
-                        size: 20,),
+                        size: 20.r,),
                       title: Text('Privacy Policy'),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 15).w,
                       child: Divider(thickness: 1,color: Colors.grey,),
                     ),
                     ListTile(
-                      trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15,),
+                      trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15.r,),
                       leading: Icon(Icons.share_outlined,
-                        size: 20,),
+                        size: 20.r,),
                       title: Text('Share'),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 15).w,
                       child: Divider(thickness: 1,color: Colors.grey,),
                     ),
                     ListTile(
@@ -312,7 +313,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),),
                               backgroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
+                                borderRadius: BorderRadius.circular(15.r),
                               ),
                               actions: <Widget>[
                                 TextButton(
@@ -328,7 +329,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                                    padding: const EdgeInsets.symmetric(horizontal: 10).w,
                                     child: Text('Yes, Logout',
                                     style: TextStyle(color: Colors.white),),
                                   ),
@@ -348,7 +349,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       leading: Icon(
                         Icons.exit_to_app_outlined,
                         color: Colors.red,
-                        size: 20,
+                        size: 20.r,
                       ),
                       title: Text(
                         'Logout',
@@ -362,7 +363,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               Positioned(
-                top: 170,
+                top: 170.h,
                 left: MediaQuery.of(context).size.width * 0.53,
                 child: Container(
                   height: 50,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:popcorn_time/pages/events_screen.dart';
 import 'package:popcorn_time/pages/sports_screen.dart';
-
 import '../constants/apptheme.dart';
 
 class HomeBannerHead extends StatelessWidget {
@@ -20,17 +20,17 @@ class HomeBannerHead extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 20.0, right: 20),
+      padding: const EdgeInsets.only(left: 20, right: 20).r,
       child: Row(
         children: [
           SvgPicture.asset(
             asset,
             color: Colors.black.withOpacity(0.8),
-            height: 18,
-            width: 18,
+            height: 18.h,
+            width: 18.w,
           ),
-          const SizedBox(
-            width: 10,
+           SizedBox(
+            width: 10.w,
           ),
           Text(
             title.toUpperCase(),

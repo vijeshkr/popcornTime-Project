@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:popcorn_time/pages/details_screen.dart';
 import 'package:popcorn_time/pages/events_detailed_screen.dart';
-import '../data/movie_data.dart';
 
 class EventsCustomSearch extends SearchDelegate {
   List eventsData;

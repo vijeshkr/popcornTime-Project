@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/pages/home_screen.dart';
 import 'package:popcorn_time/pages/select_location_screen.dart';
-
 import 'login_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -14,7 +14,7 @@ class SettingsScreen extends StatelessWidget {
         title: Text('Settings'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15).r,
         child: Column(
           children: [
             ListTile(
@@ -27,9 +27,9 @@ class SettingsScreen extends StatelessWidget {
               },
               title: Text('My Location'),
               subtitle: Text(myLocation),
-              trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15,),
+              trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15.r,),
             ),
-            Divider(thickness: 1,color: Colors.grey,),
+            Divider(thickness: 1.w,color: Colors.grey,),
             ListTile(
               onTap: () {
                 showDialog(
@@ -44,7 +44,7 @@ class SettingsScreen extends StatelessWidget {
                       ),),
                       backgroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(15.r),
                       ),
                       actions: <Widget>[
                         TextButton(
@@ -60,7 +60,7 @@ class SettingsScreen extends StatelessWidget {
                             backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            padding: const EdgeInsets.symmetric(horizontal: 10).w,
                             child: Text('Yes, Delete',
                               style: TextStyle(color: Colors.white),),
                           ),
@@ -76,7 +76,7 @@ class SettingsScreen extends StatelessWidget {
                     );
                   },
                 );
-              },trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15,),
+              },trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15.r,),
               title: Text(
                 'Delete Account',
                 style: TextStyle(
@@ -84,7 +84,7 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Divider(thickness: 1,color: Colors.grey,),
+            Divider(thickness: 1.w,color: Colors.grey,),
             ListTile(
               onTap: () {
                 showDialog(
@@ -99,7 +99,7 @@ class SettingsScreen extends StatelessWidget {
                       ),),
                       backgroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(15.r),
                       ),
                       actions: <Widget>[
                         TextButton(
@@ -115,7 +115,7 @@ class SettingsScreen extends StatelessWidget {
                             backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            padding: const EdgeInsets.symmetric(horizontal: 10).w,
                             child: Text('Yes, Logout',
                               style: TextStyle(color: Colors.white),),
                           ),
@@ -132,7 +132,7 @@ class SettingsScreen extends StatelessWidget {
                   },
                 );
               },
-              trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15,),
+              trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15.r,),
               title: Text(
                 'Logout',
                 style: TextStyle(
@@ -140,7 +140,7 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Divider(thickness: 1,color: Colors.grey,),
+            Divider(thickness: 1.w,color: Colors.grey,),
           ],
         ),
       ),

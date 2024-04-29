@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/constants/apptheme.dart';
-import 'package:popcorn_time/constants/filters.dart';
-import 'package:popcorn_time/pages/upcoming_movies.dart';
-
-import '../constants/app_icons.dart';
 import '../constants/search_events.dart';
 import '../data/events_data.dart';
 import '../models/events_shows_model.dart';
@@ -22,12 +19,12 @@ class _SportsScreenState extends State<SportsScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppTheme.greyColor,
-        toolbarHeight: 70,
+        toolbarHeight: 70.h,
         // automaticallyImplyLeading: false,
         title: Text(
           'Sports',
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 20.sp,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -42,8 +39,8 @@ class _SportsScreenState extends State<SportsScreen> {
               color: Colors.black,
             ),
           ),
-          const SizedBox(
-            width: 10,
+           SizedBox(
+            width: 10.w,
           )
         ],
       ),

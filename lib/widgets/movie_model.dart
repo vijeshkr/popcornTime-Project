@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/pages/details_screen.dart';
 
 class MovieModel extends StatelessWidget {
@@ -30,7 +31,7 @@ class MovieModel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10).r,
         child: Container(
           child: GestureDetector(
             onTap: () {
@@ -54,26 +55,26 @@ class MovieModel extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(10).r,
                   child: Image.asset(
                     bannerUrl,
-                    height: 150,
-                    width: 110,
+                    height: 150.h,
+                    width: 110.w,
                     fit: BoxFit.cover,
                   ),
                 ),
                 SizedBox(
-                  height: 8,
+                  height: 8.h,
                 ),
                 Container(
-                  width: 120,
+                  width: 120.w,
                   child: Text(
                     title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     // softWrap: true,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
                       color: Colors.black.withOpacity(0.6),
                     ),
@@ -81,18 +82,18 @@ class MovieModel extends StatelessWidget {
                 ),
                 Container(
                   child: Row(
-                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Icon(
                         Icons.favorite,
                         color: Colors.red,
                       ),
-                      const SizedBox(
-                        width: 15,
+                       SizedBox(
+                        width: 15.w,
                       ),
                       Text(
                         "$like %",
-                        style: const TextStyle(fontSize: 13),
+                        style: TextStyle(fontSize: 13.sp),
                       )
                     ],
                   ),

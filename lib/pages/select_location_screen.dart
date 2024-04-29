@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/pages/home_screen.dart';
 import '../constants/apptheme.dart';
 import '../data/location_data.dart';
@@ -41,19 +42,19 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
         height: size.height,
         width: size.width,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20).w,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 20),
+                padding: const EdgeInsets.only(top: 20).h,
                 child: GestureDetector(
                   onTap: () {},
                   child: Container(
                     decoration: BoxDecoration(
                         color: AppTheme.greyColor,
-                        borderRadius: BorderRadius.circular(10)),
-                    padding: EdgeInsets.all(15),
+                        borderRadius: BorderRadius.circular(10.r)),
+                    padding: EdgeInsets.all(15).r,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -61,12 +62,12 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                           Icons.my_location,
                           color: Colors.black45,
                         ),
-                        SizedBox(width: 15),
+                        SizedBox(width: 15.w),
                         Text(
                           'My Current Location',
                           style: TextStyle(
                             color: Colors.black45,
-                            fontSize: 16,
+                            fontSize: 16.sp,
                           ),
                         )
                       ],
@@ -75,7 +76,7 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 15),
+                padding: const EdgeInsets.only(top: 15).h,
                 child: TextField(
                   onChanged: (value) {
                     filterSuggestions(value);
@@ -86,7 +87,7 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                       color: Colors.black45,
                     ),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5),
+                      borderRadius: BorderRadius.circular(5).r,
                       borderSide: BorderSide.none,
                     ),
                     fillColor: AppTheme.greyColor,

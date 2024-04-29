@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:popcorn_time/pages/login_screen.dart';
 import '../constants/apptheme.dart';
@@ -23,30 +24,33 @@ class _SignupScreenState extends State<SignupScreen> {
           width: size.width,
           child: Center(
             child: Container(
-              padding: EdgeInsets.all(20),
-              height: size.height * 0.78,
+              padding: EdgeInsets.all(20).r,
+              height: size.height * 0.8,
               width: size.width * 0.95,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(15.r),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                   Text(
                     'Sign Up',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       color: AppTheme.splash,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(top: 15.h),
                     child: TextField(
                       decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(vertical: 20.h,horizontal: 10.w),
+                          isDense: true,
+                          isCollapsed: true,
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5),
+                            borderRadius: BorderRadius.circular(5.r),
                             borderSide: BorderSide.none,
                           ),
                           fillColor: AppTheme.greyColor,
@@ -58,11 +62,14 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(top: 15.h),
                     child: TextField(
                       decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(vertical: 20.h,horizontal: 10.w),
+                          isDense: true,
+                          isCollapsed: true,
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5),
+                            borderRadius: BorderRadius.circular(5.r),
                             borderSide: BorderSide.none,
                           ),
                           fillColor: AppTheme.greyColor,
@@ -74,12 +81,15 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(top: 15.h),
                     child: TextField(
                       obscureText: true,
                       decoration: InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(vertical: 20.h,horizontal: 10.w),
+                        isDense: true,
+                        isCollapsed: true,
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(5.r),
                           borderSide: BorderSide.none,
                         ),
                         fillColor: AppTheme.greyColor,
@@ -92,12 +102,15 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(top: 15.h),
                     child: TextField(
                       obscureText: true,
                       decoration: InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(vertical: 20.h,horizontal: 10.w),
+                        isDense: true,
+                        isCollapsed: true,
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(5.r),
                           borderSide: BorderSide.none,
                         ),
                         fillColor: AppTheme.greyColor,
@@ -110,22 +123,22 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(top: 15.h),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppTheme.splash,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(5.r),
                         ),
                       ),
                       onPressed: () {},
-                      child: const Center(
+                      child:  Center(
                         child: Padding(
-                          padding: EdgeInsets.all(15),
+                          padding: EdgeInsets.all(15).r,
                           child: Text(
                             'Sign Up',
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 16.sp,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
@@ -134,14 +147,14 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                     ),
                   ),
-                  const Center(
+                   Center(
                     child: Padding(
-                      padding: EdgeInsets.all(10),
+                      padding: EdgeInsets.all(10).r,
                       child: Text(
                         'Or',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                          fontSize: 16.sp,
                           color: Colors.black38,
                         ),
                       ),
@@ -151,29 +164,29 @@ class _SignupScreenState extends State<SignupScreen> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppTheme.splash,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(5.r),
                       ),
                     ),
                     onPressed: () {},
                     child: Center(
                       child: Padding(
-                        padding: const EdgeInsets.all(15),
+                        padding: EdgeInsets.all(15.r),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SvgPicture.asset(
                               'assets/icons/google.svg',
                               color: Colors.white,
-                              height: 24,
-                              width: 24,
+                              height: 24.h,
+                              width: 24.w,
                             ),
-                            const SizedBox(
-                              width: 10,
+                             SizedBox(
+                              width: 10.w,
                             ),
-                            const Text(
+                             Text(
                               'Continue with Google',
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 16.sp,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                               ),
@@ -201,12 +214,12 @@ class _SignupScreenState extends State<SignupScreen> {
                             ),
                           );
                         },
-                        child: const Text(
+                        child:  Text(
                           'Sign In',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: AppTheme.splash,
-                              fontSize: 16),
+                              fontSize: 16.sp),
                         ),
                       ),
                     ],
