@@ -27,7 +27,9 @@ class HomeBanner extends StatelessWidget {
               dateTime: eventsDummyData[index]['dateTime'],
               artist: eventsDummyData[index]['artist'],
               location: eventsDummyData[index]['location'],
-              category: eventsDummyData[index]['category'],),
+              category: eventsDummyData[index]['category'],
+              event: eventsDummyData[index]['event'],
+            ),
           ),
         );
       },

@@ -75,70 +75,71 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: listOfContainers,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(5.0).r,
-                  child: Container(
-                    height: 100.h,
-                    width: 100.w,
-                    decoration: BoxDecoration(
-                      border: Border.all(width: 1.w,color: Colors.grey),
-                      borderRadius: BorderRadius.circular(5).r,
-                    ),
-                    child: Center(
-                      child: Column(
-                        children: [
-                          SizedBox(height: 20.h),
+            Padding(
+              padding: const EdgeInsets.only(top: 15).r,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Column(
+                      children: [
+                        SizedBox(height: 20.h),
 
-                          const Text('PLATINUM',
+                        const Text('SILVER',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black87,
+                        ),),
+                        SizedBox(height: 8.h),
+                        const Text('Rs. 120',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black87,
+                        ),)
+                      ],
+                    ),
+                  ),
+                  Center(
+                    child: Column(
+                      children: [
+                        SizedBox(height: 20.h),
+
+                        const Text('GOLD',
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Colors.black87,
                           ),),
-                          SizedBox(height: 8.h),
-                          const Text('Rs. 150',
+                        SizedBox(height: 8.h),
+                        const Text('Rs. 150',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black87,
+                          ),),
+                      ],
+                    ),
+                  ),
+                  Center(
+                    child: Column(
+                      children: [
+                        SizedBox(height: 20.h),
+
+                        const Text('PLATINUM',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black87,
+                          ),),
+                        SizedBox(height: 8.h),
+                        const Text('Rs. 220',
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Colors.black87,
                           ),)
-                        ],
-                      ),
+                      ],
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(5.0).r,
-                  child: Container(
-                    height: 100.h,
-                    width: 100.w,
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 1.w,color: Colors.grey),
-                        borderRadius: BorderRadius.circular(5.r)
-                    ),
-                    child: Center(
-                      child: Column(
-                        children: [
-                          SizedBox(height: 20.h),
-
-                          const Text('GOLD',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black87,
-                            ),),
-                          SizedBox(height: 8.h),
-                          const Text('Rs. 120',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black87,
-                            ),)
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+                ],
+              ),
             )
           ],
         ),

@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:popcorn_time/pages/events_detailed_screen.dart';
+import 'package:popcorn_time/pages/details_screen.dart';
+import '../data/movie_data.dart';
 
-class EventsCustomSearch extends SearchDelegate {
-  List eventsData;
-  EventsCustomSearch({required this.eventsData});
-
-
-@override
+class CustomSearchUpcomingMovies extends SearchDelegate {
+  @override
   List<Widget>? buildActions(BuildContext context) {
     return [
       IconButton(
@@ -31,10 +28,10 @@ class EventsCustomSearch extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     List matchQuery = [];
-    for (var item in eventsData) {
+    for (var item in movieDataUp) {
       if (item['title'].toLowerCase().contains(
-            query.toLowerCase(),
-          )) {
+        query.toLowerCase(),
+      )) {
         matchQuery.add(item);
       }
     }
@@ -47,15 +44,16 @@ class EventsCustomSearch extends SearchDelegate {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => EventsDetailedScreen(
-                      eventTitle: matchQuery[index]['title'],
-                      eventCover: matchQuery[index]['coverImage'],
-                      item: matchQuery[index]['item'],
-                      dateTime: matchQuery[index]['dateTime'],
-                      artist: matchQuery[index]['artist'],
-                      location: matchQuery[index]['location'],
-                      category: matchQuery[index]['category'],
-                      event: matchQuery[index]['event'],
+                  builder: (context) => DetailsScreen(
+                    movieTitle: matchQuery[index]['title'],
+                    like: matchQuery[index]['likes'],
+                    movieCover: matchQuery[index]['coverImage'],
+                    language: matchQuery[index]['language'],
+                    screen_2D: matchQuery[index]['2D'],
+                    genre: matchQuery[index]['genre'],
+                    release: matchQuery[index]['release'],
+                    description: matchQuery[index]['description'],
+                    duration: matchQuery[index]['duration'],
                   ),
                 ),
               );
@@ -68,10 +66,10 @@ class EventsCustomSearch extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     List matchQuery = [];
-    for (var item in eventsData) {
+    for (var item in movieDataUp) {
       if (item['title'].toLowerCase().contains(
-            query.toLowerCase(),
-          )) {
+        query.toLowerCase(),
+      )) {
         matchQuery.add(item);
       }
     }
@@ -84,15 +82,16 @@ class EventsCustomSearch extends SearchDelegate {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => EventsDetailedScreen(
-                      eventTitle: matchQuery[index]['title'],
-                      eventCover: matchQuery[index]['coverImage'],
-                      item: matchQuery[index]['item'],
-                      dateTime: matchQuery[index]['dateTime'],
-                      artist: matchQuery[index]['artist'],
-                      location: matchQuery[index]['location'],
-                      category: matchQuery[index]['category'],
-                      event: matchQuery[index]['event'],
+                  builder: (context) => DetailsScreen(
+                    movieTitle: matchQuery[index]['title'],
+                    like: matchQuery[index]['likes'],
+                    movieCover: matchQuery[index]['coverImage'],
+                    language: matchQuery[index]['language'],
+                    screen_2D: matchQuery[index]['2D'],
+                    genre: matchQuery[index]['genre'],
+                    release: matchQuery[index]['release'],
+                    description: matchQuery[index]['description'],
+                    duration: matchQuery[index]['duration'],
                   ),
                 ),
               );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:popcorn_time/pages/detailed_screen_for_upcoming_movies.dart';
 import 'package:popcorn_time/pages/details_screen.dart';
 
 class MovieShowsModel extends StatelessWidget {
@@ -13,6 +14,7 @@ class MovieShowsModel extends StatelessWidget {
   final String release;
   final String description;
   final String duration;
+  final String now;
 
   const MovieShowsModel({
     Key? key,
@@ -26,6 +28,7 @@ class MovieShowsModel extends StatelessWidget {
     required this.release,
     required this.description,
     required this.duration,
+    required this.now,
   }) : super(key: key);
 
   @override
@@ -36,22 +39,41 @@ class MovieShowsModel extends StatelessWidget {
         child: Container(
           child: GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DetailsScreen(
-                    movieTitle: title,
-                    movieCover: coverImage,
-                    like: like,
-                    language: language,
-                    screen_2D: screen_2D,
-                    genre: genre,
-                    release: release,
-                    description: description,
-                    duration: duration,
+              if(now == 'now'){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DetailsScreen(
+                      movieTitle: title,
+                      movieCover: coverImage,
+                      like: like,
+                      language: language,
+                      screen_2D: screen_2D,
+                      genre: genre,
+                      release: release,
+                      description: description,
+                      duration: duration,
+                    ),
                   ),
-                ),
-              );
+                );
+              }else{
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DetailsScreenUpcomingMovies(
+                      movieTitle: title,
+                      movieCover: coverImage,
+                      like: like,
+                      language: language,
+                      screen_2D: screen_2D,
+                      genre: genre,
+                      release: release,
+                      description: description,
+                      duration: duration,
+                    ),
+                  ),
+                );
+              }
             },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -144,6 +166,7 @@ class _MovieShowsListState extends State<MovieShowsList> {
             release: movie['release'],
             description: movie['description'],
             duration: movie['duration'],
+            now: movie['now'],
           );
         }),
       ),

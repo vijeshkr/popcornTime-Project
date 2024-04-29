@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/constants/apptheme.dart';
+import 'package:popcorn_time/models/events_seat_bottom.dart';
 import 'package:popcorn_time/pages/sports_seats_screen.dart';
 
 class EventsDetailedScreen extends StatelessWidget {
@@ -13,6 +14,7 @@ class EventsDetailedScreen extends StatelessWidget {
   String artist;
   String location;
   String category;
+  String event;
   EventsDetailedScreen({
     super.key,
     required this.eventTitle,
@@ -22,6 +24,7 @@ class EventsDetailedScreen extends StatelessWidget {
     required this.artist,
     required this.location,
     required this.category,
+    required this.event,
   });
 
   @override
@@ -172,19 +175,28 @@ class EventsDetailedScreen extends StatelessWidget {
             ),
           ),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => SportsBookingScreen(
-                    eventTitle: eventTitle,
-                    eventCover: eventCover,
-                    item: item,
-                    dateTime: dateTime,
-                    artist: artist,
-                    location: location,
-                    category: category),
-              ),
-            );
+            if(event == 'Sports'){
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SportsBookingScreen(
+                      eventTitle: eventTitle,
+                      eventCover: eventCover,
+                      item: item,
+                      dateTime: dateTime,
+                      artist: artist,
+                      location: location,
+                      category: category),
+                ),
+              );
+            }else{
+              showModalBottomSheet(
+                  context: context,
+                  builder: (_) => EventsSeatBottom(),
+                  constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.35)
+              );
+            }
+
           },
           child: Text(
             'Book tickets',

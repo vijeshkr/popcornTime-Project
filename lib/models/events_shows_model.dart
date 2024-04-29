@@ -11,6 +11,7 @@ class EventsShowsModel extends StatelessWidget {
   final String artist;
   final String location;
   final String category;
+  final String event;
 
   const EventsShowsModel({
     Key? key,
@@ -22,6 +23,7 @@ class EventsShowsModel extends StatelessWidget {
     required this.artist,
     required this.location,
     required this.category,
+    required this.event,
   }) : super(key: key);
 
   @override
@@ -43,6 +45,7 @@ class EventsShowsModel extends StatelessWidget {
                     dateTime: dateTime,
                     category: category,
                     artist: artist,
+                    event: event,
 
                   ),
                 ),
@@ -119,6 +122,7 @@ class _EventsShowsListState extends State<EventsShowsList> {
             dateTime: event['dateTime'],
             item: event['item'],
             location: event['location'],
+            event: event['event'],
           );
         }),
       ),

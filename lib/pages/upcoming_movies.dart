@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/constants/apptheme.dart';
 import 'package:popcorn_time/constants/filters.dart';
+import 'package:popcorn_time/constants/search_upcoming.dart';
 import 'package:popcorn_time/pages/home_screen.dart';
-import '../constants/search_movies.dart';
 import '../data/movie_data.dart';
 import '../models/movie_shows_model.dart';
 import 'movie_screen.dart';
@@ -84,7 +84,7 @@ class _UpcomingMoviesState extends State<UpcomingMovies> {
           IconButton(
             onPressed: () {
               showSearch(context: context,
-                delegate:CustomSearch(),);
+                delegate:CustomSearchUpcomingMovies(),);
             },
             icon: const Icon(
               Icons.search,
