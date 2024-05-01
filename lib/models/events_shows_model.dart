@@ -46,6 +46,7 @@ class EventsShowsModel extends StatelessWidget {
                     category: category,
                     artist: artist,
                     event: event,
+                    imageUrl: bannerUrl,
 
                   ),
                 ),

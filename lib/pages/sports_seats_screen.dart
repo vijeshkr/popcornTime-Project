@@ -10,6 +10,7 @@ var seatBlock;
 
 class SportsBookingScreen extends StatelessWidget {
   String eventTitle;
+  String imageUrl;
   String eventCover;
   String item;
   String dateTime;
@@ -19,6 +20,7 @@ class SportsBookingScreen extends StatelessWidget {
   SportsBookingScreen({
     super.key,
     required this.eventTitle,
+    required this.imageUrl,
     required this.eventCover,
     required this.item,
     required this.dateTime,
@@ -116,8 +118,10 @@ class SportsBookingScreen extends StatelessWidget {
                     height: 15.h,
                   ),
                   item == 'Cricket'
-                      ? cricketPrices(context)
-                      : footBallPrices(context),
+                      ? cricketPrices(
+                          context, eventTitle, imageUrl, dateTime, location)
+                      : footBallPrices(
+                          context, eventTitle, imageUrl, dateTime, location),
                   SizedBox(
                     height: 10.h,
                   ),
@@ -131,7 +135,8 @@ class SportsBookingScreen extends StatelessWidget {
   }
 }
 
-Widget footBallPrices(BuildContext context) {
+Widget footBallPrices(BuildContext context, String eventTitle, String imageUrl,
+    String dateTime, String location) {
   return Container(
     width: double.maxFinite,
     color: Colors.white,
@@ -149,9 +154,16 @@ Widget footBallPrices(BuildContext context) {
             double seatPrice = westUpper;
             showModalBottomSheet(
                 context: context,
-                builder: (_) => SportsSeatBottom(seatBlock: seatBlock,seatPrice: seatPrice,),
-                constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.35)
-            );
+                builder: (_) => SportsSeatBottom(
+                      seatBlock: seatBlock,
+                      seatPrice: seatPrice,
+                      confirmTitle: eventTitle,
+                      confirmImage: imageUrl,
+                      confirmDate: dateTime,
+                      confirmPlace: location,
+                    ),
+                constraints: BoxConstraints(
+                    maxHeight: MediaQuery.of(context).size.height * 0.35));
           },
         ),
         Divider(
@@ -168,9 +180,16 @@ Widget footBallPrices(BuildContext context) {
             double seatPrice = eastUpper;
             showModalBottomSheet(
                 context: context,
-                builder: (_) => SportsSeatBottom(seatBlock: seatBlock,seatPrice: seatPrice,),
-                constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.35)
-            );
+                builder: (_) => SportsSeatBottom(
+                      seatBlock: seatBlock,
+                      seatPrice: seatPrice,
+                      confirmTitle: eventTitle,
+                      confirmImage: imageUrl,
+                      confirmDate: dateTime,
+                      confirmPlace: location,
+                    ),
+                constraints: BoxConstraints(
+                    maxHeight: MediaQuery.of(context).size.height * 0.35));
           },
         ),
         Divider(
@@ -187,9 +206,16 @@ Widget footBallPrices(BuildContext context) {
             double seatPrice = eastLower;
             showModalBottomSheet(
                 context: context,
-                builder: (_) => SportsSeatBottom(seatBlock: seatBlock,seatPrice: seatPrice,),
-                constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.35)
-            );
+                builder: (_) => SportsSeatBottom(
+                      seatBlock: seatBlock,
+                      seatPrice: seatPrice,
+                      confirmTitle: eventTitle,
+                      confirmImage: imageUrl,
+                      confirmDate: dateTime,
+                      confirmPlace: location,
+                    ),
+                constraints: BoxConstraints(
+                    maxHeight: MediaQuery.of(context).size.height * 0.35));
           },
         ),
         Divider(
@@ -206,9 +232,16 @@ Widget footBallPrices(BuildContext context) {
             double seatPrice = northUpper;
             showModalBottomSheet(
                 context: context,
-                builder: (_) => SportsSeatBottom(seatBlock: seatBlock,seatPrice: seatPrice,),
-                constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.35)
-            );
+                builder: (_) => SportsSeatBottom(
+                      seatBlock: seatBlock,
+                      seatPrice: seatPrice,
+                      confirmTitle: eventTitle,
+                      confirmImage: imageUrl,
+                      confirmDate: dateTime,
+                      confirmPlace: location,
+                    ),
+                constraints: BoxConstraints(
+                    maxHeight: MediaQuery.of(context).size.height * 0.35));
           },
         ),
         Divider(
@@ -225,9 +258,16 @@ Widget footBallPrices(BuildContext context) {
             double seatPrice = northLower;
             showModalBottomSheet(
                 context: context,
-                builder: (_) => SportsSeatBottom(seatBlock: seatBlock,seatPrice: seatPrice,),
-                constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.35)
-            );
+                builder: (_) => SportsSeatBottom(
+                      seatBlock: seatBlock,
+                      seatPrice: seatPrice,
+                      confirmTitle: eventTitle,
+                      confirmImage: imageUrl,
+                      confirmDate: dateTime,
+                      confirmPlace: location,
+                    ),
+                constraints: BoxConstraints(
+                    maxHeight: MediaQuery.of(context).size.height * 0.35));
           },
         ),
         Divider(
@@ -244,9 +284,16 @@ Widget footBallPrices(BuildContext context) {
             double seatPrice = southUpper;
             showModalBottomSheet(
                 context: context,
-                builder: (_) => SportsSeatBottom(seatBlock: seatBlock,seatPrice: seatPrice,),
-                constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.35)
-            );
+                builder: (_) => SportsSeatBottom(
+                      seatBlock: seatBlock,
+                      seatPrice: seatPrice,
+                      confirmTitle: eventTitle,
+                      confirmImage: imageUrl,
+                      confirmDate: dateTime,
+                      confirmPlace: location,
+                    ),
+                constraints: BoxConstraints(
+                    maxHeight: MediaQuery.of(context).size.height * 0.35));
           },
         ),
         Divider(
@@ -263,9 +310,16 @@ Widget footBallPrices(BuildContext context) {
             double seatPrice = southLower;
             showModalBottomSheet(
                 context: context,
-                builder: (_) => SportsSeatBottom(seatBlock: seatBlock,seatPrice: seatPrice,),
-                constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.35)
-            );
+                builder: (_) => SportsSeatBottom(
+                      seatBlock: seatBlock,
+                      seatPrice: seatPrice,
+                      confirmTitle: eventTitle,
+                      confirmImage: imageUrl,
+                      confirmDate: dateTime,
+                      confirmPlace: location,
+                    ),
+                constraints: BoxConstraints(
+                    maxHeight: MediaQuery.of(context).size.height * 0.35));
           },
         ),
       ],
@@ -273,7 +327,8 @@ Widget footBallPrices(BuildContext context) {
   );
 }
 
-Widget cricketPrices(BuildContext context) {
+Widget cricketPrices(BuildContext context, String eventTitle, String imageUrl,
+    String dateTime, String location) {
   return Container(
     width: double.maxFinite,
     color: Colors.white,
@@ -294,6 +349,10 @@ Widget cricketPrices(BuildContext context) {
                 builder: (_) => SportsSeatBottom(
                       seatBlock: seatBlock,
                       seatPrice: seatPrice,
+                      confirmTitle: eventTitle,
+                      confirmImage: imageUrl,
+                      confirmDate: dateTime,
+                      confirmPlace: location,
                     ),
                 constraints: BoxConstraints(
                     maxHeight: MediaQuery.of(context).size.height * 0.35));
@@ -316,6 +375,10 @@ Widget cricketPrices(BuildContext context) {
                 builder: (_) => SportsSeatBottom(
                       seatBlock: seatBlock,
                       seatPrice: seatPrice,
+                      confirmTitle: eventTitle,
+                      confirmImage: imageUrl,
+                      confirmDate: dateTime,
+                      confirmPlace: location,
                     ),
                 constraints: BoxConstraints(
                     maxHeight: MediaQuery.of(context).size.height * 0.35));
@@ -338,6 +401,10 @@ Widget cricketPrices(BuildContext context) {
                 builder: (_) => SportsSeatBottom(
                       seatBlock: seatBlock,
                       seatPrice: seatPrice,
+                      confirmTitle: eventTitle,
+                      confirmImage: imageUrl,
+                      confirmDate: dateTime,
+                      confirmPlace: location,
                     ),
                 constraints: BoxConstraints(
                     maxHeight: MediaQuery.of(context).size.height * 0.35));
@@ -360,6 +427,10 @@ Widget cricketPrices(BuildContext context) {
                 builder: (_) => SportsSeatBottom(
                       seatBlock: seatBlock,
                       seatPrice: seatPrice,
+                      confirmTitle: eventTitle,
+                      confirmImage: imageUrl,
+                      confirmDate: dateTime,
+                      confirmPlace: location,
                     ),
                 constraints: BoxConstraints(
                     maxHeight: MediaQuery.of(context).size.height * 0.35));
@@ -382,6 +453,10 @@ Widget cricketPrices(BuildContext context) {
                 builder: (_) => SportsSeatBottom(
                       seatBlock: seatBlock,
                       seatPrice: seatPrice,
+                      confirmTitle: eventTitle,
+                      confirmImage: imageUrl,
+                      confirmDate: dateTime,
+                      confirmPlace: location,
                     ),
                 constraints: BoxConstraints(
                     maxHeight: MediaQuery.of(context).size.height * 0.35));
@@ -404,6 +479,10 @@ Widget cricketPrices(BuildContext context) {
                 builder: (_) => SportsSeatBottom(
                       seatBlock: seatBlock,
                       seatPrice: seatPrice,
+                      confirmTitle: eventTitle,
+                      confirmImage: imageUrl,
+                      confirmDate: dateTime,
+                      confirmPlace: location,
                     ),
                 constraints: BoxConstraints(
                     maxHeight: MediaQuery.of(context).size.height * 0.35));
@@ -426,6 +505,10 @@ Widget cricketPrices(BuildContext context) {
                 builder: (_) => SportsSeatBottom(
                       seatBlock: seatBlock,
                       seatPrice: seatPrice,
+                      confirmTitle: eventTitle,
+                      confirmImage: imageUrl,
+                      confirmDate: dateTime,
+                      confirmPlace: location,
                     ),
                 constraints: BoxConstraints(
                     maxHeight: MediaQuery.of(context).size.height * 0.35));

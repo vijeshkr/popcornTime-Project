@@ -1,12 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:popcorn_time/models/events_booking_confirmation.dart';
 
 class SportsSeatBottom extends StatefulWidget {
   var seatBlock;
   double seatPrice;
-   SportsSeatBottom({required this.seatBlock, required this.seatPrice , Key? key}) : super(key: key);
+  String confirmImage;
+  String confirmTitle;
+  String confirmPlace;
+  String confirmDate;
+  SportsSeatBottom(
+      {required this.seatBlock,
+      required this.seatPrice,
+      required this.confirmImage,
+      required this.confirmTitle,
+      required this.confirmPlace,
+      required this.confirmDate,
+      Key? key})
+      : super(key: key);
 
   @override
   State<SportsSeatBottom> createState() => _SportsSeatBottomState();
@@ -33,7 +45,9 @@ class _SportsSeatBottomState extends State<SportsSeatBottom> {
             height: 30.h,
             decoration: BoxDecoration(
               color: myColor,
-              borderRadius: BorderRadius.all(Radius.circular(5).r,),
+              borderRadius: BorderRadius.all(
+                Radius.circular(5).r,
+              ),
             ),
             child: InkWell(
               onTap: () {
@@ -76,17 +90,27 @@ class _SportsSeatBottomState extends State<SportsSeatBottom> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: listOfContainers,
             ),
-            SizedBox(height: 30.h,),
-            Text('${widget.seatBlock}',style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16.sp,
-            ),),
-            SizedBox(height: 10.h,),
-            Text('$selected_index Tickets',style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16.sp,
-              color: Colors.red,
-            ),),
+            SizedBox(
+              height: 30.h,
+            ),
+            Text(
+              '${widget.seatBlock}',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16.sp,
+              ),
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
+            Text(
+              '$selected_index Tickets',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16.sp,
+                color: Colors.red,
+              ),
+            ),
           ],
         ),
       ),
@@ -100,6 +124,19 @@ class _SportsSeatBottomState extends State<SportsSeatBottom> {
             ),
           ),
           onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => EventsBookingConfirmation(
+                  confirmImage: widget.confirmImage,
+                  confirmTitle: widget.confirmTitle,
+                  confirmPlace: widget.confirmPlace,
+                  confirmDate: widget.confirmDate,
+                  tickets: selected_index,
+                  amount: price,
+                ),
+              ),
+            );
           },
           child: Text(
             'Pay $price',

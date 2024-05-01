@@ -8,6 +8,7 @@ import 'package:popcorn_time/pages/sports_seats_screen.dart';
 
 class EventsDetailedScreen extends StatelessWidget {
   String eventTitle;
+  String imageUrl;
   String eventCover;
   String item;
   String dateTime;
@@ -18,6 +19,7 @@ class EventsDetailedScreen extends StatelessWidget {
   EventsDetailedScreen({
     super.key,
     required this.eventTitle,
+    required this.imageUrl,
     required this.eventCover,
     required this.item,
     required this.dateTime,
@@ -181,6 +183,7 @@ class EventsDetailedScreen extends StatelessWidget {
                 MaterialPageRoute(
                   builder: (context) => SportsBookingScreen(
                       eventTitle: eventTitle,
+                      imageUrl: imageUrl,
                       eventCover: eventCover,
                       item: item,
                       dateTime: dateTime,
@@ -192,7 +195,12 @@ class EventsDetailedScreen extends StatelessWidget {
             }else{
               showModalBottomSheet(
                   context: context,
-                  builder: (_) => EventsSeatBottom(),
+                  builder: (_) => EventsSeatBottom(
+                    imageUrl: imageUrl,
+                    confirmPlace: location,
+                    confirmTitle: eventTitle,
+                    confirmDate: dateTime,
+                  ),
                   constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.35)
               );
             }

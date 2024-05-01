@@ -56,6 +56,7 @@ class EventsCustomSearch extends SearchDelegate {
                       location: matchQuery[index]['location'],
                       category: matchQuery[index]['category'],
                       event: matchQuery[index]['event'],
+                      imageUrl: matchQuery[index]['image'],
                   ),
                 ),
               );
@@ -93,6 +94,7 @@ class EventsCustomSearch extends SearchDelegate {
                       location: matchQuery[index]['location'],
                       category: matchQuery[index]['category'],
                       event: matchQuery[index]['event'],
+                    imageUrl: matchQuery[index]['image'],
                   ),
                 ),
               );

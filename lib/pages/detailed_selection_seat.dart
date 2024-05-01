@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:popcorn_time/models/movie_booking_confirmation.dart';
 import 'package:popcorn_time/widgets/seat_layout_model.dart';
 
 class DetailedSelectionSeats extends StatefulWidget {
@@ -78,7 +79,7 @@ class _DetailedSelectionSeatsState extends State<DetailedSelectionSeats> {
                                     return Padding(
                                       padding: const EdgeInsets.all(5.0).r,
                                       child: Container(
-                                        color: Colors.red,
+                                        // color: Colors.red,
                                         child: Center(
                                           child: Text(
                                             String.fromCharCode(64 + alphabets),
@@ -101,7 +102,7 @@ class _DetailedSelectionSeatsState extends State<DetailedSelectionSeats> {
                                     return Padding(
                                       padding: const EdgeInsets.all(5.0).r,
                                       child: Container(
-                                        color: Colors.green,
+                                        // color: Colors.green,
                                         height: 20.h,
                                         width: 20.w,
                                       ),
@@ -183,7 +184,14 @@ class _DetailedSelectionSeatsState extends State<DetailedSelectionSeats> {
               EdgeInsets.symmetric(vertical: 12).r,
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => MovieBookingConfirmation(),
+              ),
+            );
+          },
           child: Text(
             'Pay $total',
             style: TextStyle(

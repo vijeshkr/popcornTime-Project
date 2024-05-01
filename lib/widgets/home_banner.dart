@@ -29,6 +29,7 @@ class HomeBanner extends StatelessWidget {
               location: eventsDummyData[index]['location'],
               category: eventsDummyData[index]['category'],
               event: eventsDummyData[index]['event'],
+              imageUrl: eventsDummyData[index]['image'],
             ),
           ),
         );
