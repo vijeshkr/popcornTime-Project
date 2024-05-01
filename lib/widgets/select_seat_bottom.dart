@@ -68,6 +68,7 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
                 'How many seats ?',
                 style: TextStyle(
                   fontSize: 16.sp,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
@@ -169,7 +170,7 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
                     gap: 2,
                     gapColIndex: 5,
                     isLastFilled: true,
-                    rowBreaks: [3, 5, 1],),),
+                    rowBreaks: [3, 5, 1],),howManySeats: selected_inx,),
               ),
             );
           },
