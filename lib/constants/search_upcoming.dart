@@ -54,6 +54,7 @@ class CustomSearchUpcomingMovies extends SearchDelegate {
                     release: matchQuery[index]['release'],
                     description: matchQuery[index]['description'],
                     duration: matchQuery[index]['duration'],
+                    movieImage: matchQuery[index]['image'],
                   ),
                 ),
               );
@@ -92,6 +93,7 @@ class CustomSearchUpcomingMovies extends SearchDelegate {
                     release: matchQuery[index]['release'],
                     description: matchQuery[index]['description'],
                     duration: matchQuery[index]['duration'],
+                    movieImage: matchQuery[index]['image'],
                   ),
                 ),
               );

@@ -1,13 +1,23 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/pages/detailed_selection_seat.dart';
 import 'package:popcorn_time/widgets/seat_layout_model.dart';
 
-
 class SelectSeatBottom extends StatefulWidget {
-  const SelectSeatBottom({Key? key}) : super(key: key);
+  String showTime;
+  String theatreName;
+  final String movieName;
+  final String movieImage;
+  final dynamic selectedDate;
+  SelectSeatBottom({
+    Key? key,
+    required this.showTime,
+    required this.theatreName,
+    required this.movieName,
+    required this.movieImage,
+    required this.selectedDate,
+  }) : super(key: key);
 
   @override
   State<SelectSeatBottom> createState() => _SelectSeatBottomState();
@@ -32,7 +42,9 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
             height: 30.h,
             decoration: BoxDecoration(
               color: myColor,
-              borderRadius: BorderRadius.all(Radius.circular(5).r,),
+              borderRadius: BorderRadius.all(
+                Radius.circular(5).r,
+              ),
             ),
             child: InkWell(
               onTap: () {
@@ -86,18 +98,21 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
                     child: Column(
                       children: [
                         SizedBox(height: 20.h),
-
-                        const Text('SILVER',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black87,
-                        ),),
+                        const Text(
+                          'SILVER',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black87,
+                          ),
+                        ),
                         SizedBox(height: 8.h),
-                        const Text('Rs. 120',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black87,
-                        ),)
+                        const Text(
+                          'Rs. 120',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black87,
+                          ),
+                        )
                       ],
                     ),
                   ),
@@ -105,18 +120,21 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
                     child: Column(
                       children: [
                         SizedBox(height: 20.h),
-
-                        const Text('GOLD',
+                        const Text(
+                          'GOLD',
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Colors.black87,
-                          ),),
+                          ),
+                        ),
                         SizedBox(height: 8.h),
-                        const Text('Rs. 150',
+                        const Text(
+                          'Rs. 150',
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Colors.black87,
-                          ),),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -124,18 +142,21 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
                     child: Column(
                       children: [
                         SizedBox(height: 20.h),
-
-                        const Text('PLATINUM',
+                        const Text(
+                          'PLATINUM',
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Colors.black87,
-                          ),),
+                          ),
+                        ),
                         SizedBox(height: 8.h),
-                        const Text('Rs. 220',
+                        const Text(
+                          'Rs. 220',
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Colors.black87,
-                          ),)
+                          ),
+                        )
                       ],
                     ),
                   ),
@@ -158,7 +179,13 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => DetailedSelectionSeats(model: SeatLayoutModel(
+                builder: (context) => DetailedSelectionSeats(
+                  movieTitle: widget.movieName,
+                  showTime: widget.showTime,
+                  theatreName: widget.theatreName,
+                  selectedDate: widget.selectedDate,
+                  movieImage: widget.movieImage,
+                  model: SeatLayoutModel(
                     rows: 9,
                     cols: 12,
                     seatTypes: [
@@ -170,7 +197,10 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
                     gap: 2,
                     gapColIndex: 5,
                     isLastFilled: true,
-                    rowBreaks: [3, 5, 1],),howManySeats: selected_inx,),
+                    rowBreaks: [3, 5, 1],
+                  ),
+                  howManySeats: selected_inx,
+                ),
               ),
             );
           },

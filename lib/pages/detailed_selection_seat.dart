@@ -6,7 +6,21 @@ import 'package:popcorn_time/widgets/seat_layout_model.dart';
 class DetailedSelectionSeats extends StatefulWidget {
   final SeatLayoutModel model;
   int howManySeats;
-  DetailedSelectionSeats({super.key, required this.model, required this.howManySeats});
+  String movieImage;
+  String theatreName;
+  String showTime;
+  String movieTitle;
+  dynamic selectedDate;
+  DetailedSelectionSeats({
+    super.key,
+    required this.model,
+    required this.howManySeats,
+    required this.movieImage,
+    required this.selectedDate,
+    required this.theatreName,
+    required this.showTime,
+    required this.movieTitle,
+  });
 
   @override
   State<DetailedSelectionSeats> createState() => _DetailedSelectionSeatsState();
@@ -32,9 +46,32 @@ class _DetailedSelectionSeatsState extends State<DetailedSelectionSeats> {
 
     return Scaffold(
       backgroundColor: Color(0xffdce8fc),
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(
+          widget.movieTitle
+        ),
+      ),
       body: Column(
         children: [
+          SizedBox(
+            height: 10.h,
+          ),
+          Container(
+            height: 90,
+            width: double.maxFinite,
+            color: Colors.white,
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(widget.theatreName),
+                  Text(widget.showTime),
+                  Text('${seats.length} Tickets selected'),
+                ],
+              ),
+            ),
+          ),
           SizedBox(
             height: 10.h,
           ),
@@ -67,14 +104,14 @@ class _DetailedSelectionSeatsState extends State<DetailedSelectionSeats> {
                         ),
                         ...List.generate(
                           widget.model.rowBreaks[index],
-                              (row) {
+                          (row) {
                             alphabets++;
                             seatCounter = 0;
                             String rowNo = String.fromCharCode(64 + alphabets);
                             return Wrap(
                               children: List.generate(
                                 widget.model.cols,
-                                    (col) {
+                                (col) {
                                   if (col == 0) {
                                     return Padding(
                                       padding: const EdgeInsets.all(5.0).r,
@@ -93,11 +130,11 @@ class _DetailedSelectionSeatsState extends State<DetailedSelectionSeats> {
 
                                   //for the gap in the center
                                   if ((col == widget.model.gapColIndex ||
-                                      col ==
-                                          widget.model.gapColIndex + 1) &&
+                                          col ==
+                                              widget.model.gapColIndex + 1) &&
                                       (row !=
-                                          widget.model.rowBreaks[index] -
-                                              1 &&
+                                              widget.model.rowBreaks[index] -
+                                                  1 &&
                                           widget.model.isLastFilled)) {
                                     return Padding(
                                       padding: const EdgeInsets.all(5.0).r,
@@ -129,7 +166,8 @@ class _DetailedSelectionSeatsState extends State<DetailedSelectionSeats> {
                                         print(price);
 
                                         if (seats.contains('$rowNo$seatNo')) {
-                                          int index = seats.indexOf('$rowNo$seatNo');
+                                          int index =
+                                              seats.indexOf('$rowNo$seatNo');
                                           seats.remove('$rowNo$seatNo');
                                           seatPrices.removeAt(index);
                                         } else {
@@ -145,14 +183,18 @@ class _DetailedSelectionSeatsState extends State<DetailedSelectionSeats> {
                                         });
                                       },
                                       child: AnimatedContainer(
-                                        duration: const Duration(microseconds: 300),
+                                        duration:
+                                            const Duration(microseconds: 300),
                                         decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(2.r),
-                                            color: seats.contains('$rowNo$seatNo')
-                                                ? Colors.green
-                                                : Color(0xfffffff),
+                                            borderRadius:
+                                                BorderRadius.circular(2.r),
+                                            color:
+                                                seats.contains('$rowNo$seatNo')
+                                                    ? Colors.green
+                                                    : Color(0xfffffff),
                                             border: Border.all(
-                                                width: 0.5.w, color: Color(0xff707070))),
+                                                width: 0.5.w,
+                                                color: Color(0xff707070))),
                                         child: Center(
                                           child: Text('$seatNo'),
                                         ),
@@ -185,12 +227,43 @@ class _DetailedSelectionSeatsState extends State<DetailedSelectionSeats> {
             ),
           ),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => MovieBookingConfirmation(),
-              ),
-            );
+
+            if (seats.length < widget.howManySeats) {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text('Please select your seats.'),
+                    content: Text('Please select ${widget.howManySeats - seats.length} more seat.'),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context); // Close the dialog
+                        },
+                        child: Text('Ok'),
+                      ),
+                    ],
+                  );
+                },
+              );
+            }else{
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MovieBookingConfirmation(
+                    myList: seats,
+                    tickets: widget.howManySeats,
+                    amountPaid: total,
+                    movieImage: widget.movieImage,
+                    selectedDate: widget.selectedDate,
+                    theatreName: widget.theatreName,
+                    showTime: widget.showTime,
+                    movieTitle: widget.movieTitle,
+                  ),
+                ),
+              );
+            }
+
           },
           child: Text(
             'Pay $total',

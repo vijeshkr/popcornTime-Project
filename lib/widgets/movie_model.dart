@@ -48,6 +48,7 @@ class MovieModel extends StatelessWidget {
                           release: release,
                           description: description,
                           duration: duration,
+                      movieImage: bannerUrl,
                         )),
               );
             },

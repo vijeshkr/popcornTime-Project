@@ -3,23 +3,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../constants/apptheme.dart';
 import '../widgets/theatre_time.dart';
+import 'package:intl/intl.dart';
 
 List? theatreNames;
 
-class TheatreSelectionScreen extends StatelessWidget {
+class TheatreSelectionScreen extends StatefulWidget {
   final String movieName;
+  final String movieImage;
 
+  TheatreSelectionScreen(
+      {Key? key, required this.movieName, required this.movieImage})
+      : super(key: key);
 
-   TheatreSelectionScreen({Key? key, required this.movieName,}) : super(key: key);
+  @override
+  State<TheatreSelectionScreen> createState() => _TheatreSelectionScreenState();
+}
+
+class _TheatreSelectionScreenState extends State<TheatreSelectionScreen> {
+  dynamic pickedDate = DateFormat('dd MMM yyyy').format(DateTime.now());
 
   @override
   Widget build(BuildContext context) {
-    var pickedDate = DateTime.now();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppTheme.greyColor,
         title: Text(
-          '$movieName',
+          '${widget.movieName}',
           style: TextStyle(fontWeight: FontWeight.w500),
         ),
         bottom: PreferredSize(
@@ -39,7 +48,10 @@ class TheatreSelectionScreen extends StatelessWidget {
                 color: Colors.black,
               ),
               onDateChange: (selectedDate) {
-                pickedDate = selectedDate;
+                setState(() {
+                  pickedDate = DateFormat('dd MMM yyyy').format(selectedDate);
+                });
+
                 print(pickedDate);
               },
             ),
@@ -48,45 +60,51 @@ class TheatreSelectionScreen extends StatelessWidget {
       ),
       body: theatreNames != null
           ? SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Container(
-          color: Color(0xfff5f5fa),
-          padding: EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: _buildTheatreTimeWidgets(),
-          ),
-        ),
-      )
-          : Container(
-        width: double.maxFinite,
-        height: double.maxFinite,
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(15),
-            child: Text('Unfortunately , there are currently no shows available in your area.',
-              style: TextStyle(
-                fontSize: 20.sp,
-                fontWeight: FontWeight.w500,
+              scrollDirection: Axis.vertical,
+              child: Container(
+                color: Color(0xfff5f5fa),
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: _buildTheatreTimeWidgets(),
+                ),
               ),
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,),
-          ),
-        ),
-      ),
+            )
+          : Container(
+              width: double.maxFinite,
+              height: double.maxFinite,
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: Text(
+                    'Unfortunately , there are currently no shows available in your area.',
+                    style: TextStyle(
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                  ),
+                ),
+              ),
+            ),
     );
   }
 
   List<Widget> _buildTheatreTimeWidgets() {
     List<Widget> theatreWidgets = [];
-      for (String theatreName in theatreNames!) {
-        theatreWidgets.addAll([
-          SizedBox(height: 10.h),
-          TheatreTime(theatreName: theatreName),
-        ]);
-      }
+    for (String theatreName in theatreNames!) {
+      theatreWidgets.addAll([
+        SizedBox(height: 10.h),
+        TheatreTime(
+          theatreName: theatreName,
+          movieName: widget.movieName,
+          selectedDate: pickedDate,
+          movieImage: widget.movieImage,
+        ),
+      ]);
+    }
     return theatreWidgets;
   }
-
 }

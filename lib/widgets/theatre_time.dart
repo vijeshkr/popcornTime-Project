@@ -4,9 +4,15 @@ import 'package:popcorn_time/widgets/select_seat_bottom.dart';
 
 class TheatreTime extends StatelessWidget {
   final String theatreName;
+  final String movieName;
+  final String movieImage;
+  final dynamic selectedDate;
   const TheatreTime({
     super.key,
     required this.theatreName,
+    required this.movieName,
+    required this.movieImage,
+    required this.selectedDate,
   });
 
   @override
@@ -38,12 +44,20 @@ class TheatreTime extends StatelessWidget {
               Row(
                 children: [
                   InkWell(
-                    onTap: (){
+                    onTap: () {
+                      String showTime = '11:30 AM';
                       showModalBottomSheet(
                           context: context,
-                          builder: (_) => SelectSeatBottom(),
-                          constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.35)
-                      );
+                          builder: (_) => SelectSeatBottom(
+                                showTime: showTime,
+                                theatreName: theatreName,
+                                movieImage: movieImage,
+                                movieName: movieName,
+                                selectedDate: selectedDate,
+                              ),
+                          constraints: BoxConstraints(
+                              maxHeight:
+                                  MediaQuery.of(context).size.height * 0.35));
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -67,12 +81,20 @@ class TheatreTime extends StatelessWidget {
                     width: 15.w,
                   ),
                   InkWell(
-                    onTap: (){
+                    onTap: () {
+                      String showTime = '03:00 PM';
                       showModalBottomSheet(
                           context: context,
-                          builder: (_) => SelectSeatBottom(),
-                          constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.35)
-                      );
+                          builder: (_) => SelectSeatBottom(
+                                showTime: showTime,
+                                theatreName: theatreName,
+                                movieImage: movieImage,
+                                movieName: movieName,
+                                selectedDate: selectedDate,
+                              ),
+                          constraints: BoxConstraints(
+                              maxHeight:
+                                  MediaQuery.of(context).size.height * 0.35));
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -97,35 +119,34 @@ class TheatreTime extends StatelessWidget {
                     width: 15.h,
                   ),
                   InkWell(
-                    onTap: (){
+                    onTap: () {
+                      String showTime = '06:00 PM';
                       showModalBottomSheet(
                           context: context,
-                          builder: (_) => SelectSeatBottom(),
-                          constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.35)
-                      );
+                          builder: (_) => SelectSeatBottom(
+                                showTime: showTime,
+                                theatreName: theatreName,
+                                movieImage: movieImage,
+                                movieName: movieName,
+                                selectedDate: selectedDate,
+                              ),
+                          constraints: BoxConstraints(
+                              maxHeight:
+                                  MediaQuery.of(context).size.height * 0.35));
                     },
-                    child: InkWell(
-                      onTap: (){
-                        showModalBottomSheet(
-                            context: context,
-                            builder: (_) => SelectSeatBottom(),
-                            constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.35)
-                        );
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5.r),
-                          border: Border.all(
-                              width: 1.w,
-                              // color: Color(0xffe5e5e5),
-                              color: Colors.green.shade600),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10).r,
-                          child: Text(
-                            '06:00 PM',
-                            style: TextStyle(color: Colors.green[600]),
-                          ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5.r),
+                        border: Border.all(
+                            width: 1.w,
+                            // color: Color(0xffe5e5e5),
+                            color: Colors.green.shade600),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10).r,
+                        child: Text(
+                          '06:00 PM',
+                          style: TextStyle(color: Colors.green[600]),
                         ),
                       ),
                     ),
@@ -138,12 +159,20 @@ class TheatreTime extends StatelessWidget {
               Row(
                 children: [
                   InkWell(
-                    onTap: (){
+                    onTap: () {
+                      String showTime = '09:30 PM';
                       showModalBottomSheet(
                           context: context,
-                          builder: (_) => SelectSeatBottom(),
-                          constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.35)
-                      );
+                          builder: (_) => SelectSeatBottom(
+                                showTime: showTime,
+                                theatreName: theatreName,
+                                movieImage: movieImage,
+                                movieName: movieName,
+                                selectedDate: selectedDate,
+                              ),
+                          constraints: BoxConstraints(
+                              maxHeight:
+                                  MediaQuery.of(context).size.height * 0.35));
                     },
                     child: Container(
                       decoration: BoxDecoration(

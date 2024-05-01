@@ -7,8 +7,26 @@ import '../constants/assets.dart';
 import '../widgets/bottom_navigation.dart';
 
 class MovieBookingConfirmation extends StatelessWidget {
-  MovieBookingConfirmation({super.key});
-  List myList = ['A20', 'A35'];
+  List myList = [];
+  int tickets;
+  double amountPaid;
+  String movieImage;
+  String movieTitle;
+  String showTime;
+  String theatreName;
+  dynamic selectedDate;
+  MovieBookingConfirmation({
+    super.key,
+    required this.myList,
+    required this.tickets,
+    required this.amountPaid,
+    required this.movieImage,
+    required this.movieTitle,
+    required this.showTime,
+    required this.theatreName,
+    required this.selectedDate,
+  });
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -18,7 +36,7 @@ class MovieBookingConfirmation extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: Container(
-            height: size.height * 0.65,
+            height: size.height * 0.70,
             width: double.maxFinite,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
@@ -76,46 +94,36 @@ class MovieBookingConfirmation extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(10),
                               child: Image.asset(
-                                'assets/images/movies/movie1.jpg',
+                                movieImage,
                                 width: 80.w,
                                 height: 100.w,
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Premam',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 15,
-                                    ),
-                                  ),
-                                  Text('11:30 AM | 01 May 2024'),
-                                  Text('Ragam Cinemas Thrissur'),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text('Platinum  '),
-                                      Row(
-                                        children: myList
-                                            .map((item) => Text(
-                                                  '$item ',
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 15,
-                                                  ),
-                                                ))
-                                            .toList(),
+                            Flexible(
+                              child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      movieTitle,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 15,
                                       ),
-                                    ],
-                                  )
-                                ],
+                                    ),
+                                    Text('$showTime | $selectedDate'),
+                                    Text(
+                                      '$theatreName',
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 3,
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+
+                                  ],
+                                ),
                               ),
                             ),
                           ],
@@ -123,6 +131,26 @@ class MovieBookingConfirmation extends StatelessWidget {
                         Divider(
                           thickness: 1,
                           color: Colors.grey.shade400,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          child: Row(
+                            children: [
+                              Text('Seat No :  '),
+                              Row(
+                                children: myList
+                                    .map((item) => Text(
+                                  '$item ',
+                                  style: TextStyle(
+                                    fontWeight:
+                                    FontWeight.bold,
+                                    fontSize: 15,
+                                  ),
+                                ))
+                                    .toList(),
+                              ),
+                            ],
+                          ),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -132,13 +160,13 @@ class MovieBookingConfirmation extends StatelessWidget {
                               child: Column(
                                 children: [
                                   Text(
-                                    '2',
+                                    '$tickets',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 45,
                                     ),
                                   ),
-                                  Text(' Tickets'),
+                                  Text('Tickets'),
                                 ],
                               ),
                             ),
@@ -148,7 +176,7 @@ class MovieBookingConfirmation extends StatelessWidget {
                                 children: [
                                   Text('Amount Paid : '),
                                   Text(
-                                    '320',
+                                    '$amountPaid',
                                     style: TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,

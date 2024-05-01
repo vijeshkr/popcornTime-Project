@@ -10,6 +10,7 @@ import 'home_screen.dart';
 
 class DetailsScreen extends StatelessWidget {
   String movieTitle;
+  String movieImage;
   String movieCover;
   String language;
   String screen_2D;
@@ -21,6 +22,7 @@ class DetailsScreen extends StatelessWidget {
   DetailsScreen(
       {super.key,
       required this.movieTitle,
+      required this.movieImage,
       required this.movieCover,
       required this.like,
       required this.language,
@@ -268,7 +270,7 @@ class DetailsScreen extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => TheatreSelectionScreen(movieName: movieTitle,),
+                builder: (context) => TheatreSelectionScreen(movieName: movieTitle,movieImage: movieImage,),
               ),
             );
           },
