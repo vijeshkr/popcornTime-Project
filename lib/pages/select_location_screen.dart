@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/pages/home_screen.dart';
+import 'package:popcorn_time/pages/theatre_selection_screen.dart';
 import '../constants/apptheme.dart';
 import '../data/location_data.dart';
 import '../widgets/bottom_navigation.dart';

@@ -5,6 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/constants/apptheme.dart';
 import 'package:popcorn_time/pages/theatre_selection_screen.dart';
 
+import '../data/location_data.dart';
+import 'home_screen.dart';
+
 class DetailsScreen extends StatelessWidget {
   String movieTitle;
   String movieCover;
@@ -255,10 +258,17 @@ class DetailsScreen extends StatelessWidget {
             ),
           ),
           onPressed: () {
+            for (var locationData in theatreList) {
+              var location = locationData['location'];
+              if (myLocation.contains(location)) {
+                theatreNames = locationData[myLocation];
+                break;
+              }
+            }
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => TheatreSelectionScreen(),
+                builder: (context) => TheatreSelectionScreen(movieName: movieTitle,),
               ),
             );
           },

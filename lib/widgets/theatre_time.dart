@@ -51,78 +51,114 @@ class TheatreTime extends StatelessWidget {
                         border: Border.all(
                           width: 1.w,
                           // color: Color(0xffe5e5e5),
-                          color: Colors.yellow,
+                          color: Colors.green.shade600,
                         ),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(10).r,
                         child: Text(
                           '11:30 AM',
-                          style: TextStyle(color: Colors.yellow[600]),
+                          style: TextStyle(color: Colors.green[600]),
                         ),
                       ),
                     ),
                   ),
                   SizedBox(
-                    width: 10.w,
+                    width: 15.w,
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.r),
-                      border: Border.all(
-                        width: 1.w,
-                        // color: Color(0xffe5e5e5),
+                  InkWell(
+                    onTap: (){
+                      showModalBottomSheet(
+                          context: context,
+                          builder: (_) => SelectSeatBottom(),
+                          constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.35)
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5.r),
+                        border: Border.all(
+                          width: 1.w,
+                          // color: Color(0xffe5e5e5),
 
-                        color: Colors.green,
+                          color: Colors.green.shade600,
+                        ),
                       ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10).r,
-                      child: Text(
-                        '03:00 PM',
-                        style: TextStyle(color: Colors.green),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10).r,
+                        child: Text(
+                          '03:00 PM',
+                          style: TextStyle(color: Colors.green[600]),
+                        ),
                       ),
                     ),
                   ),
                   SizedBox(
-                    width: 10.h,
+                    width: 15.h,
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.r),
-                      border: Border.all(
-                          width: 1.w,
-                          // color: Color(0xffe5e5e5),
-                          color: Colors.red),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10).r,
-                      child: Text(
-                        '06:00 PM',
-                        style: TextStyle(color: Colors.red),
+                  InkWell(
+                    onTap: (){
+                      showModalBottomSheet(
+                          context: context,
+                          builder: (_) => SelectSeatBottom(),
+                          constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.35)
+                      );
+                    },
+                    child: InkWell(
+                      onTap: (){
+                        showModalBottomSheet(
+                            context: context,
+                            builder: (_) => SelectSeatBottom(),
+                            constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.35)
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.r),
+                          border: Border.all(
+                              width: 1.w,
+                              // color: Color(0xffe5e5e5),
+                              color: Colors.green.shade600),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10).r,
+                          child: Text(
+                            '06:00 PM',
+                            style: TextStyle(color: Colors.green[600]),
+                          ),
+                        ),
                       ),
                     ),
                   ),
                 ],
               ),
               SizedBox(
-                height: 5.h,
+                height: 10.h,
               ),
               Row(
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.r),
-                      border: Border.all(
-                          width: 1,
-                          // color: Color(0xffe5e5e5),
-                          color: Colors.green),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10).r,
-                      child: Text(
-                        '09:30 PM',
-                        style: TextStyle(color: Colors.green),
+                  InkWell(
+                    onTap: (){
+                      showModalBottomSheet(
+                          context: context,
+                          builder: (_) => SelectSeatBottom(),
+                          constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.35)
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5.r),
+                        border: Border.all(
+                            width: 1,
+                            // color: Color(0xffe5e5e5),
+                            color: Colors.green.shade600),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10).r,
+                        child: Text(
+                          '09:30 PM',
+                          style: TextStyle(color: Colors.green[600]),
+                        ),
                       ),
                     ),
                   ),

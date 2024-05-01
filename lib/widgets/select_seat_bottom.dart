@@ -161,9 +161,9 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
                     rows: 9,
                     cols: 12,
                     seatTypes: [
-                      {"title": "Silver", "price": 120.0, "status": "Filling Fast"},
-                      {"title": "Gold", "price": 150.0, "status": "Available"},
-                      {"title": "Platinum", "price": 250.0, "status": "Available"},
+                      {"title": "Silver", "price": 120.0},
+                      {"title": "Gold", "price": 150.0},
+                      {"title": "Platinum", "price": 250.0},
                     ],
                     theatreId: 123,
                     gap: 2,
