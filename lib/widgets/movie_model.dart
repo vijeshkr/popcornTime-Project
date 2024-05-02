@@ -13,6 +13,7 @@ class MovieModel extends StatelessWidget {
   final String release;
   final String description;
   final String duration;
+  final Map castCrew;
   const MovieModel({
     super.key,
     required this.title,
@@ -25,6 +26,7 @@ class MovieModel extends StatelessWidget {
     required this.release,
     required this.description,
     required this.duration,
+    required this.castCrew,
   });
 
   @override
@@ -49,6 +51,7 @@ class MovieModel extends StatelessWidget {
                           description: description,
                           duration: duration,
                       movieImage: bannerUrl,
+                      castCrew: castCrew,
                         )),
               );
             },

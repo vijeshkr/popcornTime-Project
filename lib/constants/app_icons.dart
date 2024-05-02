@@ -73,6 +73,7 @@ List<MovieModel> movies = movieDummyData.map((data) {
     screen_2D: data['2D'],
     description: data['description'],
     duration: data['duration'],
+    castCrew: data['castCrew'],
   );
 }).toList();
 

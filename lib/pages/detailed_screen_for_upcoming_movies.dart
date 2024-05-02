@@ -15,6 +15,7 @@ class DetailsScreenUpcomingMovies extends StatelessWidget {
   String release;
   String description;
   String duration;
+  Map castCrew;
   DetailsScreenUpcomingMovies(
       {super.key,
         required this.movieTitle,
@@ -26,6 +27,7 @@ class DetailsScreenUpcomingMovies extends StatelessWidget {
         required this.release,
         required this.description,
         required this.duration,
+        required this.castCrew,
       });
 
   @override
@@ -212,6 +214,46 @@ class DetailsScreenUpcomingMovies extends StatelessWidget {
                         ),
                       ],
                     ),
+                  ),
+                  Container(
+                    color: Colors.white,
+                    child: Column(
+                      children: [
+                        ListTile(
+                          title: Text('${castCrew['director']}'),
+                          subtitle: Text('Director'),
+                          trailing: Icon(Icons.videocam_outlined),
+                        ),
+                        Divider(thickness: 1,color: Colors.grey,),
+                        ListTile(
+                          title: Text('${castCrew['actor']}'),
+                          subtitle: Text('Actor'),
+                          trailing: Icon(Icons.theater_comedy_outlined),
+                        ),
+                        Divider(thickness: 1,color: Colors.grey,),
+
+                        ListTile(
+                          title: Text('${castCrew['actress']}'),
+                          subtitle: Text('Actress'),
+                          trailing: Icon(Icons.theater_comedy_outlined),
+                        ),
+                        Divider(thickness: 1,color: Colors.grey,),
+
+                        ListTile(
+                          title: Text('${castCrew['producer']}'),
+                          subtitle: Text('Producer'),
+                          trailing: Icon(Icons.paid_outlined),
+                        ),
+                        Divider(thickness: 1,color: Colors.grey,),
+
+                        ListTile(
+                          title: Text('${castCrew['musician']}'),
+                          subtitle: Text('Musician'),
+                          trailing: Icon(Icons.music_note_outlined),
+                        ),
+                      ],
+                    ),
+
                   ),
                 ],
               ),

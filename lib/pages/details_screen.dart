@@ -19,6 +19,7 @@ class DetailsScreen extends StatelessWidget {
   String release;
   String description;
   String duration;
+  Map castCrew;
   DetailsScreen(
       {super.key,
       required this.movieTitle,
@@ -31,6 +32,7 @@ class DetailsScreen extends StatelessWidget {
       required this.release,
       required this.description,
       required this.duration,
+      required this.castCrew,
       });
 
   @override
@@ -234,15 +236,57 @@ class DetailsScreen extends StatelessWidget {
                             color: Colors.black,
                           ),
                         ),
-                        Text(
-                          'View All',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Colors.red,
-                          ),
+                        // Text(
+                        //   'View All',
+                        //   style: TextStyle(
+                        //     fontWeight: FontWeight.w500,
+                        //     color: Colors.red,
+                        //   ),
+                        // ),
+
+
+                      ],
+                    ),
+                  ),
+                  Container(
+                    color: Colors.white,
+                    child: Column(
+                      children: [
+                        ListTile(
+                          title: Text('${castCrew['director']}'),
+                          subtitle: Text('Director'),
+                          trailing: Icon(Icons.videocam_outlined),
+                        ),
+                        Divider(thickness: 1,color: Colors.grey,),
+                        ListTile(
+                          title: Text('${castCrew['actor']}'),
+                          subtitle: Text('Actor'),
+                          trailing: Icon(Icons.theater_comedy_outlined),
+                        ),
+                        Divider(thickness: 1,color: Colors.grey,),
+
+                        ListTile(
+                          title: Text('${castCrew['actress']}'),
+                          subtitle: Text('Actress'),
+                          trailing: Icon(Icons.theater_comedy_outlined),
+                        ),
+                        Divider(thickness: 1,color: Colors.grey,),
+
+                        ListTile(
+                          title: Text('${castCrew['producer']}'),
+                          subtitle: Text('Producer'),
+                          trailing: Icon(Icons.paid_outlined),
+                        ),
+                        Divider(thickness: 1,color: Colors.grey,),
+
+                        ListTile(
+                          title: Text('${castCrew['musician']}'),
+                          subtitle: Text('Musician'),
+                          trailing: Icon(Icons.music_note_outlined),
                         ),
                       ],
                     ),
+
                   ),
                 ],
               ),

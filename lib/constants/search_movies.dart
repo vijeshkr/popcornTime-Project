@@ -55,6 +55,7 @@ class CustomSearch extends SearchDelegate {
                     description: matchQuery[index]['description'],
                     duration: matchQuery[index]['duration'],
                     movieImage: matchQuery[index]['image'],
+                    castCrew: matchQuery[index]['castCrew'],
                   ),
                 ),
               );
@@ -94,6 +95,7 @@ class CustomSearch extends SearchDelegate {
                     description: matchQuery[index]['description'],
                     duration: matchQuery[index]['duration'],
                     movieImage: matchQuery[index]['image'],
+                    castCrew: matchQuery[index]['castCrew'],
                   ),
                 ),
               );

@@ -159,6 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       release: movieDataNow[index]['release'],
                       description: movieDataNow[index]['description'],
                       duration: movieDataNow[index]['duration'],
+                      castCrew: movieDataNow[index]['castCrew'],
                     );
                   },
                 ),

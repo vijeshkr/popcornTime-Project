@@ -2,11 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:popcorn_time/constants/privacy_policy.dart';
-import 'package:popcorn_time/controllers/profile_controller.dart';
 import 'package:popcorn_time/pages/help_center.dart';
 import 'package:popcorn_time/pages/login_screen.dart';
 import 'package:popcorn_time/pages/settings.dart';
@@ -22,6 +18,9 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+
+  bool isEdit = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,68 +70,74 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           )),
                     ),
-                    SizedBox(height: 10.h,),
+                    SizedBox(
+                      height: 10.h,
+                    ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 70,).r,
+                      padding: const EdgeInsets.only(
+                        left: 70,
+                      ).r,
                       child: Text('Name'),
                     ),
-                    Obx(() =>
-                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20,).w,
-                        child: TextFormField(
-                          readOnly: ProfileController.instance.isEdit.value,
-                          style: TextStyle(
-                            color: Colors.black
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                      ).w,
+                      child: TextFormField(
+                        readOnly: isEdit,
+                        style: TextStyle(color: Colors.black),
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
                           ),
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide.none,
-                            ),
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.all(4).r,
-                              child: Container(
-                                height: 25.h,
-                                width: 25.w,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20).r,
-                                  color: Color(0xffe4edff),
-                                ),
-                                child: Icon(
-                                  Icons.person_outline,
-                                  color: Color(0xff4c7eff),
-                                ),
+                          prefixIcon: Padding(
+                            padding: const EdgeInsets.all(4).r,
+                            child: Container(
+                              height: 25.h,
+                              width: 25.w,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20).r,
+                                color: Color(0xffe4edff),
+                              ),
+                              child: Icon(
+                                Icons.person_outline,
+                                color: Color(0xff4c7eff),
                               ),
                             ),
-                            suffixIcon: GestureDetector(
-                              onTap: (){
-                                ProfileController.instance.toggleEdit();
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(4).r,
-                                child: Icon(
-                                  Icons.edit_outlined,
-                                  color: Color(0xff4c7eff),
-                                ),
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                isEdit ? isEdit = false : isEdit = true ;
+                              });
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(4).r,
+                              child: Icon(
+                                Icons.edit_outlined,
+                                color: Color(0xff4c7eff),
                               ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                
-                    SizedBox(height: 10.h,),
+                    SizedBox(
+                      height: 10.h,
+                    ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 70,).r,
+                      padding: const EdgeInsets.only(
+                        left: 70,
+                      ).r,
                       child: Text('Email'),
                     ),
-                    Obx( () =>
-                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20,).w,
+                    Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                        ).w,
                         child: TextFormField(
-                          readOnly: ProfileController.instance.isEdit.value,
-                          style: TextStyle(
-                              color: Colors.black
-                          ),
+                          readOnly: isEdit,
+                          style: TextStyle(color: Colors.black),
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderSide: BorderSide.none,
@@ -153,8 +158,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                             suffixIcon: GestureDetector(
-                              onTap: (){
-                                      ProfileController.instance.toggleEdit();
+                              onTap: () {
+                                setState(() {
+                                  isEdit ? isEdit = false : isEdit = true ;
+                                });
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(4).r,
@@ -167,21 +174,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                       ),
+                    SizedBox(
+                      height: 10.h,
                     ),
-                
-                    SizedBox(height: 10.h,),
                     Padding(
-                      padding: const EdgeInsets.only(left: 70,).r,
+                      padding: const EdgeInsets.only(
+                        left: 70,
+                      ).r,
                       child: Text('Mobile'),
                     ),
-                    Obx( () =>
-                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20,).w,
+                    Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                        ).w,
                         child: TextFormField(
-                          readOnly: ProfileController.instance.isEdit.value,
-                          style: TextStyle(
-                              color: Colors.black
-                          ),
+                          readOnly: isEdit,
+                          style: TextStyle(color: Colors.black),
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderSide: BorderSide.none,
@@ -202,8 +210,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                             suffixIcon: GestureDetector(
-                              onTap: (){
-                                ProfileController.instance.toggleEdit();
+                              onTap: () {
+                                setState(() {
+                                  isEdit ? isEdit = false : isEdit = true ;
+                                });
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(4).r,
@@ -216,27 +226,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                       ),
-                    ),
+
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15).w,
-                      child: Divider(thickness: 1,color: Colors.grey,),
+                      child: Divider(
+                        thickness: 1,
+                        color: Colors.grey,
+                      ),
                     ),
                     ListTile(
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => YourOrders()),
+                          MaterialPageRoute(builder: (context) => YourOrders()),
                         );
                       },
-                      trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15.r,),
-                      leading: Icon(Icons.shopping_bag_outlined,
-                        size: 20.r,),
+                      trailing: Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        size: 15.r,
+                      ),
+                      leading: Icon(
+                        Icons.shopping_bag_outlined,
+                        size: 20.r,
+                      ),
                       title: Text('Your Orders'),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15).w,
-                      child: Divider(thickness: 1,color: Colors.grey,),
+                      child: Divider(
+                        thickness: 1,
+                        color: Colors.grey,
+                      ),
                     ),
                     ListTile(
                       onTap: () {
@@ -246,14 +266,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               builder: (context) => SettingsScreen()),
                         );
                       },
-                      trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15.r,),
-                      leading: Icon(Icons.settings_outlined,
-                        size: 20.r,),
+                      trailing: Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        size: 15.r,
+                      ),
+                      leading: Icon(
+                        Icons.settings_outlined,
+                        size: 20.r,
+                      ),
                       title: Text('Settings'),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15).w,
-                      child: Divider(thickness: 1,color: Colors.grey,),
+                      child: Divider(
+                        thickness: 1,
+                        color: Colors.grey,
+                      ),
                     ),
                     ListTile(
                       onTap: () {
@@ -263,14 +291,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               builder: (context) => HelpCenterScreen()),
                         );
                       },
-                      trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15.r,),
-                      leading: Icon(Icons.help_outline,
-                      size: 20.r,),
+                      trailing: Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        size: 15.r,
+                      ),
+                      leading: Icon(
+                        Icons.help_outline,
+                        size: 20.r,
+                      ),
                       title: Text('Help Center'),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15).w,
-                      child: Divider(thickness: 1,color: Colors.grey,),
+                      child: Divider(
+                        thickness: 1,
+                        color: Colors.grey,
+                      ),
                     ),
                     ListTile(
                       onTap: () {
@@ -280,24 +316,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               builder: (context) => PrivacyPolicy()),
                         );
                       },
-                      trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15.r,),
-                      leading: Icon(Icons.privacy_tip_outlined,
-                        size: 20.r,),
+                      trailing: Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        size: 15.r,
+                      ),
+                      leading: Icon(
+                        Icons.privacy_tip_outlined,
+                        size: 20.r,
+                      ),
                       title: Text('Privacy Policy'),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15).w,
-                      child: Divider(thickness: 1,color: Colors.grey,),
+                      child: Divider(
+                        thickness: 1,
+                        color: Colors.grey,
+                      ),
                     ),
                     ListTile(
-                      trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15.r,),
-                      leading: Icon(Icons.share_outlined,
-                        size: 20.r,),
+                      trailing: Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        size: 15.r,
+                      ),
+                      leading: Icon(
+                        Icons.share_outlined,
+                        size: 20.r,
+                      ),
                       title: Text('Share'),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15).w,
-                      child: Divider(thickness: 1,color: Colors.grey,),
+                      child: Divider(
+                        thickness: 1,
+                        color: Colors.grey,
+                      ),
                     ),
                     ListTile(
                       onTap: () {
@@ -305,33 +357,46 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: Text('Comeback Soon!',style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                              ),),
-                              content: Text('Are you sure you want to logout?',style: TextStyle(
-                                color: Colors.black38
-                              ),),
+                              title: Text(
+                                'Comeback Soon!',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              content: Text(
+                                'Are you sure you want to logout?',
+                                style: TextStyle(color: Colors.black38),
+                              ),
                               backgroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15.r),
                               ),
                               actions: <Widget>[
                                 TextButton(
-                                  child: Text('Cancel',style: TextStyle(
-                                    color: Colors.red,
-                                  ),),
+                                  child: Text(
+                                    'Cancel',
+                                    style: TextStyle(
+                                      color: Colors.red,
+                                    ),
+                                  ),
                                   onPressed: () {
                                     Navigator.of(context).pop();
                                   },
                                 ),
                                 TextButton(
                                   style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.red),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 10).w,
-                                    child: Text('Yes, Logout',
-                                    style: TextStyle(color: Colors.white),),
+                                    padding: const EdgeInsets.symmetric(
+                                            horizontal: 10)
+                                        .w,
+                                    child: Text(
+                                      'Yes, Logout',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
                                   ),
                                   onPressed: () {
                                     Navigator.push(
@@ -358,7 +423,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
                     ),
-
                   ],
                 ),
               ),

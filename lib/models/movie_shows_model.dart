@@ -15,6 +15,7 @@ class MovieShowsModel extends StatelessWidget {
   final String description;
   final String duration;
   final String now;
+  final Map castCrew;
 
   const MovieShowsModel({
     Key? key,
@@ -29,6 +30,7 @@ class MovieShowsModel extends StatelessWidget {
     required this.description,
     required this.duration,
     required this.now,
+    required this.castCrew,
   }) : super(key: key);
 
   @override
@@ -54,6 +56,7 @@ class MovieShowsModel extends StatelessWidget {
                       description: description,
                       duration: duration,
                       movieImage: bannerUrl,
+                      castCrew: castCrew,
                     ),
                   ),
                 );
@@ -71,6 +74,7 @@ class MovieShowsModel extends StatelessWidget {
                       release: release,
                       description: description,
                       duration: duration,
+                      castCrew: castCrew,
                     ),
                   ),
                 );
@@ -168,6 +172,7 @@ class _MovieShowsListState extends State<MovieShowsList> {
             description: movie['description'],
             duration: movie['duration'],
             now: movie['now'],
+            castCrew: movie['castCrew'],
           );
         }),
       ),
