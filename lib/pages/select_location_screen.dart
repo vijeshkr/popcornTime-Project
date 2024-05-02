@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:popcorn_time/pages/home_screen.dart';
-import 'package:popcorn_time/pages/theatre_selection_screen.dart';
 import '../constants/apptheme.dart';
 import '../data/location_data.dart';
 import '../widgets/bottom_navigation.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:geocoding/geocoding.dart';
 
 class SelectLocationScreen extends StatefulWidget {
-  const SelectLocationScreen({ Key? key}) : super(key: key);
+  const SelectLocationScreen({Key? key}) : super(key: key);
 
   @override
   State<SelectLocationScreen> createState() => _SelectLocationScreenState();
 }
 
 class _SelectLocationScreenState extends State<SelectLocationScreen> {
-
   List<String> filteredSuggestions = [];
 
   @override
@@ -27,9 +28,46 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
     setState(() {
       filteredSuggestions = allLocations
           .where((location) =>
-          location.toLowerCase().contains(query.toLowerCase(),),)
+              location.toLowerCase().contains(query.toLowerCase()))
           .toList();
     });
+  }
+
+  Future<void> _determinePosition() async {
+    try {
+      bool serviceEnabled;
+      LocationPermission permission;
+
+      serviceEnabled = await Geolocator.isLocationServiceEnabled();
+      if (!serviceEnabled) {
+        await Geolocator.openLocationSettings();
+        throw 'Location services are disabled.';
+      }
+
+      permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.denied) {
+          throw 'Location permissions are denied';
+        }
+      }
+
+      if (permission == LocationPermission.deniedForever) {
+        throw 'Location permissions are permanently denied, we cannot request permissions.';
+      }
+
+      Position position = await Geolocator.getCurrentPosition();
+      getPlaceFromLatLong(position);
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> getPlaceFromLatLong(Position position) async {
+    List<Placemark> placemark =
+        await placemarkFromCoordinates(position.latitude, position.longitude);
+    Placemark place = placemark[0];
+    myLocation = '${place.locality}';
   }
 
   @override
@@ -50,11 +88,19 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
               Padding(
                 padding: const EdgeInsets.only(top: 20).h,
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () async {
+                    await _determinePosition();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => BottomNavigation()),
+                    );
+                  },
                   child: Container(
                     decoration: BoxDecoration(
-                        color: AppTheme.greyColor,
-                        borderRadius: BorderRadius.circular(10.r)),
+                      color: AppTheme.greyColor,
+                      borderRadius: BorderRadius.circular(10.r),
+                    ),
                     padding: EdgeInsets.all(15).r,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -113,7 +159,8 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                         });
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => BottomNavigation()),
+                          MaterialPageRoute(
+                              builder: (context) => BottomNavigation()),
                         );
                       },
                     );
