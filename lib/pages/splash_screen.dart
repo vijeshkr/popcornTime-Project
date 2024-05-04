@@ -16,7 +16,7 @@ class SplashScreen extends StatelessWidget {
       const Duration(milliseconds: 3000),
       () => Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (_) => LoginScreen(),
+          builder: (_) => const LoginScreen(),
         ),
       ),
     );
@@ -26,24 +26,24 @@ class SplashScreen extends StatelessWidget {
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Image.asset(
             Assets.logo,
-            width: 250.w,
+            width: 250.h,
           ),
           Text(
             'popcorn TIME',
             style: GoogleFonts.nunito(
-              textStyle:  TextStyle(
-                fontSize: 40.sp,
+              textStyle: TextStyle(
+                fontSize: 40.h,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
             ),
           ),
-           SizedBox(
+          SizedBox(
             height: 50.h,
           ),
           LoadingAnimationWidget.staggeredDotsWave(
             color: Colors.white,
-            size: 50.r,
+            size: 50.h,
           ),
         ]),
       ),

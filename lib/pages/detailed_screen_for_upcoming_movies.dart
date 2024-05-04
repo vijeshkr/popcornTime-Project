@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/constants/apptheme.dart';
-import 'package:popcorn_time/pages/theatre_selection_screen.dart';
 
 class DetailsScreenUpcomingMovies extends StatelessWidget {
   String movieTitle;
@@ -33,85 +32,94 @@ class DetailsScreenUpcomingMovies extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            backgroundColor: AppTheme.statusBar,
-            leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(Icons.arrow_back),
-            ),
-            expandedHeight: 220.h,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage(
-                      movieCover,
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              backgroundColor: Colors.white,
+              leading: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const Icon(Icons.arrow_back),
+              ),
+              expandedHeight: 260.h,
+              flexibleSpace: FlexibleSpaceBar(
+                background: Padding(
+                  padding: const EdgeInsets.all(10).h,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10).r,
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage(
+                          movieCover,
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-          SliverFillRemaining(
-            hasScrollBody: false,
-            child: Container(
-              color: Color(0xfff5f5fa),
-              padding: const EdgeInsets.all(20).r,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    color: Colors.white,
-                    width: double.maxFinite,
-                    padding: EdgeInsets.all(20).r,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              movieTitle,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 18.sp,
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Container(
+                color: const Color(0xfff5f5fa),
+                padding: const EdgeInsets.all(20).r,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10).r
+                      ),
+                      width: double.maxFinite,
+                      padding: const EdgeInsets.all(20).h,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                movieTitle,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 18,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'UA | $release',
-                              style: TextStyle(color: Colors.black45),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                          SizedBox(
+                            height: 5.h,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'UA | $release',
+                                style: const TextStyle(color: Colors.black45),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  Container(
-                    color: Colors.white,
-                    padding: const EdgeInsets.all(20).r,
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Container(
-                                // padding: EdgeInsets.only(left: 20, right: 20),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10).r
+                      ),
+                      padding: const EdgeInsets.all(20).r,
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -120,7 +128,7 @@ class DetailsScreenUpcomingMovies extends StatelessWidget {
                                     ),
                                     Text(
                                       '$duration . ${genre[0]}, ${genre[1]}',
-                                      style: TextStyle(color: Colors.black45),
+                                      style: const TextStyle(color: Colors.black45),
                                     ),
                                     SizedBox(
                                       height: 5.h,
@@ -128,23 +136,23 @@ class DetailsScreenUpcomingMovies extends StatelessWidget {
                                     Row(
                                       children: [
                                         Text(
-                                          '$language',
-                                          style: TextStyle(color: Colors.red),
+                                          language,
+                                          style: const TextStyle(color: AppTheme.splash),
                                         ),
                                         SizedBox(
-                                          width: 10.w,
+                                          width: 10.h,
                                         ),
                                         Container(
                                           decoration: BoxDecoration(
-                                            color: Colors.red.withOpacity(0.2),
+                                            color: AppTheme.splash.withOpacity(0.2),
                                             borderRadius:
                                             BorderRadius.circular(3).r,
                                           ),
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 2, vertical: 1).r,
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 2, vertical: 1).h,
                                           child: Text(
-                                            '$screen_2D',
-                                            style: TextStyle(color: Colors.red),
+                                            screen_2D,
+                                            style: const TextStyle(color: AppTheme.splash),
                                           ),
                                         ),
                                       ],
@@ -155,111 +163,119 @@ class DetailsScreenUpcomingMovies extends StatelessWidget {
                                     Container(
                                       color: Colors.white,
                                       child: Text(
-                                        '$description',
+                                        description,
                                         overflow: TextOverflow.ellipsis,
                                         maxLines: 25,
-                                        style: TextStyle(color: Colors.black45),
+                                        style: const TextStyle(color: Colors.black45),
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10).r,
+                      ),
+                      padding: const EdgeInsets.all(20).h,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Release Date',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black,
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  Container(
-                    color: Colors.white,
-                    padding: const EdgeInsets.all(20).r,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Release Date',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black,
                           ),
-                        ),
-                        Text(
-                          '$release',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black,
+                          Text(
+                            release,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: AppTheme.splash,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  Container(
-                    color: Colors.white,
-                    padding: const EdgeInsets.all(20).r,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Cast & Crew',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black,
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10),
+                          ),),
+                      padding: const EdgeInsets.all(20).r,
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Cast & Crew',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  Container(
-                    color: Colors.white,
-                    child: Column(
-                      children: [
-                        ListTile(
-                          title: Text('${castCrew['director']}'),
-                          subtitle: Text('Director'),
-                          trailing: Icon(Icons.videocam_outlined),
-                        ),
-                        Divider(thickness: 1,color: Colors.grey,),
-                        ListTile(
-                          title: Text('${castCrew['actor']}'),
-                          subtitle: Text('Actor'),
-                          trailing: Icon(Icons.theater_comedy_outlined),
-                        ),
-                        Divider(thickness: 1,color: Colors.grey,),
-
-                        ListTile(
-                          title: Text('${castCrew['actress']}'),
-                          subtitle: Text('Actress'),
-                          trailing: Icon(Icons.theater_comedy_outlined),
-                        ),
-                        Divider(thickness: 1,color: Colors.grey,),
-
-                        ListTile(
-                          title: Text('${castCrew['producer']}'),
-                          subtitle: Text('Producer'),
-                          trailing: Icon(Icons.paid_outlined),
-                        ),
-                        Divider(thickness: 1,color: Colors.grey,),
-
-                        ListTile(
-                          title: Text('${castCrew['musician']}'),
-                          subtitle: Text('Musician'),
-                          trailing: Icon(Icons.music_note_outlined),
-                        ),
-                      ],
+                    Container(
+                      color: Colors.white,
+                      child: Column(
+                        children: [
+                          ListTile(
+                            title: Text('${castCrew['director']}'),
+                            subtitle: const Text('Director'),
+                            trailing: const Icon(Icons.videocam_outlined,color: AppTheme.splash,),
+                          ),
+                          const Divider(thickness: 1,color: Colors.grey,),
+                          ListTile(
+                            title: Text('${castCrew['actor']}'),
+                            subtitle: const Text('Actor'),
+                            trailing: const Icon(Icons.theater_comedy_outlined,color: AppTheme.splash,),
+                          ),
+                          const Divider(thickness: 1,color: Colors.grey,),
+        
+                          ListTile(
+                            title: Text('${castCrew['actress']}'),
+                            subtitle: const Text('Actress'),
+                            trailing: const Icon(Icons.theater_comedy_outlined,color: AppTheme.splash,),
+                          ),
+                          const Divider(thickness: 1,color: Colors.grey,),
+        
+                          ListTile(
+                            title: Text('${castCrew['producer']}'),
+                            subtitle: const Text('Producer'),
+                            trailing: const Icon(Icons.paid_outlined,color: AppTheme.splash,),
+                          ),
+                          const Divider(thickness: 1,color: Colors.grey,),
+        
+                          ListTile(
+                            title: Text('${castCrew['musician']}'),
+                            subtitle: const Text('Musician'),
+                            trailing: const Icon(Icons.music_note_outlined,color: AppTheme.splash,),
+                          ),
+                        ],
+                      ),
+        
                     ),
-
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

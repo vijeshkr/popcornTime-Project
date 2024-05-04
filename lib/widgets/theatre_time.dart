@@ -18,8 +18,11 @@ class TheatreTime extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10).r,
-      color: Colors.white,
+      decoration: BoxDecoration(
+          color: Colors.white,
+        borderRadius: BorderRadius.circular(10).r
+      ),
+      padding: const EdgeInsets.all(10).h,
       child: Column(
         children: [
           Row(
@@ -63,13 +66,13 @@ class TheatreTime extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5.r),
                         border: Border.all(
-                          width: 1.w,
+                          width: 1,
                           // color: Color(0xffe5e5e5),
                           color: Colors.green.shade600,
                         ),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(10).r,
+                        padding: const EdgeInsets.all(10).h,
                         child: Text(
                           '11:30 AM',
                           style: TextStyle(color: Colors.green[600]),
@@ -78,7 +81,7 @@ class TheatreTime extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: 15.w,
+                    width: 15.h,
                   ),
                   InkWell(
                     onTap: () {
@@ -100,14 +103,14 @@ class TheatreTime extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5.r),
                         border: Border.all(
-                          width: 1.w,
+                          width: 1,
                           // color: Color(0xffe5e5e5),
 
                           color: Colors.green.shade600,
                         ),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(10).r,
+                        padding: const EdgeInsets.all(10).h,
                         child: Text(
                           '03:00 PM',
                           style: TextStyle(color: Colors.green[600]),
@@ -143,7 +146,7 @@ class TheatreTime extends StatelessWidget {
                             color: Colors.green.shade600),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(10).r,
+                        padding: const EdgeInsets.all(10).h,
                         child: Text(
                           '06:00 PM',
                           style: TextStyle(color: Colors.green[600]),
@@ -183,7 +186,7 @@ class TheatreTime extends StatelessWidget {
                             color: Colors.green.shade600),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(10).r,
+                        padding: const EdgeInsets.all(10).h,
                         child: Text(
                           '09:30 PM',
                           style: TextStyle(color: Colors.green[600]),

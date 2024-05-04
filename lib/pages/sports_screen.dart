@@ -44,8 +44,11 @@ class _SportsScreenState extends State<SportsScreen> {
           )
         ],
       ),
-      body: EventsShowsList(
-        events: eventsDummyDataSports.cast<Map<String, dynamic>>(),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5),
+        child: EventsShowsList(
+          events: eventsDummyDataSports.cast<Map<String, dynamic>>(),
+        ),
       ),
     );
   }

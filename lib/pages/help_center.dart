@@ -11,23 +11,23 @@ class HelpCenterScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         // automaticallyImplyLeading: false,
-        title: Text('FAQ',style: TextStyle(
-          fontSize: 25.sp,
+        title: const Text('FAQ',style: TextStyle(
+          fontSize: 25,
           fontWeight: FontWeight.bold,
         ),),
       ),
       body: Accordion(
-        headerBorderColor: Colors.black12,
-        headerBackgroundColor: Colors.black12,
-        headerBorderColorOpened: Colors.black12,
-        headerBackgroundColorOpened: Colors.black12,
-        contentBackgroundColor: Colors.black12,
+        headerBorderColor: Colors.blue.shade50,
+        headerBackgroundColor: Colors.blue.shade50,
+        headerBorderColorOpened: Colors.blue.shade50,
+        headerBackgroundColorOpened: Colors.blue.shade50,
+        contentBackgroundColor: Colors.blue.shade50,
         contentBorderWidth: 0,
-        contentHorizontalPadding: 20.r,
+        contentHorizontalPadding: 20.h,
         scaleWhenAnimating: true,
         openAndCloseAnimation: true,
         headerPadding:
-        const EdgeInsets.symmetric(vertical: 15, horizontal: 20).r,
+        const EdgeInsets.symmetric(vertical: 15, horizontal: 20).h,
         sectionOpeningHapticFeedback: SectionHapticFeedback.heavy,
         sectionClosingHapticFeedback: SectionHapticFeedback.light,
         children: [

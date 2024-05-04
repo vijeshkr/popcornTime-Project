@@ -22,6 +22,9 @@ class _MovieScreenState extends State<MovieScreen> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+
+    // movie filter logic
+
     List movieDataFiltered = [];
     for (var data in movieDataNow) {
       if (languageFilter != '' && genreFilter != '') {
@@ -44,15 +47,15 @@ class _MovieScreenState extends State<MovieScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppTheme.greyColor,
-        toolbarHeight: 70.h,
+        toolbarHeight: 60.h,
         // automaticallyImplyLeading: false,
-        title:  Column(
+        title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Now Showing',
               style: TextStyle(
-                fontSize: 20.sp,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -60,18 +63,18 @@ class _MovieScreenState extends State<MovieScreen> {
               children: [
                 Text(
                   myLocation,
-                  style: TextStyle(
-                    fontSize: 14.sp,
+                  style: const TextStyle(
+                    fontSize: 14,
                     color: Colors.grey,
                   ),
                 ),
                 SizedBox(
-                  width: 8.w,
+                  width: 8.h,
                 ),
                 Text(
-                  'Movies',
-                  style: TextStyle(
-                    fontSize: 14.sp,
+                  '${movieDataFiltered.length} Movies',
+                  style: const TextStyle(
+                    fontSize: 14,
                     color: Colors.grey,
                   ),
                 ),
@@ -82,31 +85,33 @@ class _MovieScreenState extends State<MovieScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              showSearch(context: context,
-                delegate:CustomSearch(),);
+              showSearch(
+                context: context,
+                delegate: CustomSearch(),
+              );
             },
             icon: const Icon(
               Icons.search,
               color: Colors.black,
             ),
           ),
-           SizedBox(
-            width: 10.w,
+          SizedBox(
+            width: 10.h,
           )
         ],
       ),
       body: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(10).r,
-            height: 55.h,
+            padding: const EdgeInsets.all(5).h,
+            height: 45.h,
             width: size.width,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 7,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: const EdgeInsets.only(right: 10).r,
+                  padding: const EdgeInsets.only(right: 10).h,
                   child: OutlinedButton(
                     onPressed: () {
                       setState(() {
@@ -138,23 +143,22 @@ class _MovieScreenState extends State<MovieScreen> {
                           });
                         }
                       });
-                      print(languageFilter);
                     },
-                    child: languages[index],
                     style: OutlinedButton.styleFrom(
-                      side: BorderSide(
+                      side: const BorderSide(
                         color: AppTheme
                             .splash, // Change the color to your desired outline color
-                        width: 1.0.w, // Adjust the width as needed
+                        width: 1.0, // Adjust the width as needed
                       ),
                     ),
+                    child: languages[index],
                   ),
                 );
               },
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(10).r,
+            padding: const EdgeInsets.all(5).h,
             child: ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(
@@ -163,18 +167,17 @@ class _MovieScreenState extends State<MovieScreen> {
                   ),
                 );
               },
-              child: Text('Upcoming Movies'),
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white,
                 backgroundColor: AppTheme.splash, // Text color
-                padding: EdgeInsets.symmetric(
-                    horizontal: 100, vertical: 15).r, // Padding
+                padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 10).h, // Padding
                 shape: RoundedRectangleBorder(
                   borderRadius:
                       BorderRadius.circular(10.r), // BorderRadius// Border
                 ),
-                elevation: 5, // Elevation
+                elevation: 0, // Elevation
               ),
+              child: const Text('Upcoming Movies'),
             ),
           ),
           Expanded(
@@ -183,8 +186,8 @@ class _MovieScreenState extends State<MovieScreen> {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(10).r,
-            height: 55.h,
+            padding: const EdgeInsets.all(5).h,
+            height: 45.h,
             width: size.width,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -235,16 +238,15 @@ class _MovieScreenState extends State<MovieScreen> {
                           });
                         }
                       });
-                      print(genreFilter);
                     },
-                    child: genres[index],
                     style: OutlinedButton.styleFrom(
-                      side: BorderSide(
+                      side: const BorderSide(
                         color: AppTheme
                             .splash, // Change the color to your desired outline color
-                        width: 1.0.w, // Adjust the width as needed
+                        width: 1, // Adjust the width as needed
                       ),
                     ),
+                    child: genres[index],
                   ),
                 );
               },

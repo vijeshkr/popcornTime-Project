@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:popcorn_time/constants/apptheme.dart';
 
 import '../constants/assets.dart';
 import '../widgets/bottom_navigation.dart';
@@ -34,23 +35,23 @@ class MovieBookingConfirmation extends StatelessWidget {
       // appBar: AppBar(),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10).h,
           child: Container(
             height: size.height * 0.70,
             width: double.maxFinite,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(10).r,
                 border: Border.all(width: 1, color: Colors.grey)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Container(
-                    height: 100,
+                  padding: const EdgeInsets.all(10).h,
+                  child: SizedBox(
+                    height: 100.h,
                     child: Image.asset(
                       Assets.logo,
-                      width: 250.w,
+                      width: 250.h,
                     ),
                   ),
                 ),
@@ -61,7 +62,7 @@ class MovieBookingConfirmation extends StatelessWidget {
                       fontSize: 18,
                       color: Colors.green.shade600),
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
@@ -76,13 +77,12 @@ class MovieBookingConfirmation extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10).h,
                   child: Container(
-                    // height: 250,
                     width: double.maxFinite,
                     decoration: BoxDecoration(
                         color: Colors.grey.shade200,
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(10).r,
                         border:
                             Border.all(width: 1, color: Colors.grey.shade200)),
 
@@ -92,34 +92,34 @@ class MovieBookingConfirmation extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10).h,
                               child: Image.asset(
                                 movieImage,
-                                width: 80.w,
-                                height: 100.w,
+                                width: 80.h,
+                                height: 100.h,
                               ),
                             ),
                             Flexible(
                               child: Padding(
-                                padding: const EdgeInsets.all(10),
+                                padding: const EdgeInsets.all(10).h,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       movieTitle,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 15,
                                       ),
                                     ),
                                     Text('$showTime | $selectedDate'),
                                     Text(
-                                      '$theatreName',
+                                      theatreName,
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 3,
                                     ),
                                     SizedBox(
-                                      height: 10,
+                                      height: 10.h,
                                     ),
 
                                   ],
@@ -136,12 +136,12 @@ class MovieBookingConfirmation extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 15),
                           child: Row(
                             children: [
-                              Text('Seat No :  '),
+                              const Text('Seat No :  '),
                               Row(
                                 children: myList
                                     .map((item) => Text(
                                   '$item ',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontWeight:
                                     FontWeight.bold,
                                     fontSize: 15,
@@ -161,23 +161,23 @@ class MovieBookingConfirmation extends StatelessWidget {
                                 children: [
                                   Text(
                                     '$tickets',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 45,
                                     ),
                                   ),
-                                  Text('Tickets'),
+                                  const Text('Tickets'),
                                 ],
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10).h,
                               child: Column(
                                 children: [
-                                  Text('Amount Paid : '),
+                                  const Text('Amount Paid : '),
                                   Text(
                                     '$amountPaid',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -196,11 +196,13 @@ class MovieBookingConfirmation extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => BottomNavigation(),
+                        builder: (context) => const BottomNavigation(),
                       ),
                     );
                   },
-                  child: Text('Back to Home'),
+                  child: const Text('Back to Home',style: TextStyle(
+                    color: AppTheme.splash,
+                  ),),
                 )
               ],
             ),

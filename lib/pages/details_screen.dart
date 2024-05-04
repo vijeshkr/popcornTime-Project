@@ -4,7 +4,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/constants/apptheme.dart';
 import 'package:popcorn_time/pages/theatre_selection_screen.dart';
-
 import '../data/location_data.dart';
 import 'home_screen.dart';
 
@@ -20,122 +19,130 @@ class DetailsScreen extends StatelessWidget {
   String description;
   String duration;
   Map castCrew;
-  DetailsScreen(
-      {super.key,
-      required this.movieTitle,
-      required this.movieImage,
-      required this.movieCover,
-      required this.like,
-      required this.language,
-      required this.screen_2D,
-      required this.genre,
-      required this.release,
-      required this.description,
-      required this.duration,
-      required this.castCrew,
-      });
+  DetailsScreen({
+    super.key,
+    required this.movieTitle,
+    required this.movieImage,
+    required this.movieCover,
+    required this.like,
+    required this.language,
+    required this.screen_2D,
+    required this.genre,
+    required this.release,
+    required this.description,
+    required this.duration,
+    required this.castCrew,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            backgroundColor: AppTheme.statusBar,
-            leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(Icons.arrow_back),
-            ),
-            expandedHeight: 220.h,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage(
-                      movieCover,
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              backgroundColor: Colors.white,
+              leading: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const Icon(Icons.arrow_back),
+              ),
+              expandedHeight: 260.h,
+              flexibleSpace: FlexibleSpaceBar(
+                background: Padding(
+                  padding: const EdgeInsets.all(10).h,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10).r,
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage(
+                          movieCover,
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-          SliverFillRemaining(
-            hasScrollBody: false,
-            child: Container(
-              color: Color(0xfff5f5fa),
-              padding: const EdgeInsets.all(20).r,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    color: Colors.white,
-                    width: double.maxFinite,
-                    padding: EdgeInsets.all(20).r,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              movieTitle,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 18.sp,
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Container(
+                color: const Color(0xfff5f5fa),
+                padding: const EdgeInsets.all(20).r,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10).r),
+                      width: double.maxFinite,
+                      padding: const EdgeInsets.all(20).h,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                movieTitle,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 18,
+                                ),
                               ),
-                            ),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.favorite,
-                                  color: Colors.red,
-                                ),
-                                SizedBox(
-                                  width: 5.w,
-                                ),
-                                Text(
-                                  '$like %',
-                                  style: TextStyle(fontSize: 15.sp),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'UA | $release',
-                              style: TextStyle(color: Colors.black45),
-                            ),
-                            Text(
-                              '2.4K votes',
-                              style: TextStyle(color: Colors.red),
-                            ),
-                          ],
-                        ),
-                      ],
+                              Row(
+                                children: [
+                                  const Icon(
+                                    Icons.favorite,
+                                    color: Colors.red,
+                                    size: 20,
+                                  ),
+                                  SizedBox(
+                                    width: 5.h,
+                                  ),
+                                  Text(
+                                    '${like / 10}/10',
+                                    style: const TextStyle(fontSize: 15),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 5.h,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'UA | $release',
+                                style: const TextStyle(color: Colors.black45),
+                              ),
+                              const Text(
+                                '2.4K votes',
+                                style: TextStyle(color: Colors.red),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  Container(
-                    color: Colors.white,
-                    padding: const EdgeInsets.all(20).r,
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Container(
-                                // padding: EdgeInsets.only(left: 20, right: 20),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10).r),
+                      padding: const EdgeInsets.all(20).h,
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -144,7 +151,8 @@ class DetailsScreen extends StatelessWidget {
                                     ),
                                     Text(
                                       '$duration . ${genre[0]}, ${genre[1]}',
-                                      style: TextStyle(color: Colors.black45),
+                                      style: const TextStyle(
+                                          color: Colors.black45),
                                     ),
                                     SizedBox(
                                       height: 5.h,
@@ -152,23 +160,27 @@ class DetailsScreen extends StatelessWidget {
                                     Row(
                                       children: [
                                         Text(
-                                          '$language',
-                                          style: TextStyle(color: Colors.red),
+                                          language,
+                                          style: const TextStyle(
+                                              color: AppTheme.splash),
                                         ),
                                         SizedBox(
-                                          width: 10.w,
+                                          width: 10.h,
                                         ),
                                         Container(
                                           decoration: BoxDecoration(
-                                            color: Colors.red.withOpacity(0.2),
+                                            color: AppTheme.splash
+                                                .withOpacity(0.2),
                                             borderRadius:
                                                 BorderRadius.circular(3).r,
                                           ),
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 2, vertical: 1).r,
+                                          padding: const EdgeInsets.symmetric(
+                                                  horizontal: 2, vertical: 1).h
+                                              .h,
                                           child: Text(
-                                            '$screen_2D',
-                                            style: TextStyle(color: Colors.red),
+                                            screen_2D,
+                                            style: const TextStyle(
+                                                color: AppTheme.splash),
                                           ),
                                         ),
                                       ],
@@ -177,130 +189,139 @@ class DetailsScreen extends StatelessWidget {
                                       height: 10.h,
                                     ),
                                     Container(
-                                      color: Colors.white,
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(10).r),
                                       child: Text(
-                                        '$description',
+                                        description,
                                         overflow: TextOverflow.ellipsis,
                                         maxLines: 25,
-                                        style: TextStyle(color: Colors.black45),
+                                        style: const TextStyle(
+                                            color: Colors.black45),
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10).r),
+                      padding: const EdgeInsets.all(20).h,
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            '1024 reviews',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black,
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  Container(
-                    color: Colors.white,
-                    padding: const EdgeInsets.all(20).r,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          '1024 reviews',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black,
                           ),
-                        ),
-                        Text(
-                          'Write yours >',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Colors.red,
+                          Text(
+                            'Write yours >',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.red,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  Container(
-                    color: Colors.white,
-                    padding: const EdgeInsets.all(20).r,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Cast & Crew',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black,
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10),
+                          ),),
+                      padding: const EdgeInsets.all(20).h,
+                      child: const Row(
+                        children: [
+                          Text(
+                            'Cast & Crew',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black,
+                            ),
                           ),
-                        ),
-                        // Text(
-                        //   'View All',
-                        //   style: TextStyle(
-                        //     fontWeight: FontWeight.w500,
-                        //     color: Colors.red,
-                        //   ),
-                        // ),
-
-
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  Container(
-                    color: Colors.white,
-                    child: Column(
-                      children: [
-                        ListTile(
-                          title: Text('${castCrew['director']}'),
-                          subtitle: Text('Director'),
-                          trailing: Icon(Icons.videocam_outlined),
-                        ),
-                        Divider(thickness: 1,color: Colors.grey,),
-                        ListTile(
-                          title: Text('${castCrew['actor']}'),
-                          subtitle: Text('Actor'),
-                          trailing: Icon(Icons.theater_comedy_outlined),
-                        ),
-                        Divider(thickness: 1,color: Colors.grey,),
-
-                        ListTile(
-                          title: Text('${castCrew['actress']}'),
-                          subtitle: Text('Actress'),
-                          trailing: Icon(Icons.theater_comedy_outlined),
-                        ),
-                        Divider(thickness: 1,color: Colors.grey,),
-
-                        ListTile(
-                          title: Text('${castCrew['producer']}'),
-                          subtitle: Text('Producer'),
-                          trailing: Icon(Icons.paid_outlined),
-                        ),
-                        Divider(thickness: 1,color: Colors.grey,),
-
-                        ListTile(
-                          title: Text('${castCrew['musician']}'),
-                          subtitle: Text('Musician'),
-                          trailing: Icon(Icons.music_note_outlined),
-                        ),
-                      ],
+                    Container(
+                      color: Colors.white,
+                      child: Column(
+                        children: [
+                          ListTile(
+                            title: Text('${castCrew['director']}'),
+                            subtitle: const Text('Director'),
+                            trailing: const Icon(Icons.videocam_outlined,color: AppTheme.splash,),
+                          ),
+                          const Divider(
+                            thickness: 1,
+                            color: Colors.grey,
+                          ),
+                          ListTile(
+                            title: Text('${castCrew['actor']}'),
+                            subtitle: const Text('Actor'),
+                            trailing: const Icon(Icons.theater_comedy_outlined, color: AppTheme.splash,),
+                          ),
+                          const Divider(
+                            thickness: 1,
+                            color: Colors.grey,
+                          ),
+                          ListTile(
+                            title: Text('${castCrew['actress']}'),
+                            subtitle: const Text('Actress'),
+                            trailing: const Icon(Icons.theater_comedy_outlined, color: AppTheme.splash,),
+                          ),
+                          const Divider(
+                            thickness: 1,
+                            color: Colors.grey,
+                          ),
+                          ListTile(
+                            title: Text('${castCrew['producer']}'),
+                            subtitle: const Text('Producer'),
+                            trailing: const Icon(Icons.paid_outlined, color: AppTheme.splash,),
+                          ),
+                          const Divider(
+                            thickness: 1,
+                            color: Colors.grey,
+                          ),
+                          ListTile(
+                            title: Text('${castCrew['musician']}'),
+                            subtitle: const Text('Musician'),
+                            trailing: const Icon(Icons.music_note_outlined, color: AppTheme.splash,),
+                          ),
+                        ],
+                      ),
                     ),
-
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.all(10).r,
+        padding: const EdgeInsets.all(10).h,
         child: ElevatedButton(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
+            backgroundColor: MaterialStateProperty.all<Color>(AppTheme.splash),
             padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-              EdgeInsets.symmetric(vertical: 12).h,
+              const EdgeInsets.symmetric(vertical: 12).h,
             ),
           ),
           onPressed: () {
@@ -314,15 +335,18 @@ class DetailsScreen extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => TheatreSelectionScreen(movieName: movieTitle,movieImage: movieImage,),
+                builder: (context) => TheatreSelectionScreen(
+                  movieName: movieTitle,
+                  movieImage: movieImage,
+                ),
               ),
             );
           },
-          child: Text(
+          child: const Text(
             'Book tickets',
             style: TextStyle(
               color: Colors.white,
-              fontSize: 16.sp,
+              fontSize: 16,
               fontWeight: FontWeight.w500,
             ),
           ),

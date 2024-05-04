@@ -6,7 +6,6 @@ import '../constants/apptheme.dart';
 import '../data/location_data.dart';
 import '../widgets/bottom_navigation.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:geocoding/geocoding.dart';
 
 class SelectLocationScreen extends StatefulWidget {
   const SelectLocationScreen({Key? key}) : super(key: key);
@@ -75,13 +74,13 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Select Location'),
+        title: const Text('Select Location'),
       ),
-      body: Container(
+      body: SizedBox(
         height: size.height,
         width: size.width,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20).w,
+          padding: const EdgeInsets.symmetric(horizontal: 20).h,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -93,28 +92,28 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => BottomNavigation()),
+                          builder: (context) => const BottomNavigation()),
                     );
                   },
                   child: Container(
                     decoration: BoxDecoration(
                       color: AppTheme.greyColor,
-                      borderRadius: BorderRadius.circular(10.r),
+                      borderRadius: BorderRadius.circular(10).r,
                     ),
-                    padding: EdgeInsets.all(15).r,
+                    padding: const EdgeInsets.all(15).h,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.my_location,
                           color: Colors.black45,
                         ),
-                        SizedBox(width: 15.w),
-                        Text(
+                        SizedBox(width: 15.h),
+                        const Text(
                           'My Current Location',
                           style: TextStyle(
                             color: Colors.black45,
-                            fontSize: 16.sp,
+                            fontSize: 16,
                           ),
                         )
                       ],
@@ -129,9 +128,13 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                     filterSuggestions(value);
                   },
                   decoration: InputDecoration(
-                    prefixIcon: Icon(
+                    isDense: true,
+                    isCollapsed: true,
+                    contentPadding: EdgeInsets.symmetric(vertical: 15.h , horizontal: 10.h),
+                    prefixIcon: const Icon(
                       Icons.search,
                       color: Colors.black45,
+                      size: 23,
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5).r,
@@ -140,7 +143,7 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                     fillColor: AppTheme.greyColor,
                     filled: true,
                     hintText: 'Search',
-                    hintStyle: TextStyle(
+                    hintStyle: const TextStyle(
                       color: Colors.black45,
                     ),
                   ),
@@ -160,7 +163,7 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => BottomNavigation()),
+                              builder: (context) => const BottomNavigation()),
                         );
                       },
                     );

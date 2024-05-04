@@ -7,7 +7,6 @@ import 'package:popcorn_time/pages/help_center.dart';
 import 'package:popcorn_time/pages/login_screen.dart';
 import 'package:popcorn_time/pages/settings.dart';
 import 'package:popcorn_time/pages/your_orders.dart';
-
 import '../constants/apptheme.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -26,7 +25,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppTheme.statusBar,
-        title: Text(
+        title: const Text(
           'Profile',
           style: TextStyle(color: Colors.white),
         ),
@@ -34,7 +33,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         elevation: 0,
       ),
       body: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
           width: double.maxFinite,
           child: Stack(
             children: [
@@ -49,7 +48,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     )),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 90).r,
+                padding: const EdgeInsets.only(top: 90).h,
                 // top: 90,
                 // left: MediaQuery.of(context).size.width * 0.5 - 60,
                 child: Column(
@@ -59,14 +58,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Container(
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.white, width: 3),
-                            borderRadius: BorderRadius.circular(65),
+                            borderRadius: BorderRadius.circular(65).r,
                           ),
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(65),
+                            borderRadius: BorderRadius.circular(65).r,
                             child: Image.network(
                               'https://media.licdn.com/dms/image/D4D03AQF8iQXzw-aZZg/profile-displayphoto-shrink_800_800/0/1702019275221?e=1718236800&v=beta&t=-qZHuAUC7YYsO5zy8Un0RE-befzfvMrPdxDrpoDYoZE',
-                              width: 120,
-                              height: 120,
+                              width: 120.h,
+                              height: 120.h,
                             ),
                           )),
                     ),
@@ -76,30 +75,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Padding(
                       padding: const EdgeInsets.only(
                         left: 70,
-                      ).r,
-                      child: Text('Name'),
+                      ).h,
+                      child: const Text('Name'),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 20,
-                      ).w,
+                      ).h,
                       child: TextFormField(
                         readOnly: isEdit,
-                        style: TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.black),
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(
+                          border: const OutlineInputBorder(
                             borderSide: BorderSide.none,
                           ),
                           prefixIcon: Padding(
-                            padding: const EdgeInsets.all(4).r,
+                            padding: const EdgeInsets.all(4).h,
                             child: Container(
                               height: 25.h,
-                              width: 25.w,
+                              width: 25.h,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20).r,
-                                color: Color(0xffe4edff),
+                                color: const Color(0xffe4edff),
                               ),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.person_outline,
                                 color: Color(0xff4c7eff),
                               ),
@@ -112,8 +111,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               });
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(4).r,
-                              child: Icon(
+                              padding: const EdgeInsets.all(4).h,
+                              child: const Icon(
                                 Icons.edit_outlined,
                                 color: Color(0xff4c7eff),
                               ),
@@ -128,30 +127,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Padding(
                       padding: const EdgeInsets.only(
                         left: 70,
-                      ).r,
-                      child: Text('Email'),
+                      ).h,
+                      child: const Text('Email'),
                     ),
                     Padding(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 20,
-                        ).w,
+                        ).h,
                         child: TextFormField(
                           readOnly: isEdit,
-                          style: TextStyle(color: Colors.black),
+                          style: const TextStyle(color: Colors.black),
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(
+                            border: const OutlineInputBorder(
                               borderSide: BorderSide.none,
                             ),
                             prefixIcon: Padding(
-                              padding: const EdgeInsets.all(4).r,
+                              padding: const EdgeInsets.all(4).h,
                               child: Container(
                                 height: 25.h,
-                                width: 25.w,
+                                width: 25.h,
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20.r),
-                                  color: Color(0xffe8dbff),
+                                  borderRadius: BorderRadius.circular(20).r,
+                                  color: const Color(0xffe8dbff),
                                 ),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.email_outlined,
                                   color: Color(0xffcc80ea),
                                 ),
@@ -164,8 +163,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 });
                               },
                               child: Padding(
-                                padding: const EdgeInsets.all(4).r,
-                                child: Icon(
+                                padding: const EdgeInsets.all(4).h,
+                                child: const Icon(
                                   Icons.edit_outlined,
                                   color: Color(0xff4c7eff),
                                 ),
@@ -180,30 +179,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Padding(
                       padding: const EdgeInsets.only(
                         left: 70,
-                      ).r,
-                      child: Text('Mobile'),
+                      ).h,
+                      child: const Text('Mobile'),
                     ),
                     Padding(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 20,
-                        ).w,
+                        ).h,
                         child: TextFormField(
                           readOnly: isEdit,
-                          style: TextStyle(color: Colors.black),
+                          style: const TextStyle(color: Colors.black),
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(
+                            border: const OutlineInputBorder(
                               borderSide: BorderSide.none,
                             ),
                             prefixIcon: Padding(
-                              padding: const EdgeInsets.all(4).r,
+                              padding: const EdgeInsets.all(4).h,
                               child: Container(
                                 height: 25.h,
-                                width: 25.w,
+                                width: 25.h,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20).r,
-                                  color: Color(0xffcceff0),
+                                  color: const Color(0xffcceff0),
                                 ),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.phone_android_outlined,
                                   color: Color(0xff48eb9f),
                                 ),
@@ -216,8 +215,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 });
                               },
                               child: Padding(
-                                padding: const EdgeInsets.all(4).r,
-                                child: Icon(
+                                padding: const EdgeInsets.all(4).h,
+                                child: const Icon(
                                   Icons.edit_outlined,
                                   color: Color(0xff4c7eff),
                                 ),
@@ -228,8 +227,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
 
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15).w,
-                      child: Divider(
+                      padding: const EdgeInsets.symmetric(horizontal: 15).h,
+                      child: const Divider(
                         thickness: 1,
                         color: Colors.grey,
                       ),
@@ -238,22 +237,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => YourOrders()),
+                          MaterialPageRoute(builder: (context) => const YourOrders()),
                         );
                       },
-                      trailing: Icon(
+                      trailing: const Icon(
                         Icons.arrow_forward_ios_rounded,
-                        size: 15.r,
+                        size: 15,
                       ),
-                      leading: Icon(
+                      leading: const Icon(
                         Icons.shopping_bag_outlined,
-                        size: 20.r,
+                        size: 20,
                       ),
-                      title: Text('Your Orders'),
+                      title: const Text('Your Orders'),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15).w,
-                      child: Divider(
+                      padding: const EdgeInsets.symmetric(horizontal: 15).h,
+                      child: const Divider(
                         thickness: 1,
                         color: Colors.grey,
                       ),
@@ -263,22 +262,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => SettingsScreen()),
+                              builder: (context) => const SettingsScreen()),
                         );
                       },
-                      trailing: Icon(
+                      trailing: const Icon(
                         Icons.arrow_forward_ios_rounded,
-                        size: 15.r,
+                        size: 15,
                       ),
-                      leading: Icon(
+                      leading: const Icon(
                         Icons.settings_outlined,
-                        size: 20.r,
+                        size: 20,
                       ),
-                      title: Text('Settings'),
+                      title: const Text('Settings'),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15).w,
-                      child: Divider(
+                      padding: const EdgeInsets.symmetric(horizontal: 15).h,
+                      child: const Divider(
                         thickness: 1,
                         color: Colors.grey,
                       ),
@@ -288,22 +287,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => HelpCenterScreen()),
+                              builder: (context) => const HelpCenterScreen()),
                         );
                       },
-                      trailing: Icon(
+                      trailing: const Icon(
                         Icons.arrow_forward_ios_rounded,
-                        size: 15.r,
+                        size: 15,
                       ),
-                      leading: Icon(
+                      leading: const Icon(
                         Icons.help_outline,
-                        size: 20.r,
+                        size: 20,
                       ),
-                      title: Text('Help Center'),
+                      title: const Text('Help Center'),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15).w,
-                      child: Divider(
+                      padding: const EdgeInsets.symmetric(horizontal: 15).h,
+                      child: const Divider(
                         thickness: 1,
                         color: Colors.grey,
                       ),
@@ -313,40 +312,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => PrivacyPolicy()),
+                              builder: (context) => const PrivacyPolicy()),
                         );
                       },
-                      trailing: Icon(
+                      trailing: const Icon(
                         Icons.arrow_forward_ios_rounded,
-                        size: 15.r,
+                        size: 15,
                       ),
-                      leading: Icon(
+                      leading: const Icon(
                         Icons.privacy_tip_outlined,
-                        size: 20.r,
+                        size: 20,
                       ),
-                      title: Text('Privacy Policy'),
+                      title: const Text('Privacy Policy'),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15).w,
-                      child: Divider(
+                      padding: const EdgeInsets.symmetric(horizontal: 15).h,
+                      child: const Divider(
                         thickness: 1,
                         color: Colors.grey,
                       ),
                     ),
-                    ListTile(
+                    const ListTile(
                       trailing: Icon(
                         Icons.arrow_forward_ios_rounded,
-                        size: 15.r,
+                        size: 15,
                       ),
                       leading: Icon(
                         Icons.share_outlined,
-                        size: 20.r,
+                        size: 20,
                       ),
                       title: Text('Share'),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15).w,
-                      child: Divider(
+                      padding: const EdgeInsets.symmetric(horizontal: 15).h,
+                      child: const Divider(
                         thickness: 1,
                         color: Colors.grey,
                       ),
@@ -357,13 +356,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: Text(
+                              surfaceTintColor: Colors.blue.shade100,
+                              title: const Text(
                                 'Comeback Soon!',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                              content: Text(
+                              content: const Text(
                                 'Are you sure you want to logout?',
                                 style: TextStyle(color: Colors.black38),
                               ),
@@ -373,7 +373,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                               actions: <Widget>[
                                 TextButton(
-                                  child: Text(
+                                  child: const Text(
                                     'Cancel',
                                     style: TextStyle(
                                       color: Colors.red,
@@ -391,9 +391,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
-                                            horizontal: 10)
-                                        .w,
-                                    child: Text(
+                                            horizontal: 10).h,
+                                    child: const Text(
                                       'Yes, Logout',
                                       style: TextStyle(color: Colors.white),
                                     ),
@@ -402,7 +401,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => LoginScreen()),
+                                          builder: (context) => const LoginScreen()),
                                     );
                                   },
                                 ),
@@ -411,12 +410,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           },
                         );
                       },
-                      leading: Icon(
+                      leading: const Icon(
                         Icons.exit_to_app_outlined,
                         color: Colors.red,
-                        size: 20.r,
+                        size: 20,
                       ),
-                      title: Text(
+                      title: const Text(
                         'Logout',
                         style: TextStyle(
                           color: Colors.red,
@@ -430,13 +429,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 top: 170.h,
                 left: MediaQuery.of(context).size.width * 0.53,
                 child: Container(
-                  height: 50,
-                  width: 50,
+                  height: 50.h,
+                  width: 50.h,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25),
+                    borderRadius: BorderRadius.circular(25).r,
                     color: AppTheme.statusBar,
                   ),
-                  child: Icon(
+                  child: const Icon(
                     Icons.camera_alt,
                     color: Colors.white,
                   ),

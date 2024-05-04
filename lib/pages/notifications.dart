@@ -18,11 +18,11 @@ class _NotificationsState extends State<Notifications> {
       appBar: AppBar(
         backgroundColor: AppTheme.greyColor,
         toolbarHeight: 70.h,
-        leadingWidth: 25.w,
-        title: Text(
+        leadingWidth: 25.h,
+        title: const Text(
           'Notifications',
           style: TextStyle(
-            fontSize: 20.sp,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
         ),

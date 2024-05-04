@@ -12,7 +12,7 @@ class _YourOrdersState extends State<YourOrders> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Your Orders'),
+        title: const Text('Your Orders'),
       ),
     );
   }

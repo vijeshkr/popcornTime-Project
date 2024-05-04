@@ -28,62 +28,58 @@ class EventsShowsModel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Padding(
-        padding: const EdgeInsets.all(10).r,
-        child: Container(
-          child: GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => EventsDetailedScreen(
-                    eventTitle: title,
-                    eventCover: coverImage,
-                    location: location,
-                    item: item,
-                    dateTime: dateTime,
-                    category: category,
-                    artist: artist,
-                    event: event,
-                    imageUrl: bannerUrl,
+    return Padding(
+      padding: const EdgeInsets.all(5).h,
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => EventsDetailedScreen(
+                eventTitle: title,
+                eventCover: coverImage,
+                location: location,
+                item: item,
+                dateTime: dateTime,
+                category: category,
+                artist: artist,
+                event: event,
+                imageUrl: bannerUrl,
 
-                  ),
-                ),
-              );
-            },
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10).r,
-                  child: Image.asset(
-                    bannerUrl,
-                    height: 180.h,
-                    width: 130.w,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                SizedBox(
-                  height: 8.h,
-                ),
-                Container(
-                  width: 120.w,
-                  child: Text(
-                    title,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    // softWrap: true,
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black.withOpacity(0.6),
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
+          );
+        },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10).h,
+              child: Image.asset(
+                bannerUrl,
+                height: 240.h,
+                width: 190.h,
+                fit: BoxFit.cover,
+              ),
+            ),
+            SizedBox(
+              height: 8.h,
+            ),
+            SizedBox(
+              width: 190.h,
+              child: Text(
+                title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                // softWrap: true,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black.withOpacity(0.6),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -105,28 +101,25 @@ class EventsShowsList extends StatefulWidget {
 class _EventsShowsListState extends State<EventsShowsList> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 22).r,
-      child: GridView.count(
-        crossAxisCount: 2,
-        crossAxisSpacing: 10.0,
-        mainAxisSpacing: 10.0,
-        childAspectRatio: 0.7, // Adjust the aspect ratio as needed
-        children: List.generate(widget.events.length, (index) {
-          final event = widget.events[index];
-          return EventsShowsModel(
-            title: event['title'],
-            bannerUrl: event['image'],
-            coverImage: event['coverImage'],
-            artist: event['artist'],
-            category: event['category'],
-            dateTime: event['dateTime'],
-            item: event['item'],
-            location: event['location'],
-            event: event['event'],
-          );
-        }),
-      ),
+    return GridView.count(
+      crossAxisCount: 2,
+      crossAxisSpacing: .0,
+      mainAxisSpacing: 0,
+      childAspectRatio: 0.7, // Adjust the aspect ratio as needed
+      children: List.generate(widget.events.length, (index) {
+        final event = widget.events[index];
+        return EventsShowsModel(
+          title: event['title'],
+          bannerUrl: event['image'],
+          coverImage: event['coverImage'],
+          artist: event['artist'],
+          category: event['category'],
+          dateTime: event['dateTime'],
+          item: event['item'],
+          location: event['location'],
+          event: event['event'],
+        );
+      }),
     );
   }
 }

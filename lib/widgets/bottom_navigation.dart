@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:popcorn_time/pages/events_screen.dart';
 import 'package:popcorn_time/pages/movie_screen.dart';
 import 'package:popcorn_time/pages/profile_screen.dart';
@@ -18,9 +15,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
   int indexNum = 0;
   @override
   Widget build(BuildContext context) {
-    // SystemChrome.setSystemUIOverlayStyle(
-    //     const SystemUiOverlayStyle(statusBarColor: AppTheme.statusBar));
-    final Size size = MediaQuery.of(context).size;
     List<Widget> bottomNavigationScreens = <Widget> [
       const HomeScreen(),
             MovieScreen(),

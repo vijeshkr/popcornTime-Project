@@ -11,7 +11,7 @@ class PrivacyPolicy extends StatelessWidget {
         title: const Text('Privacy Policy'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(15).r,
+        padding: const EdgeInsets.all(15).h,
         child: SingleChildScrollView(
           child: Container(
             color: Colors.white,

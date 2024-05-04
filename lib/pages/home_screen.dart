@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/data/events_data.dart';
 import 'package:popcorn_time/models/events_shows_model.dart';
@@ -29,21 +26,18 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    // SystemChrome.setSystemUIOverlayStyle(
-    //     const SystemUiOverlayStyle(statusBarColor: AppTheme.statusBar));
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        // backgroundColor: AppTheme.appBarColor,
-        backgroundColor: AppTheme.greyColor,
+        backgroundColor: Colors.white,
         toolbarHeight: 70.h,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'It All Starts Here',
               style: TextStyle(
-                fontSize: 18.sp,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -52,19 +46,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => SelectLocationScreen()),
+                      builder: (context) => const SelectLocationScreen(),),
                 );
               },
               child: Row(
                 children: [
                   Text(
                     myLocation,
-                    style: TextStyle(
-                      fontSize: 16.sp,
+                    style: const TextStyle(
+                      fontSize: 16,
                       color: AppTheme.splash,
                     ),
                   ),
-                  Icon(
+                  const Icon(
                     Icons.arrow_drop_down,
                     color: AppTheme.splash,
                   )
@@ -90,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => Notifications(),
+                  builder: (context) => const Notifications(),
                 ),
               );
             },
@@ -100,11 +94,11 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
            SizedBox(
-            width: 10.w,
+            width: 10.h,
           )
         ],
       ),
-      body: Container(
+      body: SizedBox(
         height: size.height,
         width: size.width,
         child: SingleChildScrollView(
@@ -138,35 +132,38 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               Divider(
-                thickness: 5.w,
-                color: AppTheme.greyColor,
+                thickness: 5,
+                color: AppTheme.lightblue,
               ),
-              Container(
-                height: size.height * 0.3,
-                width: size.width,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return MovieModel(
-                      title: movieDataNow[index]['title'],
-                      like: movieDataNow[index]['likes'],
-                      bannerUrl: movieDataNow[index]['image'],
-                      coverImage: movieDataNow[index]['coverImage'],
-                      language: movieDataNow[index]['language'],
-                      screen_2D: movieDataNow[index]['2D'],
-                      genre: movieDataNow[index]['genre'],
-                      release: movieDataNow[index]['release'],
-                      description: movieDataNow[index]['description'],
-                      duration: movieDataNow[index]['duration'],
-                      castCrew: movieDataNow[index]['castCrew'],
-                    );
-                  },
+              Padding(
+                padding: const EdgeInsets.all(10).h,
+                child: SizedBox(
+                  height: size.height * 0.35,
+                  width: size.width,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 10,
+                    itemBuilder: (context, index) {
+                      return MovieModel(
+                        title: movieDataNow[index]['title'],
+                        like: movieDataNow[index]['likes'],
+                        bannerUrl: movieDataNow[index]['image'],
+                        coverImage: movieDataNow[index]['coverImage'],
+                        language: movieDataNow[index]['language'],
+                        screen_2D: movieDataNow[index]['2D'],
+                        genre: movieDataNow[index]['genre'],
+                        release: movieDataNow[index]['release'],
+                        description: movieDataNow[index]['description'],
+                        duration: movieDataNow[index]['duration'],
+                        castCrew: movieDataNow[index]['castCrew'],
+                      );
+                    },
+                  ),
                 ),
               ),
               Divider(
-                thickness: 5.w,
-                color: AppTheme.greyColor,
+                thickness: 5,
+                color: AppTheme.lightblue,
               ),
               HomeBannerHead(
                 asset: eventsIcon,
@@ -179,14 +176,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 index: 4,
               ),
                Divider(
-                thickness: 5.w,
-                color: AppTheme.greyColor,
+                thickness: 5,
+                color: AppTheme.lightblue,
               ),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  SizedBox(
-                    width: 30.w,
-                  ),
                   EventsShowsModel(
                       title: eventsDummyData[10]['title'],
                       bannerUrl: eventsDummyData[10]['image'],
@@ -197,9 +193,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       location: eventsDummyData[10]['location'],
                       category: eventsDummyData[10]['category'],
                       event: eventsDummyData[10]['event'],
-                  ),
-                  SizedBox(
-                    width: 30.w,
                   ),
                   EventsShowsModel(
                       title: eventsDummyData[8]['title'],
@@ -215,8 +208,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               Divider(
-                thickness: 5.w,
-                color: AppTheme.greyColor,
+                thickness: 5,
+                color: AppTheme.lightblue,
               ),
               HomeBannerHead(
                 asset: sportsIcon,
@@ -229,14 +222,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 index: 5,
               ),
                Divider(
-                thickness: 5.w,
-                color: AppTheme.greyColor,
+                thickness: 5,
+                color: AppTheme.lightblue,
               ),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  SizedBox(
-                    width: 30.w,
-                  ),
                   EventsShowsModel(
                       title: eventsDummyData[1]['title'],
                       bannerUrl: eventsDummyData[1]['image'],
@@ -247,9 +239,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       location: eventsDummyData[1]['location'],
                       category: eventsDummyData[1]['category'],
                       event: eventsDummyData[1]['event'],
-                  ),
-                  SizedBox(
-                    width: 30.w,
                   ),
                   EventsShowsModel(
                       title: eventsDummyData[3]['title'],

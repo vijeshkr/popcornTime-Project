@@ -19,13 +19,13 @@ class _SignupScreenState extends State<SignupScreen> {
       backgroundColor: AppTheme.splash,
       resizeToAvoidBottomInset: false,
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           height: size.height,
           width: size.width,
           child: Center(
             child: Container(
-              padding: EdgeInsets.all(20).r,
-              height: size.height * 0.8,
+              padding: const EdgeInsets.all(20).h,
+              height: size.height * 0.85,
               width: size.width * 0.95,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -34,11 +34,11 @@ class _SignupScreenState extends State<SignupScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                   Text(
+                   const Text(
                     'Sign Up',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 16.sp,
+                      fontSize: 16,
                       color: AppTheme.splash,
                     ),
                   ),
@@ -46,7 +46,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     padding: EdgeInsets.only(top: 15.h),
                     child: TextField(
                       decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(vertical: 20.h,horizontal: 10.w),
+                          contentPadding: EdgeInsets.symmetric(vertical: 20.h,horizontal: 10.h),
                           isDense: true,
                           isCollapsed: true,
                           border: OutlineInputBorder(
@@ -56,7 +56,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           fillColor: AppTheme.greyColor,
                           filled: true,
                           hintText: 'Name',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             color: Colors.black38,
                           )),
                     ),
@@ -65,7 +65,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     padding: EdgeInsets.only(top: 15.h),
                     child: TextField(
                       decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(vertical: 20.h,horizontal: 10.w),
+                          contentPadding: EdgeInsets.symmetric(vertical: 20.h,horizontal: 10.h),
                           isDense: true,
                           isCollapsed: true,
                           border: OutlineInputBorder(
@@ -75,7 +75,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           fillColor: AppTheme.greyColor,
                           filled: true,
                           hintText: 'Email or Phone',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             color: Colors.black38,
                           )),
                     ),
@@ -85,7 +85,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     child: TextField(
                       obscureText: true,
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(vertical: 20.h,horizontal: 10.w),
+                        contentPadding: EdgeInsets.symmetric(vertical: 20.h,horizontal: 10.h),
                         isDense: true,
                         isCollapsed: true,
                         border: OutlineInputBorder(
@@ -95,7 +95,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         fillColor: AppTheme.greyColor,
                         filled: true,
                         hintText: 'Password',
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                           color: Colors.black38,
                         ),
                       ),
@@ -106,7 +106,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     child: TextField(
                       obscureText: true,
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(vertical: 20.h,horizontal: 10.w),
+                        contentPadding: EdgeInsets.symmetric(vertical: 20.h,horizontal: 10.h),
                         isDense: true,
                         isCollapsed: true,
                         border: OutlineInputBorder(
@@ -116,7 +116,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         fillColor: AppTheme.greyColor,
                         filled: true,
                         hintText: 'Confirm Password',
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                           color: Colors.black38,
                         ),
                       ),
@@ -135,10 +135,10 @@ class _SignupScreenState extends State<SignupScreen> {
                       child:  Center(
                         child: Padding(
                           padding: EdgeInsets.all(15).r,
-                          child: Text(
+                          child: const Text(
                             'Sign Up',
                             style: TextStyle(
-                              fontSize: 16.sp,
+                              fontSize: 16,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
@@ -149,12 +149,12 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                    Center(
                     child: Padding(
-                      padding: EdgeInsets.all(10).r,
-                      child: Text(
+                      padding: const EdgeInsets.all(10).h,
+                      child: const Text(
                         'Or',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 16.sp,
+                          fontSize: 16,
                           color: Colors.black38,
                         ),
                       ),
@@ -170,7 +170,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     onPressed: () {},
                     child: Center(
                       child: Padding(
-                        padding: EdgeInsets.all(15.r),
+                        padding: EdgeInsets.all(15.h),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -178,15 +178,15 @@ class _SignupScreenState extends State<SignupScreen> {
                               'assets/icons/google.svg',
                               color: Colors.white,
                               height: 24.h,
-                              width: 24.w,
+                              width: 24.h,
                             ),
                              SizedBox(
-                              width: 10.w,
+                              width: 10.h,
                             ),
-                             Text(
+                             const Text(
                               'Continue with Google',
                               style: TextStyle(
-                                fontSize: 16.sp,
+                                fontSize: 16,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                               ),
@@ -210,16 +210,16 @@ class _SignupScreenState extends State<SignupScreen> {
                         onPressed: () {
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
-                              builder: (_) => LoginScreen(),
+                              builder: (_) => const LoginScreen(),
                             ),
                           );
                         },
-                        child:  Text(
+                        child:  const Text(
                           'Sign In',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: AppTheme.splash,
-                              fontSize: 16.sp),
+                              fontSize: 16),
                         ),
                       ),
                     ],

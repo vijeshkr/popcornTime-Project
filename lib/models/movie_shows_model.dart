@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/pages/detailed_screen_for_upcoming_movies.dart';
 import 'package:popcorn_time/pages/details_screen.dart';
 
+import '../constants/apptheme.dart';
+
 class MovieShowsModel extends StatelessWidget {
   final String title;
   final int like;
@@ -35,101 +37,109 @@ class MovieShowsModel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Padding(
-        padding: const EdgeInsets.all(10).r,
-        child: Container(
-          child: GestureDetector(
-            onTap: () {
-              if(now == 'now'){
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DetailsScreen(
-                      movieTitle: title,
-                      movieCover: coverImage,
-                      like: like,
-                      language: language,
-                      screen_2D: screen_2D,
-                      genre: genre,
-                      release: release,
-                      description: description,
-                      duration: duration,
-                      movieImage: bannerUrl,
-                      castCrew: castCrew,
-                    ),
-                  ),
-                );
-              }else{
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DetailsScreenUpcomingMovies(
-                      movieTitle: title,
-                      movieCover: coverImage,
-                      like: like,
-                      language: language,
-                      screen_2D: screen_2D,
-                      genre: genre,
-                      release: release,
-                      description: description,
-                      duration: duration,
-                      castCrew: castCrew,
-                    ),
-                  ),
-                );
-              }
-            },
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10).r,
-                  child: Image.asset(
-                    bannerUrl,
-                    height: 180.h,
-                    width: 130.w,
-                    fit: BoxFit.cover,
-                  ),
+    return Padding(
+      padding: const EdgeInsets.all(10).h,
+      child: GestureDetector(
+        onTap: () {
+          if(now == 'now'){
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailsScreen(
+                  movieTitle: title,
+                  movieCover: coverImage,
+                  like: like,
+                  language: language,
+                  screen_2D: screen_2D,
+                  genre: genre,
+                  release: release,
+                  description: description,
+                  duration: duration,
+                  movieImage: bannerUrl,
+                  castCrew: castCrew,
                 ),
-                SizedBox(
-                  height: 8.h,
+              ),
+            );
+          }else{
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailsScreenUpcomingMovies(
+                  movieTitle: title,
+                  movieCover: coverImage,
+                  like: like,
+                  language: language,
+                  screen_2D: screen_2D,
+                  genre: genre,
+                  release: release,
+                  description: description,
+                  duration: duration,
+                  castCrew: castCrew,
                 ),
-                Container(
-                  width: 120.w,
-                  child: Text(
-                    title,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    // softWrap: true,
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black.withOpacity(0.6),
-                    ),
-                  ),
-                ),
-                Container(
-                  child: Row(
-                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Icon(
-                        Icons.favorite,
-                        color: Colors.red,
-                      ),
-                       SizedBox(
-                        width: 15.w,
-                      ),
-                      Text(
-                        "$like %",
-                        style: TextStyle(fontSize: 13.sp),
-                      )
-                    ],
-                  ),
-                )
-              ],
+              ),
+            );
+          }
+        },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10).r,
+              child: Image.asset(
+                bannerUrl,
+                height: 250.h,
+                width: 190.h,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
+            SizedBox(
+              height: 8.h,
+            ),
+            Container(
+                width: 190.h,
+                decoration: BoxDecoration(
+                  color: AppTheme.lightblue,
+                  borderRadius: BorderRadius.circular(10).r,
+                ),
+                child:Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: 5.h,
+                    ),
+                    const Icon(
+                      Icons.favorite,
+                      color: Colors.red,
+                      size: 15,
+                    ),
+                    SizedBox(
+                      width: 5.h,
+                    ),
+                    Text(
+                      "${like/10}/10",
+                      style: const TextStyle(fontSize: 13),
+                    )
+                  ],
+                )
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0).h,
+              child: SizedBox(
+                width: 190.h,
+                child: Text(
+                  title,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  // softWrap: true,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black.withOpacity(0.6),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -151,31 +161,29 @@ class MovieShowsList extends StatefulWidget {
 class _MovieShowsListState extends State<MovieShowsList> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 22).r,
-      child: GridView.count(
-        crossAxisCount: 2,
-        crossAxisSpacing: 10.0,
-        mainAxisSpacing: 10.0,
-        childAspectRatio: 0.7, // Adjust the aspect ratio as needed
-        children: List.generate(widget.movies.length, (index) {
-          final movie = widget.movies[index];
-          return MovieShowsModel(
-            title: movie['title'],
-            like: movie['likes'],
-            bannerUrl: movie['image'],
-            coverImage: movie['coverImage'],
-            language: movie['language'],
-            screen_2D: movie['2D'],
-            genre: List<String>.from(movie['genre']),
-            release: movie['release'],
-            description: movie['description'],
-            duration: movie['duration'],
-            now: movie['now'],
-            castCrew: movie['castCrew'],
-          );
-        }),
-      ),
+    return GridView.count(
+      crossAxisCount: 2,
+      crossAxisSpacing: 0,
+      mainAxisSpacing: 0,
+      childAspectRatio: 0.61,
+      // Adjust the aspect ratio as needed
+      children: List.generate(widget.movies.length, (index) {
+        final movie = widget.movies[index];
+        return MovieShowsModel(
+          title: movie['title'],
+          like: movie['likes'],
+          bannerUrl: movie['image'],
+          coverImage: movie['coverImage'],
+          language: movie['language'],
+          screen_2D: movie['2D'],
+          genre: List<String>.from(movie['genre']),
+          release: movie['release'],
+          description: movie['description'],
+          duration: movie['duration'],
+          now: movie['now'],
+          castCrew: movie['castCrew'],
+        );
+      }),
     );
   }
 }

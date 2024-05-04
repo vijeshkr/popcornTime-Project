@@ -61,21 +61,21 @@ double diamondBox = 1399;
 double grandStand = 999;
 
 
-List<MovieModel> movies = movieDummyData.map((data) {
-  return MovieModel(
-    title: data['title'],
-    bannerUrl: data['image'],
-    coverImage: data['coverImage'],
-    language: data['language'],
-    genre: List<String>.from(data['genre']),
-    like: data['likes'],
-    release: data['release'],
-    screen_2D: data['2D'],
-    description: data['description'],
-    duration: data['duration'],
-    castCrew: data['castCrew'],
-  );
-}).toList();
+// List<MovieModel> movies = movieDummyData.map((data) {
+//   return MovieModel(
+//     title: data['title'],
+//     bannerUrl: data['image'],
+//     coverImage: data['coverImage'],
+//     language: data['language'],
+//     genre: List<String>.from(data['genre']),
+//     like: data['likes'],
+//     release: data['release'],
+//     screen_2D: data['2D'],
+//     description: data['description'],
+//     duration: data['duration'],
+//     castCrew: data['castCrew'],
+//   );
+// }).toList();
 
 
 

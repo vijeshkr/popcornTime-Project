@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:popcorn_time/constants/apptheme.dart';
 import 'package:popcorn_time/widgets/bottom_navigation.dart';
 import '../constants/assets.dart';
 
@@ -29,19 +30,19 @@ class EventsBookingConfirmation extends StatelessWidget {
       // appBar: AppBar(),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10).h,
           child: Container(
             height: size.height * 0.65,
             width: double.maxFinite,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(10).r,
                 border: Border.all(width: 1, color: Colors.grey)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Container(
+                  padding: const EdgeInsets.all(10).h,
+                  child: SizedBox(
                     height: 100,
                     child: Image.asset(
                       Assets.logo,
@@ -56,7 +57,7 @@ class EventsBookingConfirmation extends StatelessWidget {
                       fontSize: 18,
                       color: Colors.green.shade600),
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
@@ -71,15 +72,15 @@ class EventsBookingConfirmation extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10).h,
                   child: Container(
                     // height: 250,
                     width: double.maxFinite,
                     decoration: BoxDecoration(
-                        color: Colors.grey.shade200,
-                        borderRadius: BorderRadius.circular(10),
-                        border:
-                            Border.all(width: 1, color: Colors.grey.shade200)),
+                      color: Colors.grey.shade200,
+                      borderRadius: BorderRadius.circular(10).r,
+                      border: Border.all(width: 1, color: Colors.grey.shade200),
+                    ),
 
                     child: Column(
                       children: [
@@ -90,27 +91,29 @@ class EventsBookingConfirmation extends StatelessWidget {
                               padding: const EdgeInsets.all(10),
                               child: Image.asset(
                                 confirmImage,
-                                width: 80.w,
-                                height: 100.w,
+                                width: 80.h,
+                                height: 100.h,
                               ),
                             ),
                             Flexible(
                               child: Padding(
-                                padding: const EdgeInsets.all(10),
+                                padding: const EdgeInsets.all(10).h,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       confirmTitle,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 15,
                                       ),
                                     ),
-                                    Text('$confirmDate'),
-                                    Text(confirmPlace,
+                                    Text(confirmDate),
+                                    Text(
+                                      confirmPlace,
                                       overflow: TextOverflow.ellipsis,
-                                      maxLines: 3,),
+                                      maxLines: 3,
+                                    ),
                                   ],
                                 ),
                               ),
@@ -125,28 +128,28 @@ class EventsBookingConfirmation extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10).h,
                               child: Column(
                                 children: [
                                   Text(
                                     '$tickets',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 45,
                                     ),
                                   ),
-                                  Text(' Tickets'),
+                                  const Text(' Tickets'),
                                 ],
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10).h,
                               child: Column(
                                 children: [
-                                  Text('Amount Paid : '),
+                                  const Text('Amount Paid : '),
                                   Text(
                                     '$amount',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -165,11 +168,16 @@ class EventsBookingConfirmation extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => BottomNavigation(),
+                        builder: (context) => const BottomNavigation(),
                       ),
                     );
                   },
-                  child: Text('Back to Home'),
+                  child: const Text(
+                    'Back to Home',
+                    style: TextStyle(
+                      color: AppTheme.splash,
+                    ),
+                  ),
                 )
               ],
             ),

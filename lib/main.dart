@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
         builder: (BuildContext context , Widget? widget) {
-          return MaterialApp(
+          return const MaterialApp(
              home: SplashScreen(),
             debugShowCheckedModeBanner: false,
           );

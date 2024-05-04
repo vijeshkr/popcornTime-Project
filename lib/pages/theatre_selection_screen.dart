@@ -26,24 +26,23 @@ class _TheatreSelectionScreenState extends State<TheatreSelectionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppTheme.greyColor,
         title: Text(
-          '${widget.movieName}',
-          style: TextStyle(fontWeight: FontWeight.w500),
+          widget.movieName,
+          style: const TextStyle(fontWeight: FontWeight.w500),
         ),
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(100.0.h),
+          preferredSize: Size.fromHeight(110.0.h),
           child: Container(
             padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
             child: DatePicker(
               DateTime.now(),
               height: 90.h,
-              width: 75.w,
+              width: 75.h,
               initialSelectedDate: DateTime.now(),
               selectionColor: AppTheme.splash,
               selectedTextColor: Colors.white,
-              dateTextStyle: TextStyle(
-                fontSize: 20.sp,
+              dateTextStyle: const TextStyle(
+                fontSize: 20,
                 fontWeight: FontWeight.w600,
                 color: Colors.black,
               ),
@@ -51,8 +50,6 @@ class _TheatreSelectionScreenState extends State<TheatreSelectionScreen> {
                 setState(() {
                   pickedDate = DateFormat('dd MMM yyyy').format(selectedDate);
                 });
-
-                print(pickedDate);
               },
             ),
           ),
@@ -62,24 +59,24 @@ class _TheatreSelectionScreenState extends State<TheatreSelectionScreen> {
           ? SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Container(
-                color: Color(0xfff5f5fa),
-                padding: EdgeInsets.all(20),
+                color: const Color(0xfff5f5fa),
+                padding: const EdgeInsets.all(20).h,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: _buildTheatreTimeWidgets(),
                 ),
               ),
             )
-          : Container(
+          : SizedBox(
               width: double.maxFinite,
               height: double.maxFinite,
               child: Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: Text(
+                  padding: const EdgeInsets.all(15).h,
+                  child: const Text(
                     'Unfortunately , there are currently no shows available in your area.',
                     style: TextStyle(
-                      fontSize: 20.sp,
+                      fontSize: 20,
                       fontWeight: FontWeight.w500,
                     ),
                     textAlign: TextAlign.center,

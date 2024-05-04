@@ -44,8 +44,11 @@ class _ShowsScreenState extends State<ShowsScreen> {
           )
         ],
       ),
-      body:  EventsShowsList(
-        events: eventsDummyDataShow.cast<Map<String, dynamic>>(),
+      body:  Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5),
+        child: EventsShowsList(
+          events: eventsDummyDataShow.cast<Map<String, dynamic>>(),
+        ),
       ),
     );
   }

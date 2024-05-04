@@ -32,104 +32,113 @@ class SportsBookingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            backgroundColor: AppTheme.statusBar,
-            leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(Icons.arrow_back),
-            ),
-            expandedHeight: item == 'Cricket' ? 400.h : 220.h,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage(
-                      item == 'Cricket' ? cricketStaduim : footballStaduim,
-                      // eventCover,
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              backgroundColor: Colors.white,
+              leading: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const Icon(Icons.arrow_back),
+              ),
+              expandedHeight: item == 'Cricket' ? 480.h : 260.h,
+              flexibleSpace: FlexibleSpaceBar(
+                background: Padding(
+                  padding: const EdgeInsets.all(10).h,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10).r,
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage(
+                          item == 'Cricket' ? cricketStaduim : footballStaduim,
+                          // eventCover,
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-          SliverFillRemaining(
-            hasScrollBody: false,
-            child: Container(
-              color: Color(0xfff5f5fa),
-              padding: const EdgeInsets.all(20).r,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    color: Colors.white,
-                    width: double.maxFinite,
-                    padding: EdgeInsets.all(20).r,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          eventTitle,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18.sp,
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Container(
+                color: Colors.white,
+                padding: const EdgeInsets.all(20).h,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: AppTheme.lightblue,
+                        borderRadius: BorderRadius.circular(10).r
+                      ),
+                      width: double.maxFinite,
+                      padding: const EdgeInsets.all(20).h,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            eventTitle,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        Text(
-                          location,
-                          style: TextStyle(color: Colors.black45),
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              item,
-                              style: TextStyle(color: Colors.black45),
-                            ),
-                            SizedBox(
-                              width: 15.w,
-                            ),
-                            Text(
-                              artist,
-                              style: TextStyle(color: Colors.black45),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        Text(
-                          dateTime,
-                          style: TextStyle(color: Colors.black45),
-                        ),
-                      ],
+                          SizedBox(
+                            height: 5.h,
+                          ),
+                          Text(
+                            location,
+                            style: const TextStyle(color: Colors.black45),
+                          ),
+                          SizedBox(
+                            height: 5.h,
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                item,
+                                style: const TextStyle(color: Colors.black45),
+                              ),
+                              SizedBox(
+                                width: 15.h,
+                              ),
+                              Text(
+                                artist,
+                                style: const TextStyle(color: Colors.black45),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 5.h,
+                          ),
+                          Text(
+                            dateTime,
+                            style: const TextStyle(color: Colors.black45),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 15.h,
-                  ),
-                  item == 'Cricket'
-                      ? cricketPrices(
-                          context, eventTitle, imageUrl, dateTime, location)
-                      : footBallPrices(
-                          context, eventTitle, imageUrl, dateTime, location),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                ],
+                    SizedBox(
+                      height: 15.h,
+                    ),
+                    item == 'Cricket'
+                        ? cricketPrices(
+                            context, eventTitle, imageUrl, dateTime, location)
+                        : footBallPrices(
+                            context, eventTitle, imageUrl, dateTime, location),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -140,14 +149,14 @@ Widget footBallPrices(BuildContext context, String eventTitle, String imageUrl,
   return Container(
     width: double.maxFinite,
     color: Colors.white,
-    padding: const EdgeInsets.all(20).r,
+    padding: const EdgeInsets.all(20).h,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ListTile(
           title: Text(
-            'West Upper : \u{20B9} ${westUpper}',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            'West Upper : \u{20B9} $westUpper',
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           onTap: () {
             seatBlock = 'West Upper';
@@ -166,14 +175,14 @@ Widget footBallPrices(BuildContext context, String eventTitle, String imageUrl,
                     maxHeight: MediaQuery.of(context).size.height * 0.35));
           },
         ),
-        Divider(
-          thickness: 1.w,
+        const Divider(
+          thickness: 1,
           color: Colors.grey,
         ),
         ListTile(
           title: Text(
-            'East Upper : \u{20B9} ${eastUpper}',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            'East Upper : \u{20B9} $eastUpper',
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           onTap: () {
             seatBlock = 'East Upper';
@@ -192,14 +201,14 @@ Widget footBallPrices(BuildContext context, String eventTitle, String imageUrl,
                     maxHeight: MediaQuery.of(context).size.height * 0.35));
           },
         ),
-        Divider(
-          thickness: 1.w,
+        const Divider(
+          thickness: 1,
           color: Colors.grey,
         ),
         ListTile(
           title: Text(
-            'East Lower : \u{20B9} ${eastLower}',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            'East Lower : \u{20B9} $eastLower',
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           onTap: () {
             seatBlock = 'East Lower';
@@ -218,14 +227,14 @@ Widget footBallPrices(BuildContext context, String eventTitle, String imageUrl,
                     maxHeight: MediaQuery.of(context).size.height * 0.35));
           },
         ),
-        Divider(
-          thickness: 1.w,
+        const Divider(
+          thickness: 1,
           color: Colors.grey,
         ),
         ListTile(
           title: Text(
-            'North Upper : \u{20B9} ${northUpper}',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            'North Upper : \u{20B9} $northUpper',
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           onTap: () {
             seatBlock = 'North Upper';
@@ -244,14 +253,14 @@ Widget footBallPrices(BuildContext context, String eventTitle, String imageUrl,
                     maxHeight: MediaQuery.of(context).size.height * 0.35));
           },
         ),
-        Divider(
-          thickness: 1.w,
+        const Divider(
+          thickness: 1,
           color: Colors.grey,
         ),
         ListTile(
           title: Text(
-            'North Lower : \u{20B9} ${northLower}',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            'North Lower : \u{20B9} $northLower',
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           onTap: () {
             seatBlock = 'North Lower';
@@ -270,14 +279,14 @@ Widget footBallPrices(BuildContext context, String eventTitle, String imageUrl,
                     maxHeight: MediaQuery.of(context).size.height * 0.35));
           },
         ),
-        Divider(
-          thickness: 1.w,
+        const Divider(
+          thickness: 1,
           color: Colors.grey,
         ),
         ListTile(
           title: Text(
-            'South Upper : \u{20B9} ${southUpper}',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            'South Upper : \u{20B9} $southUpper',
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           onTap: () {
             seatBlock = 'South Upper';
@@ -296,14 +305,14 @@ Widget footBallPrices(BuildContext context, String eventTitle, String imageUrl,
                     maxHeight: MediaQuery.of(context).size.height * 0.35));
           },
         ),
-        Divider(
-          thickness: 1.w,
+        const Divider(
+          thickness: 1,
           color: Colors.grey,
         ),
         ListTile(
           title: Text(
-            'South Lower : \u{20B9} ${southLower}',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            'South Lower : \u{20B9} $southLower',
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           onTap: () {
             seatBlock = 'South Lower';
@@ -332,14 +341,14 @@ Widget cricketPrices(BuildContext context, String eventTitle, String imageUrl,
   return Container(
     width: double.maxFinite,
     color: Colors.white,
-    padding: const EdgeInsets.all(20).r,
+    padding: const EdgeInsets.all(20).h,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ListTile(
           title: Text(
-            'Members Enclosure : \u{20B9} ${membersEnclosure}',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            'Members Enclosure : \u{20B9} $membersEnclosure',
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           onTap: () {
             seatBlock = 'Members Enclosure';
@@ -358,14 +367,14 @@ Widget cricketPrices(BuildContext context, String eventTitle, String imageUrl,
                     maxHeight: MediaQuery.of(context).size.height * 0.35));
           },
         ),
-        Divider(
-          thickness: 1.w,
+        const Divider(
+          thickness: 1,
           color: Colors.grey,
         ),
         ListTile(
           title: Text(
-            'Corporate Box : \u{20B9} ${corporateBox}',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            'Corporate Box : \u{20B9} $corporateBox',
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           onTap: () {
             seatBlock = 'Corporate Box';
@@ -384,14 +393,14 @@ Widget cricketPrices(BuildContext context, String eventTitle, String imageUrl,
                     maxHeight: MediaQuery.of(context).size.height * 0.35));
           },
         ),
-        Divider(
-          thickness: 1.w,
+        const Divider(
+          thickness: 1,
           color: Colors.grey,
         ),
         ListTile(
           title: Text(
-            'Diamond Box : \u{20B9} ${diamondBox}',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            'Diamond Box : \u{20B9} $diamondBox',
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           onTap: () {
             seatBlock = 'Diamond Box';
@@ -410,14 +419,14 @@ Widget cricketPrices(BuildContext context, String eventTitle, String imageUrl,
                     maxHeight: MediaQuery.of(context).size.height * 0.35));
           },
         ),
-        Divider(
-          thickness: 1.w,
+        const Divider(
+          thickness: 1,
           color: Colors.grey,
         ),
         ListTile(
           title: Text(
-            'Grand Stand : \u{20B9} ${grandStand}',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            'Grand Stand : \u{20B9} $grandStand',
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           onTap: () {
             seatBlock = 'Grand Stand';
@@ -436,14 +445,14 @@ Widget cricketPrices(BuildContext context, String eventTitle, String imageUrl,
                     maxHeight: MediaQuery.of(context).size.height * 0.35));
           },
         ),
-        Divider(
-          thickness: 1.w,
+        const Divider(
+          thickness: 1,
           color: Colors.grey,
         ),
         ListTile(
           title: Text(
-            'East Stand : \u{20B9} ${eastStand}',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            'East Stand : \u{20B9} $eastStand',
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           onTap: () {
             seatBlock = 'East Stand';
@@ -462,14 +471,14 @@ Widget cricketPrices(BuildContext context, String eventTitle, String imageUrl,
                     maxHeight: MediaQuery.of(context).size.height * 0.35));
           },
         ),
-        Divider(
-          thickness: 1.w,
+        const Divider(
+          thickness: 1,
           color: Colors.grey,
         ),
         ListTile(
           title: Text(
-            'West Stand : \u{20B9} ${westStand}',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            'West Stand : \u{20B9} $westStand',
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           onTap: () {
             seatBlock = 'West Stand';
@@ -488,14 +497,14 @@ Widget cricketPrices(BuildContext context, String eventTitle, String imageUrl,
                     maxHeight: MediaQuery.of(context).size.height * 0.35));
           },
         ),
-        Divider(
-          thickness: 1.w,
+        const Divider(
+          thickness: 1,
           color: Colors.grey,
         ),
         ListTile(
           title: Text(
-            'North Stand : \u{20B9} ${northStand}',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            'North Stand : \u{20B9} $northStand',
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           onTap: () {
             seatBlock = 'North Stand';

@@ -32,186 +32,202 @@ class EventsDetailedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            backgroundColor: AppTheme.statusBar,
-            leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(Icons.arrow_back),
-            ),
-            expandedHeight: 220.h,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage(
-                      eventCover,
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              backgroundColor: Colors.white,
+              leading: IconButton(
+                color: Colors.white,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const Icon(Icons.arrow_back),
+              ),
+              expandedHeight: 260.h,
+              flexibleSpace: FlexibleSpaceBar(
+                background: Padding(
+                  padding: const EdgeInsets.all(10).h,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10).r,
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage(
+                          eventCover,
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-          SliverFillRemaining(
-            hasScrollBody: false,
-            child: Container(
-              color: Color(0xfff5f5fa),
-              padding: const EdgeInsets.all(20).r,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    color: Colors.white,
-                    width: double.maxFinite,
-                    padding: EdgeInsets.all(20).r,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          eventTitle,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18.sp,
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Container(
+                color: Colors.white,
+                padding: const EdgeInsets.all(20).h,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: double.maxFinite,
+                      padding: const EdgeInsets.all(20).h,
+                      decoration: BoxDecoration(
+                        color: AppTheme.lightblue,
+                        borderRadius: BorderRadius.circular(10).r,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            eventTitle,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        Text(
-                          location,
-                          style: TextStyle(color: Colors.black45),
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              item,
-                              style: TextStyle(color: Colors.black45),
-                            ),
-                            SizedBox(
-                              width: 15.h,
-                            ),
-                            Text(
-                              artist,
-                              style: TextStyle(color: Colors.black45),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        Text(
-                          dateTime,
-                          style: TextStyle(color: Colors.black45),
-                        ),
-                      ],
+                           SizedBox(
+                            height: 5.h,
+                          ),
+                          Text(
+                            location,
+                            style: const TextStyle(color: Colors.black45),
+                          ),
+                           SizedBox(
+                            height: 5.h,
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                item,
+                                style: const TextStyle(color: Colors.black45),
+                              ),
+                               SizedBox(
+                                width: 15.h,
+                              ),
+                              Text(
+                                artist,
+                                style: const TextStyle(color: Colors.black45),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 5.h,
+                          ),
+                          Text(
+                            dateTime,
+                            style: const TextStyle(color: Colors.black45),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 15.h,
-                  ),
-                  Container(
-                    width: double.maxFinite,
-                    color: Colors.yellow.shade100,
-                    padding: const EdgeInsets.all(20).r,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Important Note',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        Text(
-                          '1. The event is free seating. First come first serve basis.',
-                          style: TextStyle(fontWeight: FontWeight.w400),
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        Text(
-                          '2. Ticket required for 2+ years',
-                          style: TextStyle(fontWeight: FontWeight.w400),
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        Text(
-                          '3. Parking is not available at the venue.',
-                          style: TextStyle(fontWeight: FontWeight.w400),
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        Text(
-                          '4. No re-entry is allowed.',
-                          style: TextStyle(fontWeight: FontWeight.w400),
-                        ),
-                      ],
+                    SizedBox(
+                      height: 15.h,
                     ),
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                ],
+                    Container(
+                      width: double.maxFinite,
+                      decoration: BoxDecoration(
+                        color: Colors.yellow.shade100,
+                        borderRadius: BorderRadius.circular(10).r,
+                      ),
+                      padding: const EdgeInsets.all(20).h,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Important Note',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          const Text(
+                            '1. The event is free seating. First come first serve basis.',
+                            style: TextStyle(fontWeight: FontWeight.w400),
+                          ),
+                          SizedBox(
+                            height: 5.h,
+                          ),
+                          const Text(
+                            '2. Ticket required for 2+ years',
+                            style: TextStyle(fontWeight: FontWeight.w400),
+                          ),
+                          SizedBox(
+                            height: 5.h,
+                          ),
+                          const Text(
+                            '3. Parking is not available at the venue.',
+                            style: TextStyle(fontWeight: FontWeight.w400),
+                          ),
+                          SizedBox(
+                            height: 5.h,
+                          ),
+                          const Text(
+                            '4. No re-entry is allowed.',
+                            style: TextStyle(fontWeight: FontWeight.w400),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.all(10).r,
-        child: ElevatedButton(
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
-            padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-              EdgeInsets.symmetric(vertical: 12).h,
+      bottomNavigationBar: Container(
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(10).h,
+          child: ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all<Color>(AppTheme.splash),
+              padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                const EdgeInsets.symmetric(vertical: 12).h,
+              ),
             ),
-          ),
-          onPressed: () {
-            if(event == 'Sports'){
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SportsBookingScreen(
-                      eventTitle: eventTitle,
-                      imageUrl: imageUrl,
-                      eventCover: eventCover,
-                      item: item,
-                      dateTime: dateTime,
-                      artist: artist,
-                      location: location,
-                      category: category),
-                ),
-              );
-            }else{
-              showModalBottomSheet(
-                  context: context,
-                  builder: (_) => EventsSeatBottom(
-                    imageUrl: imageUrl,
-                    confirmPlace: location,
-                    confirmTitle: eventTitle,
-                    confirmDate: dateTime,
+            onPressed: () {
+              if(event == 'Sports'){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SportsBookingScreen(
+                        eventTitle: eventTitle,
+                        imageUrl: imageUrl,
+                        eventCover: eventCover,
+                        item: item,
+                        dateTime: dateTime,
+                        artist: artist,
+                        location: location,
+                        category: category),
                   ),
-                  constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.35)
-              );
-            }
+                );
+              }else{
+                showModalBottomSheet(
+                    context: context,
+                    builder: (_) => EventsSeatBottom(
+                      imageUrl: imageUrl,
+                      confirmPlace: location,
+                      confirmTitle: eventTitle,
+                      confirmDate: dateTime,
+                    ),
+                    constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.35)
+                );
+              }
 
-          },
-          child: Text(
-            'Book tickets',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w500,
+            },
+            child: Text(
+              'Book tickets',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
         ),

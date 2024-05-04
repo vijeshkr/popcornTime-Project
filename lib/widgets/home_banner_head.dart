@@ -20,17 +20,17 @@ class HomeBannerHead extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20).r,
+      padding: const EdgeInsets.only(left: 20, right: 20).h,
       child: Row(
         children: [
           SvgPicture.asset(
             asset,
             color: Colors.black.withOpacity(0.8),
             height: 18.h,
-            width: 18.w,
+            width: 18.h,
           ),
            SizedBox(
-            width: 10.w,
+            width: 10.h,
           ),
           Text(
             title.toUpperCase(),
@@ -44,12 +44,12 @@ class HomeBannerHead extends StatelessWidget {
               if(viewAll == 'Events'){
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => EventsScreen()),
+                  MaterialPageRoute(builder: (context) => const EventsScreen()),
                 );
               }else if(viewAll == 'Sports'){
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SportsScreen()),
+                  MaterialPageRoute(builder: (context) => const SportsScreen()),
                 );
               }
             },

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:popcorn_time/constants/apptheme.dart';
 import 'package:popcorn_time/models/events_booking_confirmation.dart';
 
 class EventsSeatBottom extends StatefulWidget {
@@ -33,18 +34,18 @@ class _EventsSeatBottomState extends State<EventsSeatBottom> {
     var howManyList = List<int>.generate(eventLimit, (i) => i + 1);
 
     howManyList.forEach((j) {
-      Color myColor = (j == selected_index) ? Colors.red : Colors.white;
+      Color myColor = (j == selected_index) ? AppTheme.splash : Colors.white;
       Color textColor = (j == selected_index) ? Colors.white : Colors.black;
       listOfContainers.add(
         Padding(
-          padding: const EdgeInsets.all(2).r,
+          padding: const EdgeInsets.all(2).h,
           child: Container(
-            width: 30.w,
+            width: 30.h,
             height: 30.h,
             decoration: BoxDecoration(
               color: myColor,
               borderRadius: BorderRadius.all(
-                Radius.circular(5).r,
+                const Radius.circular(5).r,
               ),
             ),
             child: InkWell(
@@ -59,7 +60,7 @@ class _EventsSeatBottomState extends State<EventsSeatBottom> {
                   '$j', // Display the seat number
                   style: TextStyle(
                     color: textColor,
-                    fontSize: 18.sp,
+                    fontSize: 18,
                   ),
                 ),
               ),
@@ -70,17 +71,18 @@ class _EventsSeatBottomState extends State<EventsSeatBottom> {
     });
 
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         height: double.maxFinite,
         width: double.maxFinite,
         child: Column(
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 15).r,
-              child: Text(
+              child: const Text(
                 'How many seats ?',
                 style: TextStyle(
-                  fontSize: 16.sp,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold ,
                 ),
               ),
             ),
@@ -93,9 +95,9 @@ class _EventsSeatBottomState extends State<EventsSeatBottom> {
             ),
             Text(
               'Event Price : \u{20B9} $eventPrice',
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 16.sp,
+                fontSize: 16,
               ),
             ),
             SizedBox(
@@ -103,20 +105,20 @@ class _EventsSeatBottomState extends State<EventsSeatBottom> {
             ),
             Text(
               '$selected_index Tickets',
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 16.sp,
-                color: Colors.red,
+                fontSize: 16,
+                color: AppTheme.splash,
               ),
             ),
           ],
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.all(10).r,
+        padding: const EdgeInsets.all(10).h,
         child: ElevatedButton(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
+            backgroundColor: MaterialStateProperty.all<Color>(AppTheme.splash),
             padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
               EdgeInsets.symmetric(vertical: 12.h),
             ),
@@ -137,9 +139,9 @@ class _EventsSeatBottomState extends State<EventsSeatBottom> {
           },
           child: Text(
             'Pay $eventTotalPrice',
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
-              fontSize: 16.sp,
+              fontSize: 16,
               fontWeight: FontWeight.w500,
             ),
           ),

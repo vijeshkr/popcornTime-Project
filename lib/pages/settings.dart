@@ -11,10 +11,10 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings'),
+        title: const Text('Settings'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(15).r,
+        padding: const EdgeInsets.all(15).h,
         child: Column(
           children: [
             ListTile(
@@ -22,24 +22,25 @@ class SettingsScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => SelectLocationScreen(),),
+                      builder: (context) => const SelectLocationScreen(),),
                 );
               },
-              title: Text('My Location'),
+              title: const Text('My Location'),
               subtitle: Text(myLocation),
-              trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15.r,),
+              trailing: const Icon(Icons.arrow_forward_ios_rounded,size: 15,),
             ),
-            Divider(thickness: 1.w,color: Colors.grey,),
+            const Divider(thickness: 1,color: Colors.grey,),
             ListTile(
               onTap: () {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: Text('Comeback Soon!',style: TextStyle(
+                      surfaceTintColor: Colors.blue.shade100,
+                      title: const Text('Comeback Soon!',style: TextStyle(
                         fontWeight: FontWeight.w500,
                       ),),
-                      content: Text('Are you sure you want to delete your account ?',style: TextStyle(
+                      content: const Text('Are you sure you want to delete your account ?',style: TextStyle(
                           color: Colors.black38
                       ),),
                       backgroundColor: Colors.white,
@@ -48,7 +49,7 @@ class SettingsScreen extends StatelessWidget {
                       ),
                       actions: <Widget>[
                         TextButton(
-                          child: Text('Cancel',style: TextStyle(
+                          child: const Text('Cancel',style: TextStyle(
                             color: Colors.red,
                           ),),
                           onPressed: () {
@@ -60,15 +61,15 @@ class SettingsScreen extends StatelessWidget {
                             backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10).w,
-                            child: Text('Yes, Delete',
+                            padding: const EdgeInsets.symmetric(horizontal: 10).h,
+                            child: const Text('Yes, Delete',
                               style: TextStyle(color: Colors.white),),
                           ),
                           onPressed: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => LoginScreen()),
+                                  builder: (context) => const LoginScreen()),
                             );
                           },
                         ),
@@ -76,25 +77,26 @@ class SettingsScreen extends StatelessWidget {
                     );
                   },
                 );
-              },trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15.r,),
-              title: Text(
+              },trailing: const Icon(Icons.arrow_forward_ios_rounded,size: 15,),
+              title: const Text(
                 'Delete Account',
                 style: TextStyle(
                   color: Colors.black,
                 ),
               ),
             ),
-            Divider(thickness: 1.w,color: Colors.grey,),
+            const Divider(thickness: 1,color: Colors.grey,),
             ListTile(
               onTap: () {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: Text('Comeback Soon!',style: TextStyle(
+                      surfaceTintColor: Colors.blue.shade100,
+                      title: const Text('Comeback Soon!',style: TextStyle(
                         fontWeight: FontWeight.w500,
                       ),),
-                      content: Text('Are you sure you want to logout?',style: TextStyle(
+                      content: const Text('Are you sure you want to logout?',style: TextStyle(
                           color: Colors.black38
                       ),),
                       backgroundColor: Colors.white,
@@ -103,7 +105,7 @@ class SettingsScreen extends StatelessWidget {
                       ),
                       actions: <Widget>[
                         TextButton(
-                          child: Text('Cancel',style: TextStyle(
+                          child: const Text('Cancel',style: TextStyle(
                             color: Colors.red,
                           ),),
                           onPressed: () {
@@ -115,15 +117,15 @@ class SettingsScreen extends StatelessWidget {
                             backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10).w,
-                            child: Text('Yes, Logout',
+                            padding: const EdgeInsets.symmetric(horizontal: 10).h,
+                            child: const Text('Yes, Logout',
                               style: TextStyle(color: Colors.white),),
                           ),
                           onPressed: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => LoginScreen()),
+                                  builder: (context) => const LoginScreen()),
                             );
                           },
                         ),
@@ -132,15 +134,15 @@ class SettingsScreen extends StatelessWidget {
                   },
                 );
               },
-              trailing: Icon(Icons.arrow_forward_ios_rounded,size: 15.r,),
-              title: Text(
+              trailing: const Icon(Icons.arrow_forward_ios_rounded,size: 15,),
+              title: const Text(
                 'Logout',
                 style: TextStyle(
                   color: Colors.black,
                 ),
               ),
             ),
-            Divider(thickness: 1.w,color: Colors.grey,),
+            const Divider(thickness: 1,color: Colors.grey,),
           ],
         ),
       ),

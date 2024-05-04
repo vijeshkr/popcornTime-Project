@@ -21,16 +21,16 @@ class _EventsScreenState extends State<EventsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppTheme.greyColor,
-        toolbarHeight: 70.h,
+        backgroundColor: Colors.white,
+        toolbarHeight: 60.h,
         // automaticallyImplyLeading: false,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Experience begins here',
               style: TextStyle(
-                fontSize: 20.sp,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -38,8 +38,8 @@ class _EventsScreenState extends State<EventsScreen> {
               children: [
                 Text(
                   myLocation,
-                  style: TextStyle(
-                    fontSize: 14.sp,
+                  style: const TextStyle(
+                    fontSize: 14,
                     color: Colors.grey,
                   ),
                 ),
@@ -59,75 +59,72 @@ class _EventsScreenState extends State<EventsScreen> {
             ),
           ),
            SizedBox(
-            width: 10.w,
+            width: 10.h,
           )
         ],
       ),
-      body: Container(
-        child: Column(
-          children: [
-            SizedBox(height: 15.h,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => ShowsScreen(),
+                        builder: (context) => const ShowsScreen(),
                       ),
                     );
                   },
-                  child: Text('Shows'),
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
                     backgroundColor: AppTheme.splash, // Text color
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 50, vertical: 15).r, // Padding
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 70, vertical: 10).h, // Padding
                     shape: RoundedRectangleBorder(
                       borderRadius:
                       BorderRadius.circular(10).r, // BorderRadius// Border
                     ),
-                    elevation: 5, // Elevation
+                    elevation: 0, // Elevation
                   ),
-                ),
-                SizedBox(
-                  width: 20.w,
+                  child: Text('Shows'),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => SportsScreen(),
+                        builder: (context) => const SportsScreen(),
                       ),
                     );
                   },
-                  child: Text('Sports'),
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
                     backgroundColor: AppTheme.splash, // Text color
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 50, vertical: 15).r, // Padding
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 70, vertical: 10).h, // Padding
                     shape: RoundedRectangleBorder(
                       borderRadius:
                       BorderRadius.circular(10).r, // BorderRadius// Border
                     ),
-                    elevation: 5, // Elevation
+                    elevation: 0, // Elevation
                   ),
+                  child: const Text('Sports'),
                 ),
 
               ],
             ),
-            SizedBox(
-              height: 15.h,
-            ),
-            Expanded(
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
               child: EventsShowsList(
                 events: eventsDummyData.cast<Map<String, dynamic>>(),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

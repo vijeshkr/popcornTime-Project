@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:popcorn_time/constants/apptheme.dart';
 import 'package:popcorn_time/pages/detailed_selection_seat.dart';
 import 'package:popcorn_time/widgets/seat_layout_model.dart';
 
@@ -32,18 +33,18 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
     var list = List<int>.generate(n, (i) => i + 1);
 
     list.forEach((j) {
-      Color myColor = (j == selected_inx) ? Colors.red : Colors.white;
+      Color myColor = (j == selected_inx) ? AppTheme.splash : Colors.white;
       Color textColor = (j == selected_inx) ? Colors.white : Colors.black;
       listOfContainers.add(
         Padding(
           padding: const EdgeInsets.all(2).r,
           child: Container(
-            width: 30.w,
+            width: 30.h,
             height: 30.h,
             decoration: BoxDecoration(
               color: myColor,
               borderRadius: BorderRadius.all(
-                Radius.circular(5).r,
+                const Radius.circular(5).r,
               ),
             ),
             child: InkWell(
@@ -58,7 +59,7 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
                   '$j', // Display the seat number
                   style: TextStyle(
                     color: textColor,
-                    fontSize: 18.sp,
+                    fontSize: 18,
                   ),
                 ),
               ),
@@ -69,17 +70,17 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
     });
 
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         height: double.maxFinite,
         width: double.maxFinite,
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15).r,
-              child: Text(
+              padding: const EdgeInsets.symmetric(vertical: 15).h,
+              child: const Text(
                 'How many seats ?',
                 style: TextStyle(
-                  fontSize: 16.sp,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -89,7 +90,7 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
               children: listOfContainers,
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 15).r,
+              padding: const EdgeInsets.only(top: 15).h,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -167,10 +168,10 @@ class _SelectSeatBottomState extends State<SelectSeatBottom> {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.all(10).r,
+        padding: const EdgeInsets.all(10).h,
         child: ElevatedButton(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
+            backgroundColor: MaterialStateProperty.all<Color>(AppTheme.splash),
             padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
               EdgeInsets.symmetric(vertical: 12.h),
             ),

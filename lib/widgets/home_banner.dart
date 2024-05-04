@@ -35,24 +35,29 @@ class HomeBanner extends StatelessWidget {
         );
       },
       child: Padding(
-        padding: const EdgeInsets.all(10).r,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10).r,
-              child: Image.asset(
-                image,
+        padding: const EdgeInsets.all(10).h,
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.95,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10).r,
+                child: Image.asset(
+                  width: MediaQuery.of(context).size.width * 0.95,
+                  image,
+                ),
               ),
-            ),
-            SizedBox(
-              height: 5.h,
-            ),
-            Text(
-              bannerTitle,
-              style: TextStyle(fontSize: 17.sp, fontWeight: FontWeight.w500),
-            )
-          ],
+              SizedBox(
+                height: 5.h,
+              ),
+              Text(
+                bannerTitle,
+                style:
+                    const TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+              )
+            ],
+          ),
         ),
       ),
     );

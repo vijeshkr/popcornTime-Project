@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:popcorn_time/constants/apptheme.dart';
 import 'package:popcorn_time/models/movie_booking_confirmation.dart';
 import 'package:popcorn_time/widgets/seat_layout_model.dart';
 
@@ -45,7 +46,7 @@ class _DetailedSelectionSeatsState extends State<DetailedSelectionSeats> {
     int seatCounter = 0;
 
     return Scaffold(
-      backgroundColor: Color(0xffdce8fc),
+      backgroundColor: const Color(0xffdce8fc),
       appBar: AppBar(
         title: Text(
           widget.movieTitle
@@ -53,11 +54,8 @@ class _DetailedSelectionSeatsState extends State<DetailedSelectionSeats> {
       ),
       body: Column(
         children: [
-          SizedBox(
-            height: 10.h,
-          ),
           Container(
-            height: 90,
+            height: 100,
             width: double.maxFinite,
             color: Colors.white,
             child: Padding(
@@ -65,9 +63,18 @@ class _DetailedSelectionSeatsState extends State<DetailedSelectionSeats> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(widget.theatreName),
-                  Text(widget.showTime),
-                  Text('${seats.length} Tickets selected'),
+                  Text(widget.theatreName,style: const TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16
+                  ),),
+                  Text(widget.showTime,style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16
+                  ),),
+                  Text('${seats.length} Seats selected',style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16
+                  ),),
                 ],
               ),
             ),
@@ -78,7 +85,7 @@ class _DetailedSelectionSeatsState extends State<DetailedSelectionSeats> {
           Center(
             child: Container(
               height: 5.h,
-              width: 250.w,
+              width: 250.h,
               color: Colors.red.shade200,
             ),
           ),
@@ -90,15 +97,17 @@ class _DetailedSelectionSeatsState extends State<DetailedSelectionSeats> {
               itemCount: widget.model.seatTypes.length,
               itemBuilder: (_, index) {
                 return Padding(
-                  padding: const EdgeInsets.only(bottom: 10).r,
+                  padding: const EdgeInsets.only(bottom: 10).h,
                   child: Container(
                     color: Colors.white,
-                    padding: EdgeInsets.all(10).r,
+                    padding: const EdgeInsets.all(10).h,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                            "\u20B9 ${widget.model.seatTypes[index]['price']} ${widget.model.seatTypes[index]['title']}"),
+                            "\u20B9 ${widget.model.seatTypes[index]['price']} ${widget.model.seatTypes[index]['title']}",style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),),
                         SizedBox(
                           height: 10.h,
                         ),
@@ -115,15 +124,17 @@ class _DetailedSelectionSeatsState extends State<DetailedSelectionSeats> {
                                   if (col == 0) {
                                     return Padding(
                                       padding: const EdgeInsets.all(5.0).r,
-                                      child: Container(
-                                        // color: Colors.red,
+                                      child: SizedBox(
+                                        height: 20.h,
+                                        width: 20.w,
                                         child: Center(
                                           child: Text(
                                             String.fromCharCode(64 + alphabets),
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold
+                                            ),
                                           ),
                                         ),
-                                        height: 20.h,
-                                        width: 20.w,
                                       ),
                                     );
                                   }
@@ -137,9 +148,8 @@ class _DetailedSelectionSeatsState extends State<DetailedSelectionSeats> {
                                                   1 &&
                                           widget.model.isLastFilled)) {
                                     return Padding(
-                                      padding: const EdgeInsets.all(5.0).r,
-                                      child: Container(
-                                        // color: Colors.green,
+                                      padding: const EdgeInsets.all(6.0).r,
+                                      child: SizedBox(
                                         height: 20.h,
                                         width: 20.w,
                                       ),
@@ -149,7 +159,7 @@ class _DetailedSelectionSeatsState extends State<DetailedSelectionSeats> {
                                   seatCounter++;
                                   String seatNo = "$seatCounter";
                                   return Padding(
-                                    padding: const EdgeInsets.all(5.0).r,
+                                    padding: const EdgeInsets.all(6.0).r,
                                     child: GestureDetector(
                                       onTap: () {
                                         int noOfSeats = widget.howManySeats;
@@ -163,7 +173,6 @@ class _DetailedSelectionSeatsState extends State<DetailedSelectionSeats> {
                                         } else {
                                           price = 150.0;
                                         }
-                                        print(price);
 
                                         if (seats.contains('$rowNo$seatNo')) {
                                           int index =
@@ -190,16 +199,22 @@ class _DetailedSelectionSeatsState extends State<DetailedSelectionSeats> {
                                                 BorderRadius.circular(2.r),
                                             color:
                                                 seats.contains('$rowNo$seatNo')
-                                                    ? Colors.green
-                                                    : Color(0xfffffff),
+                                                    ? const Color(0xff128C7E)
+                                                    : const Color(0xfffffff),
                                             border: Border.all(
-                                                width: 0.5.w,
-                                                color: Color(0xff707070))),
-                                        child: Center(
-                                          child: Text('$seatNo'),
-                                        ),
+                                                width: 0.5,
+                                                color: const Color(0xff707070),),),
                                         height: 20.h,
-                                        width: 20.w,
+                                        width: 20.h,
+                                        child: Center(
+                                          child: Text(seatNo,style: TextStyle(
+                                            color:
+                                            seats.contains('$rowNo$seatNo')
+                                                ? Colors.white
+                                                :  Colors.black,
+                                          ),
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   );
@@ -218,12 +233,12 @@ class _DetailedSelectionSeatsState extends State<DetailedSelectionSeats> {
         ],
       ),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.all(10).r,
+        padding: const EdgeInsets.all(10).h,
         child: ElevatedButton(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
+            backgroundColor: MaterialStateProperty.all<Color>(AppTheme.splash),
             padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-              EdgeInsets.symmetric(vertical: 12).r,
+              const EdgeInsets.symmetric(vertical: 12).h,
             ),
           ),
           onPressed: () {
@@ -233,14 +248,20 @@ class _DetailedSelectionSeatsState extends State<DetailedSelectionSeats> {
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: Text('Please select your seats.'),
-                    content: Text('Please select ${widget.howManySeats - seats.length} more seat.'),
+                    title: const Text('Please select your seats.',style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),),
+                    content: Text('Please select ${widget.howManySeats - seats.length} more seat.',style: const TextStyle(
+                      fontSize: 16,
+                    ),),
                     actions: [
                       TextButton(
                         onPressed: () {
                           Navigator.pop(context); // Close the dialog
                         },
-                        child: Text('Ok'),
+                        child: const Text('Ok',style: TextStyle(
+                          color: AppTheme.splash,
+                        ),),
                       ),
                     ],
                   );

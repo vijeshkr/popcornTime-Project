@@ -20,7 +20,7 @@ class SvgWithTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         if(onPressed == 'Movies'){
           Navigator.of(context).push(
@@ -31,19 +31,19 @@ class SvgWithTitle extends StatelessWidget {
         }else if(onPressed == 'Events'){
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => EventsScreen(),
+              builder: (context) => const EventsScreen(),
             ),
           );
         }else if(onPressed == 'Sports'){
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => SportsScreen(),
+              builder: (context) => const SportsScreen(),
             ),
           );
         }else if(onPressed == 'Shows'){
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => ShowsScreen(),
+              builder: (context) => const ShowsScreen(),
             ),
           );
         }
@@ -57,9 +57,9 @@ class SvgWithTitle extends StatelessWidget {
               padding: const EdgeInsets.all(8.0).r,
               child: SvgPicture.asset(
                 imagePath,
-                width: 35.w, // Adjust width as needed
+                width: 35.h,
                 height: 35.h,
-                // color: AppTheme.splash,// Adjust height as needed
+                // color: AppTheme.splash,
               ),
             ),
             SizedBox(height: 5.h), // Add spacing between image and title
