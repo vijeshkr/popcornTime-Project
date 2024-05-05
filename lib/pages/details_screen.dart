@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:popcorn_time/constants/apptheme.dart';
+import 'package:popcorn_time/models/bottom_rating.dart';
+import 'package:popcorn_time/pages/reviews_ratings.dart';
 import 'package:popcorn_time/pages/theatre_selection_screen.dart';
 import '../data/location_data.dart';
+import '../data/review_data.dart';
 import 'home_screen.dart';
 
-class DetailsScreen extends StatelessWidget {
+class DetailsScreen extends StatefulWidget {
   String movieTitle;
   String movieImage;
   String movieCover;
@@ -35,7 +38,52 @@ class DetailsScreen extends StatelessWidget {
   });
 
   @override
+  State<DetailsScreen> createState() => _DetailsScreenState();
+}
+
+class _DetailsScreenState extends State<DetailsScreen> {
+
+  double findAverage(List list) {
+    if (list.isEmpty) {
+      return 0.0; // Handle empty list to avoid division by zero
+    }
+
+    double sum = 0;
+    for (double num in list) {
+      sum += num;
+    }
+
+    return sum / list.length.toDouble();
+  }
+
+
+  double averageRating = 0;
+  int totalVotes = 0;
+  int totalReviews = 0;
+  double globalRating = 0;
+  bool rated = false;
+
+
+  @override
   Widget build(BuildContext context) {
+
+    reviewsRatings.forEach((item) {
+      if (item['title'] == widget.movieTitle) {
+        setState(() {
+          averageRating = findAverage(item['rating']);
+          averageRating = double.parse(averageRating.toStringAsFixed(1));
+          totalVotes = item['rating'].length;
+          totalReviews = item['review'].length;
+          if (item['title'] == widget.movieTitle) {
+            if(item['rated'].contains(widget.movieTitle)){
+              rated = true;
+            }else{
+              rated = false;
+            }
+          }
+        });
+      }
+    });
     return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
@@ -58,7 +106,7 @@ class DetailsScreen extends StatelessWidget {
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: AssetImage(
-                          movieCover,
+                          widget.movieCover,
                         ),
                       ),
                     ),
@@ -87,27 +135,37 @@ class DetailsScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                movieTitle,
+                                widget.movieTitle,
                                 style: const TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 18,
                                 ),
                               ),
-                              Row(
-                                children: [
-                                  const Icon(
-                                    Icons.favorite,
-                                    color: Colors.red,
-                                    size: 20,
-                                  ),
-                                  SizedBox(
-                                    width: 5.h,
-                                  ),
-                                  Text(
-                                    '${like / 10}/10',
-                                    style: const TextStyle(fontSize: 15),
-                                  ),
-                                ],
+                              GestureDetector(
+                                onTap: (){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ReviewsRatings(movieName: widget.movieTitle),
+                                    ),
+                                  );
+                                },
+                                child: Row(
+                                  children: [
+                                    const Icon(
+                                      Icons.favorite,
+                                      color: Colors.red,
+                                      size: 20,
+                                    ),
+                                    SizedBox(
+                                      width: 5.h,
+                                    ),
+                                    Text(
+                                      '$averageRating/10',
+                                      style: const TextStyle(fontSize: 15),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
@@ -118,12 +176,12 @@ class DetailsScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'UA | $release',
+                                'UA | ${widget.release}',
                                 style: const TextStyle(color: Colors.black45),
                               ),
-                              const Text(
-                                '2.4K votes',
-                                style: TextStyle(color: Colors.red),
+                               Text(
+                                '$totalVotes votes',
+                                style: const TextStyle(color: Colors.red),
                               ),
                             ],
                           ),
@@ -150,7 +208,7 @@ class DetailsScreen extends StatelessWidget {
                                       height: 5.h,
                                     ),
                                     Text(
-                                      '$duration . ${genre[0]}, ${genre[1]}',
+                                      '${widget.duration} . ${widget.genre[0]}, ${widget.genre[1]}',
                                       style: const TextStyle(
                                           color: Colors.black45),
                                     ),
@@ -160,7 +218,7 @@ class DetailsScreen extends StatelessWidget {
                                     Row(
                                       children: [
                                         Text(
-                                          language,
+                                          widget.language,
                                           style: const TextStyle(
                                               color: AppTheme.splash),
                                         ),
@@ -175,10 +233,11 @@ class DetailsScreen extends StatelessWidget {
                                                 BorderRadius.circular(3).r,
                                           ),
                                           padding: const EdgeInsets.symmetric(
-                                                  horizontal: 2, vertical: 1).h
+                                                  horizontal: 2, vertical: 1)
+                                              .h
                                               .h,
                                           child: Text(
-                                            screen_2D,
+                                            widget.screen_2D,
                                             style: const TextStyle(
                                                 color: AppTheme.splash),
                                           ),
@@ -194,7 +253,7 @@ class DetailsScreen extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(10).r),
                                       child: Text(
-                                        description,
+                                        widget.description,
                                         overflow: TextOverflow.ellipsis,
                                         maxLines: 25,
                                         style: const TextStyle(
@@ -217,21 +276,66 @@ class DetailsScreen extends StatelessWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10).r),
                       padding: const EdgeInsets.all(20).h,
-                      child: const Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            '1024 reviews',
-                            style: TextStyle(
+                           Text(
+                            '$totalReviews reviews',
+                            style: const TextStyle(
                               fontWeight: FontWeight.w500,
                               color: Colors.black,
                             ),
                           ),
-                          Text(
-                            'Write yours >',
+                          rated ? const Text(
+                            'Rated',
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               color: Colors.red,
+                            ),
+                          ) : GestureDetector(
+                            onTap: () async {
+                              final result = await showModalBottomSheet(
+                                isScrollControlled: true,
+                                context: context,
+                                builder: (_) => Padding(
+                                  padding: EdgeInsets.only(
+                                    bottom: MediaQuery.of(context).viewInsets.bottom,
+                                  ),
+                                  child: SizedBox(
+                                    height: MediaQuery.of(context).size.height * 0.45,
+                                    child: RatingBottom(movieName: widget.movieTitle),
+                                  ),
+                                ),
+                              );
+
+
+                              if (result != null && result is List && result.length == 2) {
+                                setState(() {
+                                  totalVotes = result[0];
+                                  averageRating = result[1];
+                                });
+                              }
+
+                              setState(() {
+                                reviewsRatings.forEach((item) {
+                                  if (item['title'] == widget.movieTitle) {
+                                    if(item['rated'].contains(widget.movieTitle)){
+                                      rated = true;
+                                    }else{
+                                      rated = false;
+                                    }
+                                  }
+                                });
+                              });
+
+                            },
+
+                            child: const Text(
+                              'Write yours >',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.red,
+                              ),
                             ),
                           ),
                         ],
@@ -242,11 +346,12 @@ class DetailsScreen extends StatelessWidget {
                     ),
                     Container(
                       decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            topRight: Radius.circular(10),
-                          ),),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10),
+                        ),
+                      ),
                       padding: const EdgeInsets.all(20).h,
                       child: const Row(
                         children: [
@@ -265,45 +370,60 @@ class DetailsScreen extends StatelessWidget {
                       child: Column(
                         children: [
                           ListTile(
-                            title: Text('${castCrew['director']}'),
+                            title: Text('${widget.castCrew['director']}'),
                             subtitle: const Text('Director'),
-                            trailing: const Icon(Icons.videocam_outlined,color: AppTheme.splash,),
+                            trailing: const Icon(
+                              Icons.videocam_outlined,
+                              color: AppTheme.splash,
+                            ),
                           ),
                           const Divider(
                             thickness: 1,
                             color: Colors.grey,
                           ),
                           ListTile(
-                            title: Text('${castCrew['actor']}'),
+                            title: Text('${widget.castCrew['actor']}'),
                             subtitle: const Text('Actor'),
-                            trailing: const Icon(Icons.theater_comedy_outlined, color: AppTheme.splash,),
+                            trailing: const Icon(
+                              Icons.theater_comedy_outlined,
+                              color: AppTheme.splash,
+                            ),
                           ),
                           const Divider(
                             thickness: 1,
                             color: Colors.grey,
                           ),
                           ListTile(
-                            title: Text('${castCrew['actress']}'),
+                            title: Text('${widget.castCrew['actress']}'),
                             subtitle: const Text('Actress'),
-                            trailing: const Icon(Icons.theater_comedy_outlined, color: AppTheme.splash,),
+                            trailing: const Icon(
+                              Icons.theater_comedy_outlined,
+                              color: AppTheme.splash,
+                            ),
                           ),
                           const Divider(
                             thickness: 1,
                             color: Colors.grey,
                           ),
                           ListTile(
-                            title: Text('${castCrew['producer']}'),
+                            title: Text('${widget.castCrew['producer']}'),
                             subtitle: const Text('Producer'),
-                            trailing: const Icon(Icons.paid_outlined, color: AppTheme.splash,),
+                            trailing: const Icon(
+                              Icons.paid_outlined,
+                              color: AppTheme.splash,
+                            ),
                           ),
                           const Divider(
                             thickness: 1,
                             color: Colors.grey,
                           ),
                           ListTile(
-                            title: Text('${castCrew['musician']}'),
+                            title: Text('${widget.castCrew['musician']}'),
                             subtitle: const Text('Musician'),
-                            trailing: const Icon(Icons.music_note_outlined, color: AppTheme.splash,),
+                            trailing: const Icon(
+                              Icons.music_note_outlined,
+                              color: AppTheme.splash,
+                            ),
                           ),
                         ],
                       ),
@@ -336,8 +456,8 @@ class DetailsScreen extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => TheatreSelectionScreen(
-                  movieName: movieTitle,
-                  movieImage: movieImage,
+                  movieName: widget.movieTitle,
+                  movieImage: widget.movieImage,
                 ),
               ),
             );

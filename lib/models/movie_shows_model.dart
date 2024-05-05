@@ -4,8 +4,9 @@ import 'package:popcorn_time/pages/detailed_screen_for_upcoming_movies.dart';
 import 'package:popcorn_time/pages/details_screen.dart';
 
 import '../constants/apptheme.dart';
+import '../data/review_data.dart';
 
-class MovieShowsModel extends StatelessWidget {
+class MovieShowsModel extends StatefulWidget {
   final String title;
   final int like;
   final String bannerUrl;
@@ -36,27 +37,58 @@ class MovieShowsModel extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<MovieShowsModel> createState() => _MovieShowsModelState();
+}
+
+class _MovieShowsModelState extends State<MovieShowsModel> {
+  @override
   Widget build(BuildContext context) {
+
+    double findAverage(List list) {
+      if (list.isEmpty) {
+        return 0.0; // Handle empty list to avoid division by zero
+      }
+
+      double sum = 0;
+      for (double num in list) {
+        sum += num;
+      }
+
+      return sum / list.length.toDouble();
+    }
+
+
+    double averageRating = 0;
+
+    reviewsRatings.forEach((item) {
+      if (item['title'] == widget.title) {
+        setState(() {
+          averageRating = findAverage(item['rating']);
+          averageRating = double.parse(averageRating.toStringAsFixed(1));
+
+        });
+      }
+    });
     return Padding(
       padding: const EdgeInsets.all(10).h,
       child: GestureDetector(
         onTap: () {
-          if(now == 'now'){
+          if(widget.now == 'now'){
             Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => DetailsScreen(
-                  movieTitle: title,
-                  movieCover: coverImage,
-                  like: like,
-                  language: language,
-                  screen_2D: screen_2D,
-                  genre: genre,
-                  release: release,
-                  description: description,
-                  duration: duration,
-                  movieImage: bannerUrl,
-                  castCrew: castCrew,
+                  movieTitle: widget.title,
+                  movieCover: widget.coverImage,
+                  like: widget.like,
+                  language: widget.language,
+                  screen_2D: widget.screen_2D,
+                  genre: widget.genre,
+                  release: widget.release,
+                  description: widget.description,
+                  duration: widget.duration,
+                  movieImage: widget.bannerUrl,
+                  castCrew: widget.castCrew,
                 ),
               ),
             );
@@ -65,16 +97,16 @@ class MovieShowsModel extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => DetailsScreenUpcomingMovies(
-                  movieTitle: title,
-                  movieCover: coverImage,
-                  like: like,
-                  language: language,
-                  screen_2D: screen_2D,
-                  genre: genre,
-                  release: release,
-                  description: description,
-                  duration: duration,
-                  castCrew: castCrew,
+                  movieTitle: widget.title,
+                  movieCover: widget.coverImage,
+                  like: widget.like,
+                  language: widget.language,
+                  screen_2D: widget.screen_2D,
+                  genre: widget.genre,
+                  release: widget.release,
+                  description: widget.description,
+                  duration: widget.duration,
+                  castCrew: widget.castCrew,
                 ),
               ),
             );
@@ -86,7 +118,7 @@ class MovieShowsModel extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(10).r,
               child: Image.asset(
-                bannerUrl,
+                widget.bannerUrl,
                 height: 250.h,
                 width: 190.h,
                 fit: BoxFit.cover,
@@ -116,7 +148,7 @@ class MovieShowsModel extends StatelessWidget {
                       width: 5.h,
                     ),
                     Text(
-                      "${like/10}/10",
+                      "$averageRating/10",
                       style: const TextStyle(fontSize: 13),
                     )
                   ],
@@ -127,7 +159,7 @@ class MovieShowsModel extends StatelessWidget {
               child: SizedBox(
                 width: 190.h,
                 child: Text(
-                  title,
+                  widget.title,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   // softWrap: true,
